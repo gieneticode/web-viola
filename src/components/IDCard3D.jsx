@@ -35,7 +35,7 @@ export default function Lanyard({ photoSrc = "/assets/card-face.jpg" }) {
   return (
     <Canvas camera={{ position: [isMobile ? 0 : 2.35, 0, 11], fov: isMobile ? 32 : 26 }} gl={{ alpha: true }} dpr={[1, 2]}>
       <ambientLight intensity={Math.PI} />
-      <Physics key={isMobile ? "mobile" : "desktop"} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+      <Physics key={isMobile ? "mobile" : "desktop"} interpolate={false} gravity={[0, -40, 0]} timeStep={1 / 60}>
         <Band photoSrc={photoSrc} isMobile={isMobile} />
       </Physics>
       <Environment blur={0.75}>

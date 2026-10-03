@@ -30,7 +30,9 @@ export default function Work() {
               {list.map((w) => (
                 <Link to={`/work/${w.slug}`} key={w.slug} className="work"
                   style={{ textDecoration: "none" }}>
-                  <WorkArt cat={w.cat} />
+                  {w.cover
+                    ? <img className="work-cover" src={w.cover} alt={w.t} loading="lazy" />
+                    : <WorkArt cat={w.cat} />}
                   <span className="cat">{w.cat}</span>
                   <div className="info"><b>{w.t}</b><span>{w.project}</span></div>
                   <span className="go">View →</span>

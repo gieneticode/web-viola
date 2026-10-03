@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { WORK } from "../data.js";
+import { WORK, ABOUT_PHOTOS } from "../data.js";
 import { Reveal } from "../components/Bits.jsx";
 
 export default function ProjectDetail() {
@@ -33,6 +33,10 @@ export default function ProjectDetail() {
           <button className="back" onClick={() => nav(-1)}>← Back</button>
 
           <Reveal className="heroimg">
+            {w.cover && <img src={w.cover} alt={w.t} loading="lazy"
+              style={{ position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover" }} />}
+            <div style={{ position:"absolute", inset:0,
+              background:"linear-gradient(200deg,transparent 40%,rgba(5,8,15,.9))" }} />
             <span className="cat">{w.cat}</span>
           </Reveal>
 
@@ -49,7 +53,12 @@ export default function ProjectDetail() {
             </p>
 
             <div className="thumbs">
-              {["Still","Behind the scenes","Frame"].map((t) => <div key={t} />)}
+              {ABOUT_PHOTOS.map((src, i) => (
+                <div key={i} style={{ position:"relative", overflow:"hidden", borderRadius:14 }}>
+                  <img src={src} alt="" loading="lazy"
+                    style={{ width:"100%", height:"100%", objectFit:"cover", position:"absolute", inset:0 }} />
+                </div>
+              ))}
             </div>
             <p className="note" style={{ textAlign: "left" }}>
               Media slots — drop real video / stills / behind-the-scenes here.

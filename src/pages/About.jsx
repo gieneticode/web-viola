@@ -26,13 +26,16 @@ export default function About() {
             </div>
           </Reveal>
           <Reveal className="g2 tight" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-            {[["Team",""],["On set",""],["Behind the scenes",""],["Editing room",""]].map(([t]) => (
+            {[["Team",ABOUT_PHOTOS[0]],["On set",ABOUT_PHOTOS[1]],["Behind the scenes",ABOUT_PHOTOS[2]],["Editing room",ABOUT_PHOTOS[3]]].map(([t,img]) => (
               <div key={t} style={{ aspectRatio: "1/1", borderRadius: 18, border: "1px solid var(--brd)",
-                overflow: "hidden", position: "relative",
-                background: "linear-gradient(150deg,#12304a,#0a1622 60%,#05080f)" }}>
+                overflow: "hidden", position: "relative" }}>
+                <img src={img} alt={t} loading="lazy"
+                  style={{ width:"100%", height:"100%", objectFit:"cover", position:"absolute", inset:0 }} />
+                <div style={{ position:"absolute", inset:0,
+                  background:"linear-gradient(200deg,transparent 45%,rgba(5,8,15,.85))" }} />
                 <small style={{ position: "absolute", left: 14, bottom: 12, fontSize: 10,
                   letterSpacing: ".18em", textTransform: "uppercase",
-                  color: "rgba(255,255,255,.5)" }}>{t}</small>
+                  color: "rgba(255,255,255,.75)", zIndex: 2 }}>{t}</small>
               </div>
             ))}
           </Reveal>
@@ -49,8 +52,9 @@ export default function About() {
           <StaggerGrid className="card-grid" style={{
             display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
             gap: 16, marginTop: 48 }}>
-            {TEAM_ROLES.map(([role, desc]) => (
-              <TiltCard key={role} className="card">
+            {TEAM_ROLES.map(([role, desc, img]) => (
+              <TiltCard key={role} className="card team-card">
+                <img className="team-img" src={img} alt={role} loading="lazy" />
                 <h3 style={{ fontSize: 16, fontWeight: 400 }}>{role}</h3>
                 <p>{desc}</p>
               </TiltCard>

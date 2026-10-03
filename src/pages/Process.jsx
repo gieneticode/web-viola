@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ROADMAP, SOCIAL_FLOW } from "../data.js";
+import { ROADMAP, SOCIAL_FLOW, SOCIAL_FEED } from "../data.js";
 import { Reveal, RoadmapCircles } from "../components/Bits.jsx";
 export default function Process() {
   return (
@@ -38,12 +38,14 @@ export default function Process() {
           <Reveal className="g2 tight" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
             {["Before","After","Reels / TikTok","Feed grid"].map((t, i) => (
               <div key={t} style={{ aspectRatio: "4/5", borderRadius: 18, border: "1px solid var(--brd)",
-                position: "relative", overflow: "hidden",
-                background: i % 2 ? "linear-gradient(150deg,#1b4a72,#0c1c2c)"
-                                 : "linear-gradient(150deg,#12304a,#0a1622 60%,#05080f)" }}>
+                position: "relative", overflow: "hidden" }}>
+                <img src={SOCIAL_FEED[i]} alt={t} loading="lazy"
+                  style={{ width:"100%", height:"100%", objectFit:"cover", position:"absolute", inset:0 }} />
+                <div style={{ position:"absolute", inset:0,
+                  background:"linear-gradient(200deg,transparent 50%,rgba(5,8,15,.85))" }} />
                 <small style={{ position: "absolute", left: 14, bottom: 12, fontSize: 10,
                   letterSpacing: ".2em", textTransform: "uppercase",
-                  color: "rgba(255,255,255,.55)" }}>{t}</small>
+                  color: "rgba(255,255,255,.75)", zIndex: 2 }}>{t}</small>
               </div>
             ))}
           </Reveal>
