@@ -23,8 +23,8 @@ export default function Home() {
             </p>
           </Reveal>
           <StaggerGrid className="ringgrid" style={{ marginTop: 52 }}>
-            {METRICS.map(m => (
-              <TiltCard key={m.label}>
+            {METRICS.map((m, i) => (
+              <TiltCard key={m.label} style={{ "--i": i }}>
                 <ProgressRing pct={m.pct} label={m.label} sub={m.sub} />
               </TiltCard>
             ))}

@@ -27,9 +27,9 @@ export default function Work() {
 
           {list.length ? (
             <StaggerGrid className="work-grid" style={{ marginTop: 44 }}>
-              {list.map((w) => (
+              {list.map((w, i) => (
                 <Link to={`/work/${w.slug}`} key={w.slug} className="work"
-                  style={{ textDecoration: "none" }}>
+                  style={{ textDecoration: "none", "--i": i }}>
                   {w.cover
                     ? <img className="work-cover" src={w.cover} alt={w.t} loading="lazy" />
                     : <WorkArt cat={w.cat} />}

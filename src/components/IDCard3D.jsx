@@ -53,7 +53,7 @@ function Band({ maxSpeed = 50, minSpeed = 10, photoSrc, isMobile }) {
   const cardTopY = useRef(1.1);
   const clipTopY = useRef(1.3);
   const vec = new THREE.Vector3(), ang = new THREE.Vector3(), rot = new THREE.Vector3(), dir = new THREE.Vector3(), _v = new THREE.Vector3(); // prettier-ignore
-  const segmentProps = { type: "dynamic", canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
+  const segmentProps = { type: "dynamic", canSleep: true, colliders: false, angularDamping: 1.5, linearDamping: 1.5 };
   const { nodes, materials } = useGLTF(GLTF_PATH);
   const photoTexture = useTexture(photoSrc);
   const bandTexture = useTexture(BAND_TEXTURE_PATH);
@@ -155,12 +155,16 @@ function Band({ maxSpeed = 50, minSpeed = 10, photoSrc, isMobile }) {
         const t = Math.min(1, delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))); // clamp: a large first-frame delta must not overshoot to Infinity
         ref.current.lerped.lerp(ref.current.translation(), t);
       });
-      // Drive the 3D strap ribbon along the physics joints every frame,
-      // so it hangs and swings exactly like a real lanyard.
-      // Strap tip: above j3, aligned with the hanger clip at the card top.
-      // Strap threads through the hanger ring.
-      curve.points[0].copy(j3.current.translation());
-      curve.points[0].y -= 0.15; // just a touch deeper
+      // Drive the 3D strap ribbon: anchor top at fixed, follow joints,
+      // and anchor bottom DIRECTLY to the card's clip top in world space
+      // so strap moves, swings and rotates with the card in real-time.
+      const cardTrans = card.current.translation();
+      const cardRot = card.current.rotation();
+      const cardEuler = new THREE.Euler().setFromQuaternion(new THREE.Quaternion(cardRot.x, cardRot.y, cardRot.z, cardRot.w));
+      const clipOffset = new THREE.Vector3(0, 1.8, 0).applyEuler(cardEuler);
+      const cardClipPos = new THREE.Vector3().copy(cardTrans).add(clipOffset);
+
+      curve.points[0].copy(cardClipPos);
       curve.points[1].copy(j3.current.translation());
       curve.points[2].copy(j2.current.translation());
       curve.points[3].copy(j1.current.translation());

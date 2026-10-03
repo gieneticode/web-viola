@@ -137,15 +137,18 @@ h3{font-size:16px;font-weight:400}
 .center{text-align:center}
 .center .sub-t{margin-left:auto;margin-right:auto}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(34px) scale(.985);filter:blur(8px);
-  transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease);
+/* reveal — premium: translate + scale + fade, NO blur (blur = janky on scroll) */
+.rv{opacity:0;transform:translateY(40px) scale(.96);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);
   transition-delay:var(--rv-d,0s)}
-.rv.in{opacity:1;transform:none;filter:none}
+.rv.in{opacity:1;transform:none}
 /* Directional: from left / right */
-.rv-l{transform:translateX(-48px) scale(.985);filter:blur(8px)}
-.rv-r{transform:translateX(48px) scale(.985);filter:blur(8px)}
-.rv-l.in,.rv-r.in{opacity:1;transform:none;filter:none}
+.rv-l{transform:translateX(-56px) scale(.97)}
+.rv-r{transform:translateX(56px) scale(.97)}
+.rv-l.in,.rv-r.in{opacity:1;transform:none}
+/* Zoom-in variant for images/covers */
+.rv-z{transform:scale(1.08)}
+.rv-z.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
 /* ===== Hero centered (logo-dominant) ===== */
@@ -759,6 +762,14 @@ body::before{
 }
 
 /* ── Scroll-margin on sticky nav ── */
+/* ── Stagger delay otomatis untuk child grid premium ── */
+.ringgrid > *, .logos > *, .caps > *, .svc-grid > *, .work-grid > *{
+  transition-delay:calc(var(--i, 0) * 90ms) !important;
+}
+
+/* ── Hover premium: lift + glow ringan ── */
+.work:hover,.svc:hover{box-shadow:0 18px 50px -12px rgba(0,212,224,.25)}
+
 /* ── Team cards with photo ── */
 .team-card{overflow:hidden;padding:0 !important}
 .team-card .team-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;
