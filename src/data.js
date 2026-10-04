@@ -4,8 +4,9 @@ export const BRAND = {
   big: "From Creative Strategy to Production, From Content to Social Media.",
   wa: "https://wa.me/6287840403048",
   email: "hello@violaofficial.web.id",
-  ig: "https://instagram.com/",
-  site: "www.vio.co",
+  ig: "https://instagram.com/violadwijenita",
+  tiktok: "https://tiktok.com/@violadwijenita",
+  site: "https://violaofficial.web.id",
   role: "Creative Production House & Agency",
 };
 

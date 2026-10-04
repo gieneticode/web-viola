@@ -60,7 +60,14 @@ button{font-family:inherit}
 /* header */
 header.app{position:sticky;top:0;z-index:80;height:var(--nav-h);
   background:#0a0e1a;
-  border-bottom:1px solid rgba(255,255,255,.06);transition:background .3s}
+  transition:background .3s}
+/* Bibir navbar 3D: highlight tipis di dasar + shadow jatuh ke konten */
+header.app::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:linear-gradient(90deg,rgba(255,255,255,.02),rgba(199,204,212,.14) 50%,rgba(255,255,255,.02));
+  pointer-events:none}
+header.app::before{content:"";position:absolute;left:0;right:0;top:100%;height:26px;
+  background:linear-gradient(180deg,rgba(0,0,0,.42),rgba(0,0,0,.18) 40%,transparent);
+  pointer-events:none;z-index:-1}
 header.app.scrolled{background:rgba(10,14,26,.98)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:100%;gap:18px}
 .brand{display:flex;align-items:center;gap:11px;flex:0 0 auto}
@@ -1027,10 +1034,8 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
 }
 
 /* Navbar — frosted floating */
-header.app{background:rgba(10,14,26,.55) !important;
-  backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);
-  }
-header.app.scrolled{background:rgba(10,14,26,.72) !important}
+header.app{background:#0a0e1a !important}
+header.app.scrolled{background:#0a0e1a !important}
 
 /* Cards — glass panel */
 .card,.svc,.work,.testi,.why-item{
@@ -1164,8 +1169,8 @@ main a:not(.btn):not(.work):not(.tiara-quick button){text-decoration:none}
 footer{border-top:1px solid rgba(255,255,255,.06)}
 
 /* 13. Navbar — shadow muncul saat scroll (float feel) */
-header.app{box-shadow:0 1px 0 rgba(255,255,255,.04)}
-header.app.scrolled{box-shadow:0 12px 32px -16px rgba(0,0,0,.7)}
+header.app{box-shadow:0 2px 4px -2px rgba(0,0,0,.5)}
+header.app.scrolled{box-shadow:0 10px 24px -8px rgba(0,0,0,.65),0 22px 44px -18px rgba(0,0,0,.5)}
 
 /* 14. Mobile — kurangi motion biar soft & ga berat */
 @media(max-width:767px){
@@ -1202,3 +1207,7 @@ header.app.scrolled{box-shadow:0 12px 32px -16px rgba(0,0,0,.7)}
 /* tombol sosmed */
 .tc-btn.ig{background:linear-gradient(135deg,#e1306c,#c13584);box-shadow:0 6px 18px -6px rgba(225,48,108,.5)}
 .tc-btn.tk{background:linear-gradient(135deg,#25f4ee,#fe2c55);box-shadow:0 6px 18px -6px rgba(254,44,85,.4)}
+
+/* Logo SVG dalam tombol kontak */
+.tc-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.tc-btn svg{flex:0 0 auto}

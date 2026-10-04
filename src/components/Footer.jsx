@@ -7,7 +7,7 @@ export default function Footer() {
   const cols = [
     { h: "Company", items: [["About", "/about"], ["Work", "/work"], ["Process", "/process"], ["Contact", "/contact"]] },
     { h: "Services", items: [["Video Production", "/services#video"], ["Social Media", "/services#social"], ["Creative & Branding", "/services#creative"], ["Aerial & FPV", "/services#aerial"], ["Post Production", "/services#post"]] },
-    { h: "Connect", items: [["WhatsApp", BRAND.wa, true], ["Email", `mailto:${BRAND.email}`], ["Instagram", BRAND.ig, true], [BRAND.site, BRAND.ig, true]] },
+    { h: "Connect", items: [["WhatsApp", BRAND.wa, true], ["Email", `mailto:${BRAND.email}`], ["Instagram", BRAND.ig, true], ["TikTok", BRAND.tiktok, true], ["Website", BRAND.site, true]] },
   ];
   return (
     <footer className="app">
