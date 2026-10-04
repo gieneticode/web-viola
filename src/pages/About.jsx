@@ -76,10 +76,27 @@ export default function About() {
       <section>
         <div className="wrap">
           <Reveal className="cta-band">
-            <h2 style={{ maxWidth: "30ch", margin: "0 auto 18px" }}>
+            <div className="eyebrow c"><span className="dot" />Why brands stay</div>
+            <h2 style={{ maxWidth: "30ch", margin: "18px auto 18px" }}>
               We don&apos;t just shoot. We build brands.
             </h2>
-            <div className="hero-act" style={{ justifyContent: "center" }}>
+            <p className="sub-t" style={{ textAlign: "center", marginBottom: 22 }}>
+              Strategy, production and distribution under one roof — so nothing
+              gets lost between agencies.
+            </p>
+            <div className="why-grid">
+              {[["◆","One team","No handover gaps between vendor and agency"],
+                ["◈","Retainer-ready","Monthly content, measured and reported"],
+                ["◉","Full-stack kit","Cinema camera, drone, FPV, lighting in-house"],
+                ["◎","Platform-native","Cut for Reels, TikTok, YouTube and web"]].map(([ic,t,d]) => (
+                <div className="why-item" key={t}>
+                  <span className="ic">{ic}</span>
+                  <b>{t}</b>
+                  <small>{d}</small>
+                </div>
+              ))}
+            </div>
+            <div className="hero-act" style={{ justifyContent: "center", marginTop: 26 }}>
               <Link className="btn primary" to="/work">View Our Work</Link>
               <Link className="btn" to="/contact">Contact Us</Link>
             </div>

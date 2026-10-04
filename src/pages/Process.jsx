@@ -55,10 +55,20 @@ export default function Process() {
       <section>
         <div className="wrap">
           <Reveal className="cta-band">
-            <h2 style={{ maxWidth: "30ch", margin: "0 auto 18px" }}>
+            <div className="eyebrow c"><span className="dot" />Next project</div>
+            <h2 style={{ maxWidth: "30ch", margin: "18px auto 18px" }}>
               Want the same process for your brand?
             </h2>
-            <div className="hero-act" style={{ justifyContent: "center" }}>
+            <p className="sub-t" style={{ textAlign: "center", marginBottom: 22 }}>
+              Bring us a brief — or just an idea. We&apos;ll map the fastest
+              route from concept to published content.
+            </p>
+            <div className="mini-steps">
+              {[["1","Brief & goals"],["2","Creative concept"],["3","Production"],["4","Deliver & publish"]].map(([n,t]) => (
+                <div className="mini-step" key={n}><span>{n}</span>{t}</div>
+              ))}
+            </div>
+            <div className="hero-act" style={{ justifyContent: "center", marginTop: 26 }}>
               <Link className="btn primary" to="/contact">Contact Us</Link>
               <Link className="btn" to="/work">See the Work</Link>
             </div>

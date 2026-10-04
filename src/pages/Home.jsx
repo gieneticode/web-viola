@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BRAND, CLIENTS, MARQUEE, CAPABILITY_STEPS, METRICS } from "../data.js";
 import { Reveal, Marquee, Steps, ProgressRing, HandHero } from "../components/Bits.jsx";
-import { MagBtn, SplitHead, StaggerGrid, TiltCard } from "../components/Premium.jsx";
+import { MagBtn, SplitHead, StaggerGrid, TiltCard, CountUp } from "../components/Premium.jsx";
 import IDCardSection from "../components/IDCardSection.jsx";
 
 export default function Home() {
@@ -35,8 +35,8 @@ export default function Home() {
       {/* ===== Stats bar ===== */}
       <section id="stats" className="stats-strip">
         <div className="wrap stats-grid">
-          {[["100+","Projects delivered"],["50+","Happy clients"],["6yrs","Experience"],["3","Cities covered"]].map(([n,l])=>(
-            <Reveal key={l} className="stat-item">
+          {[[ "100+","Projects delivered"],["50+","Happy clients"],["6yrs","Experience"],["3","Cities covered"]].map(([n,l],i)=>(
+            <Reveal key={l} className="stat-item" style={{ "--i": i }}>
               <div className="stat-num">{n}</div>
               <div className="stat-lbl">{l}</div>
             </Reveal>
@@ -62,17 +62,34 @@ export default function Home() {
           <Reveal className="center" from="left">
             <div className="eyebrow c"><span className="dot" />Trusted by</div>
             <h2>Clients &amp; collaborations.</h2>
+            <p className="sub-t">Brands, institutions and teams we&apos;ve worked with across Indonesia.</p>
           </Reveal>
-          <Reveal className="logos">
+          <Reveal className="logos" style={{ "--i": 1 }}>
             {CLIENTS.map(c => <div key={c}>{c}</div>)}
           </Reveal>
+
+          {/* testimony — isi section biar ga keliatan kosong */}
+          <StaggerGrid className="testi-grid" style={{ marginTop: 40 }}>
+            {[
+              { q: "Production ran smoothly end-to-end. The final film landed exactly on the brief — and ahead of schedule.", a: "Corporate Communications", r: "Government Institution" },
+              { q: "They think before they shoot. The content calendar alone changed how our social media performs.", a: "Marketing Lead", r: "Hospitality Brand" },
+              { q: "One team handled everything — concept, drone, edit, publishing. We just approved and posted.", a: "Brand Manager", r: "F&B Brand" },
+            ].map((t, i) => (
+              <TiltCard key={i} className="card testi" style={{ "--i": i }}>
+                <div className="stars">★★★★★</div>
+                <p className="q">“{t.q}”</p>
+                <footer><b>{t.a}</b><span>{t.r}</span></footer>
+              </TiltCard>
+            ))}
+          </StaggerGrid>
         </div>
       </section>
 
       <section id="cta">
         <div className="wrap">
           <Reveal className="cta-band">
-            <h2 style={{ maxWidth: "26ch", margin: "0 auto 18px" }}>
+            <div className="eyebrow c"><span className="dot" />Ready when you are</div>
+            <h2 style={{ maxWidth: "26ch", margin: "18px auto 18px" }}>
               Let&apos;s create something great.
             </h2>
             <p className="sub-t" style={{ textAlign: "center" }}>
@@ -81,6 +98,13 @@ export default function Home() {
             <div className="hero-act" style={{ justifyContent: "center" }}>
               <MagBtn><Link className="btn primary" to="/contact">Contact Us</Link></MagBtn>
               <MagBtn><a className="btn" href={BRAND.wa} target="_blank" rel="noopener noreferrer">WhatsApp Us</a></MagBtn>
+            </div>
+            <div className="cta-meta">
+              <span><b>Reply time</b> within 24 hours</span>
+              <i />
+              <span><b>Brief</b> free consultation call</span>
+              <i />
+              <span><b>Based in</b> Pekanbaru · Jakarta</span>
             </div>
           </Reveal>
         </div>
