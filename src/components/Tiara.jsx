@@ -1,10 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
 
 /* ═══════════ TIARA ASISTAN — AI chat widget Vio.co ═══════════
-   Backend: tiara-api di VPS (proxy 9router, fallback antar model).
-   Efek typing per-karakter dengan jeda variabel = kesan real. */
+   Backend: Dahl inference (OpenAI-compatible) langsung dari browser.
+   CORS-nya udah allow domain vercel ini, jadi gak perlu server.
+   Key di-rotate antar request biar credit-nya awet. */
 
-const TIARA_API = "/api/tiara";
+const DAHL_BASE = "https://inference.dahl.global/v1/chat/completions";
+const DAHL_MODEL = "deepseek-ai/DeepSeek-V4-Flash-0731";
+
+/* Key pool — dirotasi round-robin */
+import { DAHL_KEYS } from "../dahlKeys.js";
+const KEYS = DAHL_KEYS;
+
+const SYSTEM = `Kamu adalah "Tiara Asistan", asisten AI resmi Vio.co — production house milik Viola Dwi Jenita (6+ tahun pengalaman, berbasis di Pekanbaru & Jakarta).
+Layanan Vio.co (6 kategori): Video Production, Photography, Branding & Design, Motion Graphics, Social Media Content, Event Coverage.
+Klien: Polda Riau, Harbour Hotel, Seraya Villa, Nusantara Coffee, Dinas Pariwisata, Griya Corp.
+Gaya bicara: santai, hangat, profesional, pakai bahasa Indonesia. Jawab singkat & jelas (2-4 kalimat kecuali ditanya detail). Kalau ditanya harga, bilang estimasinya mulai dari budget custom, ajak konsultasi gratis. Kalau tertarik serius, arahkan ke WhatsApp https://wa.me/6280000000000 atau email hello@vio.co.
+Jangan ngarang fakta yang gak ada di atas. Panggil user "kak" atau "kamu" biar akrab.`;
 
 const QUICK = ["Layanan apa aja?", "Berapa harganya?", "Portofolio?", "Kontak & sosmed"];
 
@@ -14,10 +26,11 @@ export default function Tiara() {
     { from: "tiara", text: "Hai! Aku Tiara, asisten Vio.co ✨ Ada yang bisa aku bantu soal production house-nya Viola?" },
   ]);
   const [input, setInput] = useState("");
-  const [typing, setTyping] = useState(false);   // waiting for API
-  const [showTyping, setShowTyping] = useState(false); // "Tiara sedang mengetik..."
+  const [typing, setTyping] = useState(false);
+  const [showTyping, setShowTyping] = useState(false);
   const bodyRef = useRef(null);
   const idRef = useRef(0);
+  const keyIdx = useRef(0);
 
   useEffect(() => {
     bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight, behavior: "smooth" });
@@ -27,8 +40,7 @@ export default function Tiara() {
     new Promise((resolve) => {
       let i = 0;
       const step = () => {
-        if (myId !== idRef.current) return resolve(); // superseded
-        // typist: 2-3 char per tick, jeda organik (koma/spasi lebih lama)
+        if (myId !== idRef.current) return resolve();
         i += 2 + Math.floor(Math.random() * 2);
         const slice = full.slice(0, i);
         setMsgs((m) => {
@@ -42,8 +54,36 @@ export default function Tiara() {
           setTimeout(step, pause);
         } else resolve();
       };
-      setTimeout(step, 350); // jeda "mikir" sebelum mulai ngetik
+      setTimeout(step, 350);
     });
+
+  const askDahl = async (history) => {
+    // coba max 3 key berbeda sebelum nyerah
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const key = KEYS[keyIdx.current % KEYS.length];
+      keyIdx.current += 1;
+      try {
+        const r = await fetch(DAHL_BASE, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
+          body: JSON.stringify({
+            model: DAHL_MODEL,
+            messages: [{ role: "system", content: SYSTEM }, ...history],
+            max_tokens: 400,
+            temperature: 0.8,
+          }),
+        });
+        if (!r.ok) continue; // coba key lain
+        const d = await r.json();
+        const txt = d?.choices?.[0]?.message?.content;
+        if (txt) {
+          // bersihin tag <think> kalau model reasoning
+          return txt.replace(/<think>[\s\S]*?<\/think>/g, "").trim() || txt.trim();
+        }
+      } catch { /* lanjut key berikutnya */ }
+    }
+    return null;
+  };
 
   const send = async (text) => {
     const q = (text ?? input).trim();
@@ -51,34 +91,27 @@ export default function Tiara() {
     setInput("");
     idRef.current += 1;
     const myId = idRef.current;
+    const history = [
+      ...msgs.filter((x) => x.done).map((x) => ({ role: x.from === "me" ? "user" : "assistant", content: x.text })),
+      { role: "user", content: q },
+    ];
     setMsgs((m) => [...m, { from: "me", text: q }]);
     setTyping(true);
     setShowTyping(true);
 
-      let reply;
-      try {
-        const [res] = await Promise.all([
-          fetch(TIARA_API, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              messages: [
-                ...msgs.filter(x => x.done).map(x => ({ role: x.from === "me" ? "user" : "assistant", content: x.text })),
-                { role: "user", content: q },
-              ],
-            }),
-          }).then((r) => r.json()),
-          new Promise((r) => setTimeout(r, 900)),
-        ]);
-        reply = res.reply;
-    } catch {
-      reply = "Waduh, koneksinya bermasalah 😅 Coba lagi ya, atau langsung WhatsApp kami di https://wa.me/6280000000000";
-    }
+    const [reply] = await Promise.all([
+      askDahl(history),
+      new Promise((r) => setTimeout(r, 900)), // minimal feel "mikir"
+    ]);
 
     setShowTyping(false);
+    const finalReply =
+      reply ||
+      "Waduh, koneksinya lagi bermasalah 😅 Coba lagi ya, atau langsung WhatsApp kami di https://wa.me/6280000000000";
+
     setMsgs((m) => [...m, { from: "tiara", text: "", done: false }]);
-    await typeOut(reply, myId);
-    setMsgs((m) => { const c = [...m]; c[c.length - 1] = { from: "tiara", text: reply, done: true }; return c; });
+    await typeOut(finalReply, myId);
+    setMsgs((m) => { const c = [...m]; c[c.length - 1] = { from: "tiara", text: finalReply, done: true }; return c; });
     setTyping(false);
   };
 
