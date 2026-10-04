@@ -7,14 +7,14 @@ export const CHAIN = [
   {
     label: "9router-bansos",
     url: "http://43.156.116.187:20128/v1/chat/completions",
-    key: "REDACTEDf3a2b4c5d6e7f8a9",
+    key: "REDACTED",
     model: "deepseek-bansos",
     timeout: 20000,
   },
   {
     label: "9router-atria",
     url: "http://43.156.116.187:20128/v1/chat/completions",
-    key: "REDACTEDf3a2b4c5d6e7f8a9",
+    key: "REDACTED",
     model: "atria",
     timeout: 30000,
   },
