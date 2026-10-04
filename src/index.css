@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
 /* ============================================================
    VIO.CO — Design System
    Dark navy + cyan glow + glassmorphism
@@ -881,8 +882,7 @@ main{position:relative}
 
 /* ═══════════ LUXURY PASS — professional & canggih ═══════════ */
 
-/* 1. Tipografi mewah: heading pakai font display serif kontras */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+/* 1. Tipografi mewah: heading pakai font display serif kontras (font import di paling atas file) */
 h1,h2,.idcard-title,.layered,.lux-h{font-family:"Fraunces","Montserrat",serif;
   font-weight:600;letter-spacing:-.02em}
 .idcard-title{font-weight:500;font-size:clamp(30px,5vw,54px)}
