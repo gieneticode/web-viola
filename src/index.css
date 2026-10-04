@@ -1211,3 +1211,15 @@ header.app.scrolled{box-shadow:0 10px 24px -8px rgba(0,0,0,.65),0 22px 44px -18p
   box-shadow:0 6px 18px -6px rgba(0,212,224,.5)}
 .tiara-send.ready:hover{transform:translateY(-2px) scale(1.05)}
 .tiara-send:disabled{opacity:.45}
+
+/* ── Bersihkan garis sisa di widget chat ── */
+/* scrollbar di body chat disembunyikan (tetap bisa scroll) */
+.tiara-body{scrollbar-width:none;-ms-overflow-style:none}
+.tiara-body::-webkit-scrollbar{display:none}
+/* focus outline default browser di dalam widget diganti glow halus */
+.tiara-panel :focus-visible,.tiara-fab:focus-visible{outline:none;
+  box-shadow:0 0 0 2px rgba(0,212,224,.35)}
+/* header panel: pastikan gak ada garis psuedo */
+.tiara-head::before,.tiara-head::after{content:none}
+/* garis tipis dari hr markdown di chat diganti spacing aja */
+.tiara-bubble hr{display:none}
