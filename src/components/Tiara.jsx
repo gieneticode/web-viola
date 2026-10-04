@@ -9,6 +9,41 @@ import React, { useState, useRef, useEffect } from "react";
 
 import { CHAIN } from "../tiaraConfig.js";
 
+
+/* Markdown mini-renderer: **bold**, *italic*, `code`, link, list, line breaks.
+   Output React elements (aman, tanpa dangerouslySetInnerHTML). */
+function renderMarkdown(text) {
+  const blocks = String(text).split(/\n{2,}/);
+  const inline = (s) => {
+    const parts = [];
+    const re = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`|https?:\/\/[^\s)]+)/g;
+    let last = 0, m, key = 0;
+    while ((m = re.exec(s))) {
+      if (m.index > last) parts.push(s.slice(last, m.index));
+      const t = m[0];
+      if (t.startsWith("**")) parts.push(<strong key={key++}>{t.slice(2, -2)}</strong>);
+      else if (t.startsWith("`")) parts.push(<code key={key++}>{t.slice(1, -1)}</code>);
+      else if (t.startsWith("*")) parts.push(<em key={key++}>{t.slice(1, -1)}</em>);
+      else parts.push(<a key={key++} href={t} target="_blank" rel="noreferrer">{t.replace(/^https?:\/\//, "")}</a>);
+      last = m.index + t.length;
+    }
+    if (last < s.length) parts.push(s.slice(last));
+    return parts;
+  };
+  return blocks.map((b, bi) => {
+    const lines = b.split("\n");
+    const isList = lines.every((l) => /^\s*([-*•]|\d+[.)])\s+/.test(l));
+    if (isList) {
+      const ordered = /^\s*\d/.test(lines[0]);
+      const items = lines.map((l, i) =>
+        <li key={i}>{inline(l.replace(/^\s*([-*•]|\d+[.)])\s+/, ""))}</li>);
+      return ordered ? <ol key={bi}>{items}</ol> : <ul key={bi}>{items}</ul>;
+    }
+    return <React.Fragment key={bi}>{lines.map((l, i) => (
+      <React.Fragment key={i}>{i > 0 && <br />}{inline(l)}</React.Fragment>))}</React.Fragment>;
+  });
+}
+
 const SYSTEM = `Kamu adalah "Tiara Asistan", asisten AI resmi Vio.co — production house milik Viola Dwi Jenita (6+ tahun pengalaman, berbasis di Pekanbaru & Jakarta).
 Layanan Vio.co (6 kategori): Video Production, Photography, Branding & Design, Motion Graphics, Social Media Content, Event Coverage.
 Klien: Polda Riau, Harbour Hotel, Seraya Villa, Nusantara Coffee, Dinas Pariwisata, Griya Corp.
@@ -16,6 +51,22 @@ Gaya bicara: santai, hangat, profesional, pakai bahasa Indonesia. Jawab singkat 
 Jangan ngarang fakta yang gak ada di atas. Panggil user "kak" atau "kamu" biar akrab.`;
 
 const QUICK = ["Layanan apa aja?", "Berapa harganya?", "Portofolio?", "Kontak & sosmed"];
+
+const WA_URL = "https://wa.me/6280000000000";
+const EMAIL = "hello@vio.co";
+
+/* Kartu kontak klikable (tombol WhatsApp & Email) */
+function ContactCard() {
+  return (
+    <div className="tiara-contact">
+      <span>Butuh langsung?</span>
+      <div className="tiara-contact-btns">
+        <a className="tc-btn wa" href={WA_URL} target="_blank" rel="noreferrer">💬 WhatsApp</a>
+        <a className="tc-btn em" href={`mailto:${EMAIL}`}>✉️ Email</a>
+      </div>
+    </div>
+  );
+}
 
 export default function Tiara() {
   const [open, setOpen] = useState(false);
@@ -106,9 +157,10 @@ export default function Tiara() {
       reply ||
       "Waduh, koneksinya lagi bermasalah 😅 Coba lagi ya, atau langsung WhatsApp kami di https://wa.me/6280000000000";
 
-    setMsgs((m) => [...m, { from: "tiara", text: "", done: false }]);
+    setMsgs((m) => [...m, { from: "tiara", text: "", done: false, typing: true }]);
     await typeOut(finalReply, myId);
-    setMsgs((m) => { const c = [...m]; c[c.length - 1] = { from: "tiara", text: finalReply, done: true }; return c; });
+    const wantsContact = /wa\.me|whatsapp|kontak|contact|email|hubungi|sosmed|sosial/i.test(finalReply + q);
+    setMsgs((m) => { const c = [...m]; c[c.length - 1] = { from: "tiara", text: finalReply, done: true, typing: false, contact: wantsContact }; return c; });
     setTyping(false);
   };
 
@@ -137,8 +189,9 @@ export default function Tiara() {
             <div key={i} className={`tiara-msg ${m.from}`}>
               {m.from === "tiara" && <div className="tiara-mini">T</div>}
               <div className="tiara-bubble">
-                {m.text}
-                {m.from === "tiara" && m.text && <span className="tiara-caret" />}
+                {m.from === "tiara" && m.done ? renderMarkdown(m.text) : m.text}
+                {m.from === "tiara" && m.text && m.typing && <span className="tiara-caret" />}
+                {m.contact && <ContactCard />}
               </div>
             </div>
           ))}
