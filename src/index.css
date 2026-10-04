@@ -180,9 +180,16 @@ h3{font-size:16px;font-weight:400}
   background:var(--glass);border:1px solid var(--brd);border-radius:var(--r);padding:30px 22px;transition:transform .32s var(--ease),border-color .32s}
 .ringcard:hover{transform:translateY(-5px);border-color:var(--brd-hi)}
 .ringcard svg{flex:0 0 auto}
-.ringnum{font-family:"Montserrat",sans-serif;font-size:24px;font-weight:500;fill:#fff}
+.ringnum{font-family:"Montserrat",sans-serif;font-size:24px;font-weight:500;fill:#fff;filter:drop-shadow(0 2px 3px rgba(0,0,0,.65))}
 .ringtxt b{font-family:"Montserrat",sans-serif;font-weight:500;font-size:15px;display:block}
 .ringtxt span{color:var(--muted);font-size:12.5px}
+
+/* ===== 3D floating progress rings ===== */
+.ringsvg{overflow:visible;animation:ringfloat 5.2s ease-in-out infinite}
+@keyframes ringfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.ringsvg .ringshadow{transform-box:fill-box;transform-origin:center;animation:ringshadow 5.2s ease-in-out infinite}
+@keyframes ringshadow{0%,100%{transform:scaleX(1);opacity:.9}50%{transform:scaleX(.84);opacity:.5}}
+@media (prefers-reduced-motion:reduce){.ringsvg,.ringsvg .ringshadow{animation:none}}
 
 /* ===== Footer name-card (vertical business card) ===== */
 .namecard{display:inline-flex;flex-direction:column;align-items:center;gap:6px;
