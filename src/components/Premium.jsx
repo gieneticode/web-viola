@@ -1,24 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-/* ── Scroll progress bar ── */
-export function ScrollProgress() {
-  const [w, setW] = useState(0);
-  useEffect(() => {
-    const on = () => {
-      const el = document.documentElement;
-      const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
-      setW(isNaN(pct) ? 0 : pct);
-    };
-    window.addEventListener("scroll", on, { passive: true });
-    return () => window.removeEventListener("scroll", on);
-  }, []);
-  return (
-    <div className="scroll-prog" aria-hidden="true">
-      <div className="scroll-fill" style={{ width: `${w}%` }} />
-    </div>
-  );
-}
-
 /* ── Magnetic button wrapper ── */
 export function MagBtn({ children, className = "", style, ...rest }) {
   const ref = useRef(null);

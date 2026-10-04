@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import { Backdrop } from "./components/Bits.jsx";
-import { AnimGrain, ScrollProgress } from "./components/Premium.jsx";
+import { AnimGrain } from "./components/Premium.jsx";
 import Cursor from "./components/Cursor.jsx";
 import Tiara from "./components/Tiara.jsx";
 import Loader from "./components/Loader.jsx";
@@ -55,7 +55,6 @@ export default function App() {
       <Cursor />
       <Backdrop />
       <AnimGrain />
-      <ScrollProgress />
       <Navbar />
       <ScrollToTop />
       <AnimatedRoutes />
