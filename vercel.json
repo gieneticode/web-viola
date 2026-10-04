@@ -3,7 +3,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "functions": {
-    "api/tiara.py": {}
+    "api/tiara.py": {
+      "runtime": "@vercel/python@4"
+    }
   },
   "rewrites": [
     {
