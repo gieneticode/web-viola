@@ -164,7 +164,8 @@ function Band({ maxSpeed = 50, minSpeed = 10, photoSrc, isMobile }) {
       const clipOffset = new THREE.Vector3(0, 1.8, 0).applyEuler(cardEuler);
       const cardClipPos = new THREE.Vector3().copy(cardTrans).add(clipOffset);
 
-      curve.points[0].copy(cardClipPos);
+      // sedikit turun dari clip top — ujung tali 'terbenam' di lubang ring
+      curve.points[0].copy(cardClipPos).y -= 0.12;
       curve.points[1].copy(j3.current.translation());
       curve.points[2].copy(j2.current.translation());
       curve.points[3].copy(j1.current.translation());
@@ -235,12 +236,12 @@ function Band({ maxSpeed = 50, minSpeed = 10, photoSrc, isMobile }) {
           <meshLineGeometry />
           <meshLineMaterial
             color="white"
-            depthTest={false}
+            depthTest={true}
             resolution={[width, height]}
             useMap
             map={bandTexture}
             repeat={[-4, 1]}
-            lineWidth={0.65}
+            lineWidth={0.5}
           />
         </mesh>
     </>

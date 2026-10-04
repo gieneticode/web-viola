@@ -59,7 +59,7 @@ button{font-family:inherit}
 
 /* header */
 header.app{position:sticky;top:0;z-index:80;height:var(--nav-h);
-  background:rgba(10,14,26,.95);
+  background:#0a0e1a;
   border-bottom:1px solid rgba(255,255,255,.06);transition:background .3s}
 header.app.scrolled{background:rgba(10,14,26,.98)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:100%;gap:18px}
@@ -352,7 +352,7 @@ h3{font-size:16px;font-weight:400}
 .idcard-act{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
 @media(max-width:767px){
   .idcard{min-height:80svh;padding:70px 18px 22px;justify-content:center;gap:0}
-  .idcard-stage{height:min(680px,78svh);margin-top:calc(-1 * var(--nav-h) - 27px)}
+  .idcard-stage{height:min(680px,78svh);margin-top:calc(-1 * var(--nav-h) - 60px)}
   .idcard-rope{display:none}
   .idcard-copy{margin-top:-50px}
   .idcard-act{margin-top:16px}
@@ -872,3 +872,67 @@ main{position:relative;z-index:2}
 @media(prefers-reduced-motion:reduce){
   .work .sweep,.cine-in{animation:none}
 }
+
+
+/* ═══════════ LUXURY PASS — professional & canggih ═══════════ */
+
+/* 1. Tipografi mewah: heading pakai font display serif kontras */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+h1,h2,.idcard-title,.layered,.lux-h{font-family:"Fraunces","Montserrat",serif;
+  font-weight:600;letter-spacing:-.02em}
+.idcard-title{font-weight:500;font-size:clamp(30px,5vw,54px)}
+
+/* 2. Gold accent — aksen champanye buat kesan luxury (dipake hemat) */
+:root{--gold:#d4b57a;--gold-soft:rgba(212,181,122,.14)}
+.eyebrow.c{letter-spacing:.32em;text-transform:uppercase;font-size:11px}
+.eyebrow .dot{background:radial-gradient(circle at 30% 30%,#f0d9a8,var(--gold));
+  box-shadow:0 0 10px -2px rgba(212,181,122,.7)}
+
+/* 3. Tombol premium — gold gradient border + sheen sweep */
+.btn.primary{position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#0e7490,#0891b2 45%,#0e7490);
+  border:1px solid rgba(212,181,122,.35);
+  box-shadow:0 12px 34px -14px rgba(8,145,178,.55),inset 0 1px 0 rgba(255,255,255,.18)}
+.btn.primary::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+  transform:skewX(-22deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent)}
+.btn.primary:hover::after{animation:btnSheen .8s var(--ease) forwards}
+@keyframes btnSheen{to{left:130%}}
+
+/* 4. Kartu — hairline border mewah + inner sheen */
+.card,.svc,.work,.testi{border:1px solid rgba(255,255,255,.08);
+  background-image:linear-gradient(160deg,rgba(255,255,255,.03),transparent 38%)}
+.card:hover,.svc:hover{border-color:rgba(212,181,122,.28)}
+
+/* 5. Nav — underline gold yang meluas */
+header.app nav a{position:relative}
+header.app nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);transition:right .35s var(--ease)}
+header.app nav a:hover::after{right:0}
+
+/* 6. Section eyebrow divider — garis tipis kiri-kanan */
+.eyebrow.c{display:flex;align-items:center;justify-content:center;gap:12px}
+.eyebrow.c::before,.eyebrow.c::after{content:"";height:1px;width:34px;
+  background:linear-gradient(90deg,transparent,rgba(212,181,122,.5),transparent)}
+
+/* 7. CTA band — panel mewah dengan radial gold hint */
+.cta-band{background:
+  radial-gradient(60% 90% at 50% 0%,rgba(212,181,122,.06),transparent 70%),
+  linear-gradient(160deg,rgba(255,255,255,.03),transparent);
+  border:1px solid rgba(212,181,122,.18);border-radius:26px;padding:52px 28px}
+
+/* 8. Logos — item mewah hover lift */
+.logos div{transition:color .3s,transform .3s var(--ease),text-shadow .3s}
+.logos div:hover{color:var(--gold);transform:translateY(-3px);
+  text-shadow:0 8px 30px rgba(212,181,122,.25)}
+
+/* 9. Scrollbar custom — tipis elegan */
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:#070a12}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#12304a,#0a1622);
+  border-radius:99px;border:2px solid #070a12}
+::-webkit-scrollbar-thumb:hover{background:#0e7490}
+
+/* 10. Selection & focus — konsisten luxury */
+::selection{background:rgba(212,181,122,.3);color:#fff}
+a:focus-visible,button:focus-visible{outline:1px solid rgba(212,181,122,.55);outline-offset:3px}
