@@ -3,7 +3,7 @@ export const BRAND = {
   tagline: "Production House · Creative Agency & Social Media Specialist",
   big: "From Creative Strategy to Production, From Content to Social Media.",
   wa: "https://wa.me/6287840403048",
-  email: "hello@vioofficial.web.id",
+  email: "hello@violaofficial.web.id",
   ig: "https://instagram.com/",
   site: "www.vio.co",
   role: "Creative Production House & Agency",
