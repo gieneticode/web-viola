@@ -60,26 +60,20 @@ button{font-family:inherit}
 
 /* header */
 /* Navbar 3D SOLID: bilah fisik opak (tidak tembus pandang) — highlight di tepi
-   atas, badan gelap pekat, strip "ketebalan" di dasar + bayangan jatuh berlapis.
+   atas, badan gelap pekat, bayangan jatuh LEMBUT berlapis (blur, tanpa strip
+   hitam tegas) sehingga navbar terlihat seperti papan 3D yang mengambang.
    Opak penuh agar ujung tali lanyard & konten yang di-scroll tersembunyi rapi
    di baliknya, seperti masuk ke dalam navbar. */
 header.app{position:sticky;top:0;z-index:80;height:var(--nav-h);
   background:linear-gradient(180deg,#161e38 0%,#0d1329 52%,#080d1b 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.15), inset 0 -1px 0 rgba(0,0,0,.65);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),
+    0 12px 26px -10px rgba(0,0,0,.55),
+    0 34px 68px -22px rgba(0,0,0,.35);
   transition:background .3s,box-shadow .3s}
-/* Strip ketebalan di dasar navbar: sisi bawah bilah lebih gelap + garis terang
-   1px di tepi paling bawah = batas tegas tempat konten "masuk" */
-header.app::after{content:"";position:absolute;left:0;right:0;bottom:0;height:7px;
-  background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.6) 100%);
-  box-shadow:0 1px 0 rgba(255,255,255,.11);
-  pointer-events:none}
-/* Bayangan jatuh berlapis di bawah navbar: kontak tegas + ambient lembut */
-header.app::before{content:"";position:absolute;left:0;right:0;top:100%;height:34px;
-  background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.28) 45%,transparent);
-  pointer-events:none;z-index:-1}
 header.app.scrolled{background:linear-gradient(180deg,#111832 0%,#0a1023 55%,#070c18 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.11), inset 0 -1px 0 rgba(0,0,0,.65),
-  0 22px 44px -20px rgba(0,0,0,.85)}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.11),
+    0 16px 36px -10px rgba(0,0,0,.65),
+    0 44px 88px -26px rgba(0,0,0,.45)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:100%;gap:18px}
 .brand{display:flex;align-items:center;gap:11px;flex:0 0 auto}
 .brand b{font-weight:500;letter-spacing:.2em;font-size:14px}
