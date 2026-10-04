@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { SERVICES, CAPS } from "../data.js";
-import { Reveal, VIcon } from "../components/Bits.jsx";
+import { Reveal } from "../components/Bits.jsx";
 
 export default function Services() {
   const { hash } = useLocation();
@@ -28,18 +28,16 @@ export default function Services() {
           </Reveal>
 
           <div className="svc-grid">
-            {SERVICES.map((s) => (
-              <article className={`svc ${hl === s.id ? "hl" : ""}`} id={`svc-${s.id}`} key={s.id}>
-                {s.img && (
-                  <div className="svc-cover">
-                    <img src={s.img} alt={s.t} loading="lazy" />
-                  </div>
-                )}
-                <div className="num">{s.n}</div>
-                <div className="ico"><VIcon /></div>
+            {SERVICES.map((s, i) => (
+              <article className={`svc ${hl === s.id ? "hl" : ""}`} id={`svc-${s.id}`} key={s.id}
+                style={{ "--i": i }}>
+                <div className="svc-cover">
+                  <img src={s.img} alt={s.t} loading="lazy" />
+                  <span className="num">{s.n}</span>
+                </div>
                 <h3>{s.t}</h3>
                 <p>{s.d}</p>
-                <ul>{s.items.map((i) => <li key={i}>{i}</li>)}</ul>
+                <ul>{s.items.map((it) => <li key={it}>{it}</li>)}</ul>
               </article>
             ))}
           </div>

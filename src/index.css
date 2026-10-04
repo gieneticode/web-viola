@@ -258,18 +258,9 @@ h3{font-size:16px;font-weight:400}
 /* services */
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
   gap:20px;margin-top:52px}
-.svc{background:var(--glass);border:1px solid var(--brd);border-radius:var(--r);padding:30px;position:relative;overflow:hidden;
-  transition:border-color .32s,background .32s,transform .32s var(--ease);scroll-margin-top:96px}
-.svc:hover{border-color:var(--brd-hi);background:var(--glass-hi);transform:translateY(-5px)}
+/* (old .svc styles removed — replaced by premium redesign below) */
 .svc.hl{border-color:rgba(0,212,224,.8);box-shadow:0 0 0 1px rgba(0,212,224,.35),
   0 24px 60px rgba(0,212,224,.14)}
-.svc .num{position:absolute;top:24px;right:26px;font-size:11px;letter-spacing:.2em;
-  color:rgba(255,255,255,.22)}
-.svc h3{margin-top:16px;font-size:18px;font-weight:300}
-.svc ul{list-style:none;margin-top:20px;display:grid;gap:8px}
-.svc li{font-size:13.5px;color:var(--muted);display:flex;gap:10px;align-items:baseline}
-.svc li::before{content:"";width:4px;height:4px;border-radius:50%;
-  background:rgba(0,212,224,.7);flex:0 0 auto;transform:translateY(-3px)}
 
 /* filters + work */
 .filters{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:40px}
@@ -778,14 +769,30 @@ body::before{
 .team-card h3{padding:16px 18px 0}
 .team-card p{padding:6px 18px 18px;color:var(--muted);font-size:13px}
 
-/* ── Services cover image ── */
-.svc-cover{position:relative;margin:-2px -2px 18px;border-radius:calc(var(--r) - 6px);
-  overflow:hidden;aspect-ratio:16/8}
+/* ── Services card — compact premium redesign ── */
+.svc{background:var(--glass);border:1px solid var(--brd);border-radius:var(--r);
+  position:relative;overflow:hidden;padding:0;
+  display:flex;flex-direction:column;scroll-margin-top:96px;
+  transition:border-color .32s,transform .32s var(--ease),box-shadow .32s}
+.svc:hover{border-color:var(--brd-hi);transform:translateY(-6px);
+  box-shadow:0 18px 50px -12px rgba(0,212,224,.25)}
+.svc-cover{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden}
 .svc-cover img{width:100%;height:100%;object-fit:cover;display:block;
-  transition:transform .6s var(--ease);filter:saturate(.9)}
+  transition:transform .6s var(--ease);filter:saturate(.92) contrast(1.02)}
 .svc:hover .svc-cover img{transform:scale(1.06)}
 .svc-cover::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 55%,rgba(5,8,15,.55))}
+  background:linear-gradient(180deg,rgba(5,8,15,.05) 40%,rgba(5,8,15,.55))}
+.svc-cover .num{position:absolute;top:14px;left:16px;z-index:2;
+  font-family:"Montserrat",sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:.22em;color:#fff;padding:5px 12px;border-radius:999px;
+  background:rgba(5,8,15,.55);border:1px solid rgba(0,212,224,.4);
+  backdrop-filter:none;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.svc h3{padding:20px 22px 0;font-size:19px}
+.svc p{padding:8px 22px 0;color:var(--muted);font-size:13.5px}
+.svc ul{list-style:none;padding:14px 22px 22px;display:grid;gap:7px;margin:0}
+.svc li{font-size:13px;color:var(--soft);display:flex;gap:10px;align-items:baseline}
+.svc li::before{content:"";width:4px;height:4px;border-radius:50%;
+  background:var(--cyan);flex:0 0 auto;transform:translateY(-2px)}
 
 /* ── Work card cover image ── */
 .work-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
