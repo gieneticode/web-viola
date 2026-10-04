@@ -5,6 +5,7 @@ import Footer from "./components/Footer.jsx";
 import { Backdrop } from "./components/Bits.jsx";
 import { AnimGrain, ScrollProgress } from "./components/Premium.jsx";
 import Cursor from "./components/Cursor.jsx";
+import Tiara from "./components/Tiara.jsx";
 import Loader from "./components/Loader.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
@@ -57,6 +58,7 @@ export default function App() {
       <ScrollToTop />
       <AnimatedRoutes />
       <Footer />
+      <Tiara />
     </>
   );
 }

@@ -855,13 +855,13 @@ body::before{
 @keyframes cineIn{from{opacity:0;transform:scale(1.015)}to{opacity:1;transform:none}}
 
 /* Judul besar — gradasi metal editorial */
-.lux-h{background:linear-gradient(160deg,#ffffff 30%,rgba(255,255,255,.55) 65%,rgba(0,212,224,.85));
+.lux-h{background:linear-gradient(160deg,#ffffff 25%,#c7ccd4 60%,rgba(0,212,224,.9));
   -webkit-background-clip:text;background-clip:text;color:transparent;
   letter-spacing:-.02em}
 .lux-h::selection{background:rgba(0,212,224,.35);color:#fff}
 
 /* Statistik — angka gradasi cyan */
-.stat-num{background:linear-gradient(150deg,#fff 25%,rgba(0,212,224,.9));
+.stat-num{background:linear-gradient(150deg,#f2f4f7 20%,#c7ccd4 55%,rgba(0,212,224,.85));
   -webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* Vignette halus tepi viewport — depth sinematik */
@@ -883,16 +883,16 @@ h1,h2,.idcard-title,.layered,.lux-h{font-family:"Fraunces","Montserrat",serif;
 .idcard-title{font-weight:500;font-size:clamp(30px,5vw,54px)}
 
 /* 2. Gold accent — aksen champanye buat kesan luxury (dipake hemat) */
-:root{--gold:#d4b57a;--gold-soft:rgba(212,181,122,.14)}
+:root{--titanium:#c7ccd4;--titanium-dim:#8b93a1;--titanium-soft:rgba(199,204,212,.12);--titanium-grad:linear-gradient(135deg,#e8ebef 0%,#c7ccd4 35%,#9aa2ae 60%,#dfe3e8 100%)}
 .eyebrow.c{letter-spacing:.32em;text-transform:uppercase;font-size:11px}
-.eyebrow .dot{background:radial-gradient(circle at 30% 30%,#f0d9a8,var(--gold));
-  box-shadow:0 0 10px -2px rgba(212,181,122,.7)}
+.eyebrow .dot{background:radial-gradient(circle at 30% 30%,#f2f4f7,var(--titanium-dim));
+  box-shadow:0 0 10px -2px rgba(199,204,212,.8)}
 
 /* 3. Tombol premium — gold gradient border + sheen sweep */
 .btn.primary{position:relative;overflow:hidden;
-  background:linear-gradient(135deg,#0e7490,#0891b2 45%,#0e7490);
-  border:1px solid rgba(212,181,122,.35);
-  box-shadow:0 12px 34px -14px rgba(8,145,178,.55),inset 0 1px 0 rgba(255,255,255,.18)}
+  background:linear-gradient(135deg,#134b5f,#0e7490 45%,#134b5f);
+  border:1px solid rgba(199,204,212,.4);
+  box-shadow:0 12px 34px -14px rgba(8,145,178,.55),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(0,0,0,.25)}
 .btn.primary::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
   transform:skewX(-22deg);
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent)}
@@ -902,29 +902,29 @@ h1,h2,.idcard-title,.layered,.lux-h{font-family:"Fraunces","Montserrat",serif;
 /* 4. Kartu — hairline border mewah + inner sheen */
 .card,.svc,.work,.testi{border:1px solid rgba(255,255,255,.08);
   background-image:linear-gradient(160deg,rgba(255,255,255,.03),transparent 38%)}
-.card:hover,.svc:hover{border-color:rgba(212,181,122,.28)}
+.card:hover,.svc:hover{border-color:rgba(199,204,212,.28)}
 
 /* 5. Nav — underline gold yang meluas */
 header.app nav a{position:relative}
 header.app nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:1px;
-  background:linear-gradient(90deg,var(--gold),transparent);transition:right .35s var(--ease)}
+  background:linear-gradient(90deg,var(--titanium),transparent);transition:right .35s var(--ease)}
 header.app nav a:hover::after{right:0}
 
 /* 6. Section eyebrow divider — garis tipis kiri-kanan */
 .eyebrow.c{display:flex;align-items:center;justify-content:center;gap:12px}
 .eyebrow.c::before,.eyebrow.c::after{content:"";height:1px;width:34px;
-  background:linear-gradient(90deg,transparent,rgba(212,181,122,.5),transparent)}
+  background:linear-gradient(90deg,transparent,rgba(199,204,212,.5),transparent)}
 
 /* 7. CTA band — panel mewah dengan radial gold hint */
 .cta-band{background:
-  radial-gradient(60% 90% at 50% 0%,rgba(212,181,122,.06),transparent 70%),
+  radial-gradient(60% 90% at 50% 0%,rgba(199,204,212,.07),transparent 70%),
   linear-gradient(160deg,rgba(255,255,255,.03),transparent);
-  border:1px solid rgba(212,181,122,.18);border-radius:26px;padding:52px 28px}
+  border:1px solid rgba(199,204,212,.18);border-radius:26px;padding:52px 28px}
 
 /* 8. Logos — item mewah hover lift */
 .logos div{transition:color .3s,transform .3s var(--ease),text-shadow .3s}
-.logos div:hover{color:var(--gold);transform:translateY(-3px);
-  text-shadow:0 8px 30px rgba(212,181,122,.25)}
+.logos div:hover{color:#e8ebef;transform:translateY(-3px);
+  text-shadow:0 8px 30px rgba(199,204,212,.3)}
 
 /* 9. Scrollbar custom — tipis elegan */
 ::-webkit-scrollbar{width:9px}
@@ -934,5 +934,83 @@ header.app nav a:hover::after{right:0}
 ::-webkit-scrollbar-thumb:hover{background:#0e7490}
 
 /* 10. Selection & focus — konsisten luxury */
-::selection{background:rgba(212,181,122,.3);color:#fff}
-a:focus-visible,button:focus-visible{outline:1px solid rgba(212,181,122,.55);outline-offset:3px}
+::selection{background:rgba(199,204,212,.32);color:#0a0e1a}
+a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outline-offset:3px}
+
+
+/* ═══════════ TIARA ASISTAN — chat widget ═══════════ */
+.tiara-fab{position:fixed;right:18px;bottom:18px;z-index:3000;width:58px;height:58px;
+  border-radius:50%;border:1px solid rgba(199,204,212,.35);cursor:pointer;
+  background:linear-gradient(135deg,#134b5f,#0e7490);color:#fff;font-size:22px;
+  display:grid;place-items:center;box-shadow:0 14px 40px -10px rgba(0,0,0,.6);
+  transition:transform .3s var(--ease),box-shadow .3s}
+.tiara-fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 18px 50px -10px rgba(8,145,178,.5)}
+.tiara-fab.open{background:#1a2030}
+.tiara-dot{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;
+  background:#0fd6c3;box-shadow:0 0 8px rgba(15,214,195,.8);animation:tiaraPulse 2s infinite}
+@keyframes tiaraPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+
+.tiara-panel{position:fixed;right:18px;bottom:86px;z-index:3000;width:min(360px,calc(100vw - 24px));
+  height:min(520px,calc(100vh - 120px));display:flex;flex-direction:column;
+  background:#0d1322;border:1px solid rgba(199,204,212,.18);border-radius:20px;
+  overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.8);
+  opacity:0;transform:translateY(16px) scale(.97);pointer-events:none;
+  transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.tiara-panel.open{opacity:1;transform:none;pointer-events:auto}
+
+.tiara-head{display:flex;align-items:center;gap:12px;padding:14px 16px;
+  background:linear-gradient(135deg,#12304a,#0d1322);border-bottom:1px solid rgba(255,255,255,.07)}
+.tiara-ava{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+  font-weight:700;font-size:17px;color:#0a0e1a;
+  background:linear-gradient(135deg,#e8ebef,#9aa2ae)}
+.tiara-id{flex:1;display:flex;flex-direction:column}
+.tiara-id b{font-size:14px;letter-spacing:.02em}
+.tiara-id span{font-size:10.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.tiara-status{width:7px;height:7px;border-radius:50%;background:#0fd6c3;display:inline-block;
+  box-shadow:0 0 6px rgba(15,214,195,.9)}
+.tiara-x{background:none;border:none;color:var(--muted);cursor:pointer;font-size:15px;padding:6px}
+.tiara-x:hover{color:#fff}
+
+.tiara-body{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:12px}
+.tiara-msg{display:flex;gap:8px;max-width:88%}
+.tiara-msg.me{align-self:flex-end;flex-direction:row-reverse}
+.tiara-mini{width:26px;height:26px;border-radius:8px;flex:0 0 auto;display:grid;place-items:center;
+  font-size:11px;font-weight:700;color:#0a0e1a;background:linear-gradient(135deg,#e8ebef,#9aa2ae)}
+.tiara-bubble{padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.55;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);word-break:break-word}
+.tiara-msg.me .tiara-bubble{background:linear-gradient(135deg,#0e7490,#134b5f);
+  border-color:rgba(199,204,212,.25);color:#fff}
+.tiara-bubble.typing{display:flex;gap:5px;padding:14px 16px}
+.tiara-bubble.typing i{width:7px;height:7px;border-radius:50%;background:var(--titanium);
+  animation:tiaraBlink 1.2s infinite}
+.tiara-bubble.typing i:nth-child(2){animation-delay:.18s}
+.tiara-bubble.typing i:nth-child(3){animation-delay:.36s}
+@keyframes tiaraBlink{0%,70%,100%{opacity:.25;transform:translateY(0)}35%{opacity:1;transform:translateY(-3px)}}
+.tiara-caret{display:inline-block;width:7px;height:14px;margin-left:2px;vertical-align:-2px;
+  background:var(--titanium);animation:tiaraCaret .7s steps(1) infinite}
+@keyframes tiaraCaret{50%{opacity:0}}
+
+.tiara-quick{display:flex;gap:7px;padding:10px 12px;overflow-x:auto;scrollbar-width:none}
+.tiara-quick::-webkit-scrollbar{display:none}
+.tiara-quick button{flex:0 0 auto;padding:7px 13px;border-radius:999px;font-size:11.5px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--soft);
+  cursor:pointer;transition:.25s}
+.tiara-quick button:hover:not(:disabled){border-color:rgba(199,204,212,.5);color:#fff}
+.tiara-quick button:disabled{opacity:.5;cursor:wait}
+
+.tiara-input{display:flex;gap:9px;padding:11px 12px;border-top:1px solid rgba(255,255,255,.07)}
+.tiara-input input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:11px 14px;color:#fff;font-size:13.5px;outline:none;transition:border .25s}
+.tiara-input input:focus{border-color:rgba(199,204,212,.45)}
+.tiara-input button{width:44px;border-radius:12px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#0e7490,#134b5f);color:#fff;font-size:15px;
+  transition:opacity .2s,transform .2s}
+.tiara-input button:hover:not(:disabled){transform:scale(1.06)}
+.tiara-input button:disabled{opacity:.45;cursor:not-allowed}
+.tiara-foot{text-align:center;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);padding:0 0 9px}
+
+@media(max-width:767px){
+  .tiara-panel{right:10px;bottom:78px;height:min(480px,calc(100vh - 100px))}
+  .tiara-fab{right:12px;bottom:12px;width:54px;height:54px}
+}
