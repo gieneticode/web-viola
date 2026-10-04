@@ -176,24 +176,22 @@ h3{font-size:16px;font-weight:400}
 /* ===== Progress ring feature cards ===== */
 .ringgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
   gap:20px;margin-top:52px}
-/* Stat card: iOS 3D glass — frosted (backdrop blur + translucent dark fill),
-   top-light gradient, white inner top highlight, layered neutral shadows.
-   No cyan edge/glow: glass edge light is white/neutral. */
+/* Stat card: iOS widget glass — transparent frosted glass over the dark page.
+   Translucent white fill (page bg shows through) + blur/saturate, white edge light.
+   No cyan edge/glow anywhere on these cards. */
 .ringcard{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;
-  border:1px solid rgba(255,255,255,.10);border-radius:var(--r);padding:30px 22px;
-  background-color:rgba(9,12,17,.82);
-  background-image:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.014) 42%,transparent 72%);
-  -webkit-backdrop-filter:blur(10px);
-  backdrop-filter:blur(10px);
-  box-shadow:0 2px 6px rgba(0,0,0,.45),0 22px 46px -14px rgba(0,0,0,.8),
-    inset 0 1px 0 rgba(255,255,255,.10),inset 0 -1px 0 rgba(0,0,0,.32);
-  transition:transform .32s var(--ease),box-shadow .32s var(--ease),filter .2s ease,border-color .32s var(--ease),background-color .32s var(--ease)}
+  border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:30px 22px;
+  background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));
+  -webkit-backdrop-filter:blur(22px) saturate(160%);
+  backdrop-filter:blur(22px) saturate(160%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),
+    0 8px 24px rgba(0,0,0,.35),0 24px 48px -12px rgba(0,0,0,.55);
+  transition:transform .32s var(--ease),box-shadow .32s var(--ease),filter .2s ease,border-color .32s var(--ease),background .32s var(--ease)}
 .ringcard:hover{transform:translateY(-5px);
-  border-color:rgba(255,255,255,.16);
-  background-color:rgba(11,15,21,.86);
-  background-image:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.02) 42%,transparent 72%);
-  box-shadow:0 2px 6px rgba(0,0,0,.45),0 32px 58px -14px rgba(0,0,0,.85),
-    inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(0,0,0,.32)}
+  border-color:rgba(255,255,255,.22);
+  background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.05));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),
+    0 8px 24px rgba(0,0,0,.35),0 34px 60px -12px rgba(0,0,0,.6)}
 /* Press: cuma mengecil + meredup — tanpa garis cyan / glow cyan */
 .ringcard:active{transform:scale(.975);filter:brightness(.94);
   transition:transform .15s ease,filter .15s ease}
