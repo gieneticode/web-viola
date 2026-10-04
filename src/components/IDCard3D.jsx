@@ -78,10 +78,13 @@ function Band({ maxSpeed = 50, minSpeed = 10, photoSrc, isMobile }) {
 
 
 
-  // The stage is pulled 27px further up behind the sticky navbar (see CSS).
-  // Lengthen the rope by the same amount (in world units) so the card keeps
-  // its on-screen position; the strap then starts tucked behind the navbar.
-  const ropeLen = isMobile ? 1.35 : 1;
+  // The stage is pulled up behind the sticky navbar on all breakpoints
+  // (see CSS: .idcard-stage margin-top:calc(-1 * var(--nav-h) - 60px)).
+  // The rope is lengthened by the same amount (in world units) so the card
+  // keeps its on-screen position; the strap top then tucks behind the navbar
+  // (navbar z-80 > stage z-1, navbar background fully opaque) so the lanyard
+  // looks like it emerges from inside the navbar.
+  const ropeLen = 1.35;
 
   photoTexture.colorSpace = THREE.SRGBColorSpace;
   photoTexture.minFilter = THREE.LinearFilter;
