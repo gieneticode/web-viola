@@ -7,6 +7,7 @@ import { AnimGrain, ScrollProgress } from "./components/Premium.jsx";
 import Cursor from "./components/Cursor.jsx";
 import Tiara from "./components/Tiara.jsx";
 import Loader from "./components/Loader.jsx";
+import useImgFade from "./hooks/useImgFade.js";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Services from "./pages/Services.jsx";
@@ -47,6 +48,7 @@ function AnimatedRoutes() {
 export default function App() {
   const [loaded, setLoaded] = useState(false);
   const done = useCallback(() => setLoaded(true), []);
+  useImgFade();
   return (
     <>
       {!loaded && <Loader onDone={done} />}

@@ -1086,3 +1086,76 @@ header.app.scrolled{background:rgba(10,14,26,.72) !important}
 @media(prefers-reduced-motion:reduce){
   header.app,.card,.svc{transition:none}
 }
+
+
+/* ═══════════ FINAL POLISH — mahal · profesional · rapi · smooth · soft ═══════════ */
+
+/* 1. Easing global yang lembut & konsisten */
+:root{
+  --ease:cubic-bezier(.22,1,.36,1);          /* soft out-expo */
+  --r:20px;                                   /* radius konsisten lebih besar = soft */
+  --pad:clamp(20px,4vw,44px);
+}
+
+/* 2. Semua elemen interaktif transisi halus */
+a,button,.btn,.chip,.pill,.filters button{
+  transition:color .35s var(--ease),background .35s var(--ease),
+    border-color .35s var(--ease),transform .35s var(--ease),opacity .35s var(--ease)}
+
+/* 3. Body antialiasing + font smoothing */
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;letter-spacing:.005em}
+
+/* 4. Heading: breathing room & tracking rapi */
+h1,h2,h3{letter-spacing:-.015em;text-wrap:balance}
+h2{margin-bottom:.5em}
+p{line-height:1.75}
+
+/* 5. Section rhythm konsisten */
+section{padding-block:clamp(64px,9vw,120px)}
+
+/* 6. Kartu — hover lembut ga loncat */
+.svc,.work,.card,.testi,.why-item{
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),
+    border-color .45s var(--ease),background .45s var(--ease)}
+.svc:hover,.card:hover,.testi:hover{transform:translateY(-4px)}
+.work:hover{transform:translateY(-6px) scale(1.008)}
+
+/* 7. Gambar — semua smooth fade-in saat load */
+img{opacity:0;transition:opacity .6s var(--ease)}
+img.loaded,img.complete{opacity:1}
+
+/* 8. Reveal animation lebih soft (naik lebih pendek, lebih lama) */
+.rv{transition-duration:.9s}
+.sg-item{transition-duration:.85s}
+
+/* 9. Link underline halus */
+main a:not(.btn):not(.work):not(.tiara-quick button){text-decoration:none}
+
+/* 10. Selection & scrollbar halus */
+::selection{background:rgba(0,212,224,.28)}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.2)}
+
+/* 11. Tombol — radius pill & micro-lift */
+.btn{border-radius:999px;padding:13px 26px;font-weight:500;letter-spacing:.01em}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.985)}
+
+/* 12. Footer — soft divider */
+footer{border-top:1px solid rgba(255,255,255,.06)}
+
+/* 13. Navbar — shadow muncul saat scroll (float feel) */
+header.app{box-shadow:0 1px 0 rgba(255,255,255,.04)}
+header.app.scrolled{box-shadow:0 12px 32px -16px rgba(0,0,0,.7)}
+
+/* 14. Mobile — kurangi motion biar soft & ga berat */
+@media(max-width:767px){
+  .rv,.sg-item{transition-duration:.7s}
+  .work:hover{transform:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
