@@ -157,18 +157,11 @@ export function WorkArt({ cat }) {
   );
 }
 
-/* futuristic circular progress ring (SVG) — counts up when revealed.
-   3D floating style: recessed groove track, glossy raised arc with glow,
-   glass highlight on the tube edge, ground shadow, gentle bob animation. */
+/* futuristic circular progress ring (SVG) — counts up when revealed */
 export function ProgressRing({ pct, label, sub, delay = 0 }) {
   const [v, setV] = React.useState(0);
   const ref = React.useRef(null);
-  const uid = React.useId().replace(/[^a-zA-Z0-9]/g, "");
   const R = 52, C = 2 * Math.PI * R;
-  const RH = R - 1.8, CH = 2 * Math.PI * RH;
-  const off = C - (v / 100) * C;
-  const offH = CH - (v / 100) * CH;
-  const gid = `ringg${uid}`, glow = `ringglow${uid}`;
 
   React.useEffect(() => {
     const el = ref.current;
@@ -190,39 +183,19 @@ export function ProgressRing({ pct, label, sub, delay = 0 }) {
 
   return (
     <div className="ringcard" ref={ref}>
-      <svg width="120" height="120" viewBox="0 0 120 120" className="ringsvg" aria-hidden="true">
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r={R} fill="none" stroke="rgba(255,255,255,.08)" strokeWidth="6" />
+        <circle cx="60" cy="60" r={R} fill="none" stroke="url(#ringg)" strokeWidth="6"
+          strokeLinecap="round" transform="rotate(-90 60 60)"
+          strokeDasharray={C} strokeDashoffset={C - (v / 100) * C}
+          style={{ transition: "stroke-dashoffset .12s linear" }} />
+        <text x="60" y="65" textAnchor="middle" className="ringnum">{v}%</text>
         <defs>
-          <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
+          <linearGradient id="ringg" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#4a9eff" />
-            <stop offset="0.55" stopColor="#2fc4f2" />
-            <stop offset="1" stopColor="#00e5d4" />
+            <stop offset="1" stopColor="#00d4e0" />
           </linearGradient>
-          <filter id={glow} x="-60%" y="-60%" width="220%" height="220%">
-            <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#00d4e0" floodOpacity="0.5" />
-            <feDropShadow dx="0" dy="1" stdDeviation="1.5" floodColor="#b8f4ff" floodOpacity="0.85" />
-          </filter>
         </defs>
-        {/* ground shadow — pulses opposite the bob */}
-        <ellipse cx="60" cy="115" rx="30" ry="3.5" fill="rgba(0,0,0,.4)" className="ringshadow" />
-        {/* recessed groove track */}
-        <circle cx="60" cy="60" r={R} fill="none" stroke="rgba(0,0,0,.55)" strokeWidth="9" />
-        <circle cx="60" cy="60" r={R} fill="none" stroke="rgba(255,255,255,.07)" strokeWidth="7" />
-        {/* ambient halo underlay */}
-        <circle cx="60" cy="60" r={R} fill="none" stroke={`url(#${gid})`} strokeWidth="11"
-          strokeLinecap="round" transform="rotate(-90 60 60)"
-          strokeDasharray={C} strokeDashoffset={off} opacity="0.22"
-          style={{ transition: "stroke-dashoffset .12s linear" }} />
-        {/* raised glossy arc */}
-        <circle cx="60" cy="60" r={R} fill="none" stroke={`url(#${gid})`} strokeWidth="6.5"
-          strokeLinecap="round" transform="rotate(-90 60 60)" filter={`url(#${glow})`}
-          strokeDasharray={C} strokeDashoffset={off}
-          style={{ transition: "stroke-dashoffset .12s linear" }} />
-        {/* glass highlight along the tube's upper edge */}
-        <circle cx="60" cy="60" r={RH} fill="none" stroke="rgba(255,255,255,.55)" strokeWidth="1.4"
-          strokeLinecap="round" transform="rotate(-90 60 60)"
-          strokeDasharray={CH} strokeDashoffset={offH}
-          style={{ transition: "stroke-dashoffset .12s linear" }} />
-        <text x="60" y="66" textAnchor="middle" className="ringnum">{v}%</text>
       </svg>
       <div className="ringtxt">
         <b>{label}</b>
