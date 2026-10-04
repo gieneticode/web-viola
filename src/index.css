@@ -59,19 +59,27 @@ button{font-family:inherit}
 @media(prefers-reduced-motion:reduce){.page{animation:none}}
 
 /* header */
-/* Navbar 3D SOLID: bilah fisik opak (tidak tembus pandang) — highlight di tepi
-   atas, badan gelap pekat, bayangan jatuh LEMBUT berlapis (blur, tanpa strip
-   hitam tegas) sehingga navbar terlihat seperti papan 3D yang mengambang.
-   Opak penuh agar ujung tali lanyard & konten yang di-scroll tersembunyi rapi
-   di baliknya, seperti masuk ke dalam navbar. */
+/* Navbar 3D SOLID realistis: badan gradien vertikal halus seperti cahaya jatuh
+   di atas bilah fisik — terang lembut di atas, meredup mulus ke gelap pekat
+   di bawah. Garis tepi bawah berupa HIGHLIGHT GRADIEN (bukan garis tegas):
+   terang di tengah memudar ke sisi-sisinya, dan memudar ke bawah menyatu
+   dengan bayangan lembut — efek bevel yang realistis. Opak penuh agar ujung
+   tali lanyard & konten yang di-scroll tersembunyi rapi di baliknya. */
 header.app{position:sticky;top:0;z-index:80;height:var(--nav-h);
-  background:linear-gradient(180deg,#161e38 0%,#0d1329 52%,#080d1b 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),
+  background:linear-gradient(180deg,#1e2749 0%,#16203c 20%,#0f1531 46%,#0a0f26 72%,#070b1a 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.17),
+    inset 0 -1px 0 rgba(0,0,0,.35),
     0 12px 26px -10px rgba(0,0,0,.55),
     0 34px 68px -22px rgba(0,0,0,.35);
   transition:background .3s,box-shadow .3s}
-header.app.scrolled{background:linear-gradient(180deg,#111832 0%,#0a1023 55%,#070c18 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.11),
+/* Garis tepi bawah gradien: highlight bevel yang nge-blend */
+header.app::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:4px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(255,255,255,0) 75%);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent)}
+header.app.scrolled{background:linear-gradient(180deg,#181f3d 0%,#111731 48%,#080d1e 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -1px 0 rgba(0,0,0,.4),
     0 16px 36px -10px rgba(0,0,0,.65),
     0 44px 88px -26px rgba(0,0,0,.45)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:100%;gap:18px}
@@ -1057,9 +1065,8 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
   --glass-blur:blur(22px) saturate(160%);
 }
 
-/* Navbar — frosted floating */
-header.app{background:#0a0e1a !important}
-header.app.scrolled{background:#0a0e1a !important}
+/* Navbar: gradien 3D realistis dipakai dari blok header di atas —
+   JANGAN timpa dengan background flat di sini (pernah bikin navbar hitam pekat) */
 
 /* Cards — glass panel */
 .card,.svc,.work,.testi,.why-item{
@@ -1186,9 +1193,8 @@ main a:not(.btn):not(.work):not(.tiara-quick button){text-decoration:none}
 /* 12. Footer — soft divider */
 footer{border-top:1px solid rgba(255,255,255,.06)}
 
-/* 13. Navbar — shadow muncul saat scroll (float feel) */
-header.app{box-shadow:0 2px 4px -2px rgba(0,0,0,.5)}
-header.app.scrolled{box-shadow:0 10px 24px -8px rgba(0,0,0,.65),0 22px 44px -18px rgba(0,0,0,.5)}
+/* 13. Navbar — shadow & highlight 3D dipakai dari blok header di atas
+   (bayangan lembut berlapis + highlight tepi). Jangan timpa di sini. */
 
 /* 14. Mobile — kurangi motion biar soft & ga berat */
 @media(max-width:767px){
