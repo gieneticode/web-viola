@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap');
 /* ============================================================
    VIO.CO — Design System
    Dark navy + cyan glow + glassmorphism
@@ -1283,3 +1283,12 @@ button:active{transform:scale(.96);filter:brightness(.93)}
   .why-item:active,.logos div:active,.btn:active,button:active,.tiara-fab:active{
     transform:none;filter:none}
 }
+
+/* ═══════════ HERO TYPOGRAPHY REFINEMENT — muted eyebrow + Fraunces headline ═══ */
+/* Eyebrow: professional muted gray-white, whispers instead of shouting (no cyan, no glow) */
+.idcard-copy .eyebrow{color:#a8b0bf}
+.idcard-copy .eyebrow .dot{background:#a8b0bf;box-shadow:none}
+/* Headline: Fraunces at full display optical size for the premium editorial look */
+.idcard-title{font-family:"Fraunces","Montserrat",serif;font-weight:560;
+  letter-spacing:-.025em;line-height:1.03;font-optical-sizing:auto;
+  font-variation-settings:"opsz" 144}
