@@ -336,7 +336,7 @@ h3{font-size:16px;font-weight:400}
   align-items:center;justify-content:center;gap:6px;padding:76px 20px 40px;
   background:radial-gradient(75% 65% at 50% 42%,rgba(30,90,138,.28),transparent 75%),var(--bg)}
 .idcard-glow{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(40% 40% at 50% 55%,rgba(74,158,255,.2),transparent 72%)}
+  background:radial-gradient(30% 30% at 50% 50%,rgba(74,158,255,.10),transparent 70%)}
 .idcard-stage{position:relative;z-index:1;width:min(620px,94vw);height:min(560px,60svh);
   border-radius:28px;overflow:hidden}
 /* Lanyard cord is rendered in 3D (drei Line2) so it swings with the card; the
@@ -745,9 +745,8 @@ body::before{
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .stat-item{text-align:center;padding:20px 10px}
 .stat-num{font-family:"Montserrat",sans-serif;font-size:clamp(28px,4vw,48px);
-  font-weight:700;background:linear-gradient(135deg,#fff,var(--cyan));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  line-height:1}
+  font-weight:700;color:#eef1f5;position:relative;display:inline-block;
+  text-shadow:0 2px 0 rgba(255,255,255,.12),0 10px 34px rgba(0,212,224,.22)}
 .stat-lbl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;
   color:var(--muted);margin-top:8px}
 @media(max-width:640px){
@@ -847,7 +846,8 @@ body::before{
 .work .sweep{position:absolute;top:0;left:-70%;width:45%;height:100%;z-index:3;
   pointer-events:none;transform:skewX(-18deg);
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.10),transparent)}
-.work:hover .sweep{animation:sweepX .9s var(--ease) forwards}
+.work .sweep{opacity:0;transition:opacity .3s}
+.work:hover .sweep{opacity:1;animation:sweepX .9s var(--ease) forwards}
 @keyframes sweepX{to{left:125%}}
 
 /* Page cinematic entrance */
@@ -855,22 +855,21 @@ body::before{
 @keyframes cineIn{from{opacity:0;transform:scale(1.015)}to{opacity:1;transform:none}}
 
 /* Judul besar — gradasi metal editorial */
-.lux-h{background:linear-gradient(160deg,#ffffff 25%,#c7ccd4 60%,rgba(0,212,224,.9));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  letter-spacing:-.02em}
+.lux-h{position:relative;display:inline-block;letter-spacing:-.02em;
+  color:#eef1f5;text-shadow:0 1px 0 rgba(255,255,255,.15),0 8px 30px rgba(0,212,224,.18)}
 .lux-h::selection{background:rgba(0,212,224,.35);color:#fff}
+.lux-h::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.65) 50%,transparent 58%);
+  background-size:220% 100%;background-position:200% 0;
+  animation:shimmerX 4.5s linear infinite;mix-blend-mode:screen;opacity:.9}
+@keyframes shimmerX{0%{background-position:200% 0}55%,100%{background-position:-100% 0}}
 
 /* Statistik — angka gradasi cyan */
-.stat-num{background:linear-gradient(150deg,#f2f4f7 20%,#c7ccd4 55%,rgba(0,212,224,.85));
-  -webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* Vignette halus tepi viewport — depth sinematik */
-body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(120% 90% at 50% 45%,transparent 62%,rgba(2,4,10,.5) 100%)}
-main{position:relative;z-index:2}
+main{position:relative}
 
 @media(prefers-reduced-motion:reduce){
-  .work .sweep,.cine-in{animation:none}
+  .work .sweep,.cine-in,.lux-h::after,.btn.primary::before{animation:none}
 }
 
 
@@ -895,9 +894,14 @@ h1,h2,.idcard-title,.layered,.lux-h{font-family:"Fraunces","Montserrat",serif;
   box-shadow:0 12px 34px -14px rgba(8,145,178,.55),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(0,0,0,.25)}
 .btn.primary::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
   transform:skewX(-22deg);
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent)}
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent)}
 .btn.primary:hover::after{animation:btnSheen .8s var(--ease) forwards}
 @keyframes btnSheen{to{left:130%}}
+.btn.primary::before{content:"";position:absolute;top:0;left:-45%;width:40%;height:100%;
+  transform:skewX(-22deg);pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
+  animation:btnIdleSheen 5s ease-in-out infinite}
+@keyframes btnIdleSheen{0%{left:-45%}45%,100%{left:135%}}
 
 /* 4. Kartu — hairline border mewah + inner sheen */
 .card,.svc,.work,.testi{border:1px solid rgba(255,255,255,.08);
