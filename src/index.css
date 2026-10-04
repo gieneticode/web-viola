@@ -59,14 +59,14 @@ button{font-family:inherit}
 @media(prefers-reduced-motion:reduce){.page{animation:none}}
 
 /* header */
-/* Navbar 3D SOLID realistis: badan gradien vertikal halus seperti cahaya jatuh
-   di atas bilah fisik — terang lembut di atas, meredup mulus ke gelap pekat
+/* Navbar 3D SOLID realistis (WARNA NETRAL sesuai tema): badan gradien vertikal
+   sangat halus seperti cahaya jatuh di atas bilah fisik — terang lembut di atas, meredup mulus ke gelap pekat
    di bawah. Garis tepi bawah berupa HIGHLIGHT GRADIEN (bukan garis tegas):
    terang di tengah memudar ke sisi-sisinya, dan memudar ke bawah menyatu
    dengan bayangan lembut — efek bevel yang realistis. Opak penuh agar ujung
    tali lanyard & konten yang di-scroll tersembunyi rapi di baliknya. */
 header.app{position:sticky;top:0;z-index:80;height:var(--nav-h);
-  background:linear-gradient(180deg,#1e2749 0%,#16203c 20%,#0f1531 46%,#0a0f26 72%,#070b1a 100%);
+  background:linear-gradient(180deg,#12161f 0%,#0d1119 45%,#090c13 100%);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.17),
     inset 0 -1px 0 rgba(0,0,0,.35),
     0 12px 26px -10px rgba(0,0,0,.55),
@@ -77,7 +77,7 @@ header.app::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height
   background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(255,255,255,0) 75%);
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent)}
-header.app.scrolled{background:linear-gradient(180deg,#181f3d 0%,#111731 48%,#080d1e 100%);
+header.app.scrolled{background:linear-gradient(180deg,#0e1219 0%,#0a0d14 55%,#070a10 100%);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.12),
     inset 0 -1px 0 rgba(0,0,0,.4),
     0 16px 36px -10px rgba(0,0,0,.65),
