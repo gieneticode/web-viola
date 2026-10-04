@@ -202,7 +202,7 @@ h3{font-size:16px;font-weight:400}
   min-height:340px;border-radius:42px;
   padding:12px;background:linear-gradient(170deg,#1a1f2b,#080b12);
   border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 30px 70px -20px rgba(0,0,0,.65),0 10px 28px -12px rgba(0,0,0,.5),0 0 90px 10px rgba(0,212,224,.07)}
+  box-shadow:0 50px 90px -22px rgba(0,0,0,.95),0 20px 40px -16px rgba(0,0,0,.7),0 0 90px 10px rgba(0,212,224,.07)}
 .phone .notch{position:absolute;top:22px;left:50%;transform:translateX(-50%);
   width:88px;height:22px;border-radius:12px;background:#05070c;z-index:4}
 .phone .screen{position:relative;width:100%;height:100%;border-radius:32px;overflow:hidden;
@@ -398,7 +398,7 @@ h3{font-size:16px;font-weight:400}
 /* blend the photo into the dark page — soft outer glow masks the raw edge */
 .hh-imgwrap{position:relative;z-index:2;padding:18px;border-radius:32px;
   background:radial-gradient(70% 70% at 50% 45%,rgba(74,158,255,.22),rgba(5,7,13,.9) 75%);
-  box-shadow:0 24px 60px -24px rgba(0,0,0,.7),0 8px 20px -10px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06),0 0 70px 5px rgba(74,158,255,.1)}
+  box-shadow:0 44px 80px -24px rgba(0,0,0,.95),0 16px 32px -14px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06)}
 .hh-imgwrap .hh-img{max-height:70svh;border-radius:18px;filter:none;margin:0 auto}
 .hh-caption{position:relative;z-index:2;margin-top:20px;font-family:"Montserrat",sans-serif;
   font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--glow2)}
@@ -946,7 +946,7 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
 .tiara-fab{position:fixed;right:18px;bottom:18px;z-index:3000;width:58px;height:58px;
   border-radius:50%;border:1px solid rgba(199,204,212,.35);cursor:pointer;
   background:linear-gradient(135deg,#134b5f,#0e7490);color:#fff;font-size:22px;
-  display:grid;place-items:center;box-shadow:0 14px 40px -10px rgba(0,0,0,.6);
+  display:grid;place-items:center;box-shadow:0 22px 44px -12px rgba(0,0,0,.9);
   transition:transform .3s var(--ease),box-shadow .3s}
 .tiara-fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 18px 50px -10px rgba(8,145,178,.5)}
 .tiara-fab.open{background:#1a2030}
@@ -957,7 +957,7 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
 .tiara-panel{position:fixed;right:18px;bottom:86px;z-index:3000;width:min(360px,calc(100vw - 24px));
   height:min(520px,calc(100vh - 120px));display:flex;flex-direction:column;
   background:#0d1322;border:1px solid rgba(199,204,212,.18);border-radius:20px;
-  overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.8);
+  overflow:hidden;box-shadow:0 44px 90px -20px rgba(0,0,0,.95),0 18px 36px -14px rgba(0,0,0,.7);
   opacity:0;transform:translateY(16px) scale(.97);pointer-events:none;
   transition:opacity .3s var(--ease),transform .3s var(--ease)}
 .tiara-panel.open{opacity:1;transform:none;pointer-events:auto}
@@ -1017,4 +1017,72 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
 @media(max-width:767px){
   .tiara-panel{right:10px;bottom:78px;height:min(480px,calc(100vh - 100px))}
   .tiara-fab{right:12px;bottom:12px;width:54px;height:54px}
+}
+
+
+/* ═══════════ IOS GLASS BLENDER PREMIUM ═══════════ */
+:root{
+  --glass-bg:rgba(255,255,255,.06);
+  --glass-bg-hi:rgba(255,255,255,.09);
+  --glass-brd:rgba(255,255,255,.12);
+  --glass-blur:blur(22px) saturate(160%);
+}
+
+/* Navbar — frosted floating */
+header.app{background:rgba(10,14,26,.55) !important;
+  backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);
+  border-bottom:1px solid var(--glass-brd)}
+header.app.scrolled{background:rgba(10,14,26,.72) !important}
+
+/* Cards — glass panel */
+.card,.svc,.work,.testi,.why-item{
+  background:var(--glass-bg) !important;
+  backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);
+  border:1px solid var(--glass-brd) !important;
+  box-shadow:0 24px 48px -12px rgba(0,0,0,.85),0 8px 16px -8px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08)}
+.card:hover,.svc:hover,.work:hover{
+  background:var(--glass-bg-hi) !important;
+  border-color:rgba(255,255,255,.2) !important;
+  box-shadow:0 36px 70px -16px rgba(0,0,0,.9),0 12px 24px -10px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.14)}
+
+/* CTA band — glass panel besar */
+.cta-band{background:var(--glass-bg);
+  backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);
+  border:1px solid var(--glass-brd);border-radius:28px;
+  box-shadow:0 40px 80px -20px rgba(0,0,0,.9),0 16px 32px -12px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.09)}
+
+/* Tiara chat panel — glass */
+.tiara-panel{background:rgba(13,19,34,.78);
+  backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);
+  border:1px solid var(--glass-brd)}
+.tiara-bubble{background:rgba(255,255,255,.08);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.1)}
+
+/* Dropdown sub-nav glass */
+.sub{background:rgba(10,14,26,.82);
+  backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);
+  border:1px solid var(--glass-brd)}
+
+/* Chips & pills glass */
+.chip,.mini-step,.filters button{background:rgba(255,255,255,.05);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.1)}
+.filters button.on{background:linear-gradient(135deg,#0e7490,#134b5f);
+  border-color:rgba(255,255,255,.22)}
+
+/* Input glass */
+.tiara-input input,.tiara-quick button{
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.1)}
+
+/* Fallback browser tanpa backdrop-filter: bg tetap terbaca */
+@supports not (backdrop-filter: blur(1px)){
+  header.app{background:rgba(10,14,26,.96) !important}
+  .card,.svc,.work,.testi,.cta-band,.tiara-panel{background:rgba(15,21,36,.96) !important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  header.app,.card,.svc{transition:none}
 }
