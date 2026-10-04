@@ -1229,3 +1229,42 @@ header.app.scrolled{box-shadow:0 10px 24px -8px rgba(0,0,0,.65),0 22px 44px -18p
 .tiara-head::before,.tiara-head::after{content:none}
 /* garis tipis dari hr markdown di chat diganti spacing aja */
 .tiara-bubble hr{display:none}
+
+/* ═══════════════════════════════════════════════════════════
+   PREMIUM TOUCH FEEDBACK  (2026-10-04)
+   1. Matikan flash putih bawaan browser saat tap (Android/iOS)
+   2. Press halus ala iOS: sedikit mengecil + meredup +
+      aura cyan lembut — konsisten di kartu, chip, tombol
+   ═══════════════════════════════════════════════════════════ */
+*{-webkit-tap-highlight-color:transparent}
+
+/* Bintang testimoni: gold premium #FFC531 + glow hangat halus */
+.testi .stars{color:#FFC531;
+  text-shadow:0 0 12px rgba(255,197,49,.45),0 0 30px rgba(255,197,49,.16)}
+
+/* filter masuk daftar transisi supaya press & lepas sama-sama halus */
+.tiltcard{transition:transform .18s ease-out,filter .2s ease}
+.card,.svc,.work,.testi,.why-item{
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),
+  border-color .45s var(--ease),background .45s var(--ease),filter .2s ease}
+.logos div{transition:color .3s,transform .3s var(--ease),text-shadow .3s,filter .2s ease}
+
+/* Press kartu/chip: mengecil 2.5%, meredup, aura cyan lembut */
+.tiltcard:active,.card:active,.svc:active,.work:active,.testi:active,
+.why-item:active,.logos div:active{
+  transform:scale(.975);
+  filter:brightness(.92) drop-shadow(0 8px 22px rgba(0,212,224,.16));
+  transition:transform .15s ease,filter .15s ease;
+  transition-delay:0s !important;
+}
+/* Press tombol: sedikit lebih tegas */
+.btn:active{transform:translateY(0) scale(.97);filter:brightness(.9)}
+button:active{transform:scale(.96);filter:brightness(.93)}
+.tiara-fab:active{transform:scale(.92);filter:brightness(.9)}
+
+/* prefers-reduced-motion: tanpa efek press */
+@media (prefers-reduced-motion:reduce){
+  .tiltcard:active,.card:active,.svc:active,.work:active,.testi:active,
+  .why-item:active,.logos div:active,.btn:active,button:active,.tiara-fab:active{
+    transform:none;filter:none}
+}
