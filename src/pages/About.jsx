@@ -11,14 +11,14 @@ export default function About() {
         <div className="wrap g2">
           <Reveal>
             <div className="eyebrow"><span className="dot" />Who we are</div>
-            <h2 className="lux-h">From creative strategy to production, from content to social media.</h2>
+            <h2 className="lux-h">Dari creative strategy sampai production, dari content hingga social media.</h2>
             <p className="sub-t">
-              Vio.co is a creative production house and social media specialist that
-              transforms ideas into meaningful visual content.
+              Vio.co adalah creative production house dan social media specialist yang
+              mentransformasi ide jadi meaningful visual content.
             </p>
             <p className="sub-t">
-              From strategy and creative concepts to production and digital distribution,
-              we help brands and organizations communicate through powerful visual storytelling.
+              Dari strategy dan creative concepts sampai production dan digital distribution,
+              kami bantu brands dan organizations communicate lewat powerful visual storytelling.
             </p>
             <div className="stack">
               {["Production House","Creative Agency","Social Media Specialist","End-to-end Production"]
@@ -81,14 +81,14 @@ export default function About() {
               We don&apos;t just shoot. We build brands.
             </h2>
             <p className="sub-t" style={{ textAlign: "center", marginBottom: 22 }}>
-              Strategy, production and distribution under one roof — so nothing
-              gets lost between agencies.
+              Strategy, production, dan distribution under one roof — biar nggak ada
+              yang lost di antara agencies.
             </p>
             <div className="why-grid">
-              {[["◆","One team","No handover gaps between vendor and agency"],
-                ["◈","Retainer-ready","Monthly content, measured and reported"],
+              {[["◆","One team","Nggak ada handover gaps antara vendor dan agency"],
+                ["◈","Retainer-ready","Monthly content yang measured dan reported"],
                 ["◉","Full-stack kit","Cinema camera, drone, FPV, lighting in-house"],
-                ["◎","Platform-native","Cut for Reels, TikTok, YouTube and web"]].map(([ic,t,d]) => (
+                ["◎","Platform-native","Di-cut untuk Reels, TikTok, YouTube, dan web"]].map(([ic,t,d]) => (
                 <div className="why-item" key={t}>
                   <span className="ic">{ic}</span>
                   <b>{t}</b>

@@ -23,7 +23,7 @@ export default function Contact() {
             <VMark size={72} />
             <h2 className="lux-h">Let&apos;s create something great.</h2>
             <p className="sub-t" style={{ margin: "16px auto 0" }}>
-              Have a project in mind? Let&apos;s talk about your idea.
+              Punya project in mind? Yuk ngobrol soal ide kamu.
             </p>
 
             <div className="links">
@@ -36,13 +36,13 @@ export default function Contact() {
           <Reveal as="form" className="form" onSubmit={submit}>
             {sent && (
               <div className="ok" role="status">
-                Thanks{form.name ? `, ${form.name}` : ""} — your brief is noted.
-                We&apos;ll reply via email or WhatsApp shortly.
+                Thanks{form.name ? `, ${form.name}` : ""} — brief kamu udah kami terima.
+                Kami akan reply via email atau WhatsApp segera.
               </div>
             )}
             <div className="row">
               <label>Name
-                <input required value={form.name} onChange={set("name")} placeholder="Your name" />
+                <input required value={form.name} onChange={set("name")} placeholder="Nama kamu" />
               </label>
               <label>Email
                 <input required type="email" value={form.email} onChange={set("email")}
@@ -51,14 +51,14 @@ export default function Contact() {
             </div>
             <label>Service
               <select value={form.service} onChange={set("service")}>
-                <option value="">Select a service…</option>
+                <option value="">Pilih service…</option>
                 {SERVICES.map((s) => <option key={s.id} value={s.t}>{s.t}</option>)}
                 <option value="Full package">Full package (end-to-end)</option>
               </select>
             </label>
             <label>Project brief
               <textarea rows="5" required value={form.message} onChange={set("message")}
-                placeholder="Tell us about the goal, timeline and budget range…" />
+                placeholder="Ceritain goal, timeline, dan budget range…" />
             </label>
             <button className="btn primary" type="submit"
               style={{ justifySelf: "start" }}>Send Brief</button>

@@ -15,7 +15,7 @@ export default function Work() {
           <Reveal className="center">
             <div className="eyebrow c"><span className="dot" />Our work</div>
             <h2 className="lux-h">Selected projects.</h2>
-            <p className="sub-t">Real work for real clients. Click any project for the full breakdown.</p>
+            <p className="sub-t">Real work untuk real clients. Klik project mana pun untuk full breakdown.</p>
           </Reveal>
 
           <div className="filters">
@@ -41,7 +41,7 @@ export default function Work() {
               ))}
             </StaggerGrid>
           ) : (
-            <p className="empty">No projects in this category yet.</p>
+            <p className="empty">Belum ada project di kategori ini.</p>
           )}
         </div>
       </section>

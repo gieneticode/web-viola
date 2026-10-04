@@ -14,8 +14,8 @@ export default function ProjectDetail() {
     return (
       <div className="page">
         <div className="wrap center">
-          <h2 className="lux-h">Project not found.</h2>
-          <p className="sub-t">That project does not exist (yet).</p>
+          <h2 className="lux-h">Project tidak ditemukan.</h2>
+          <p className="sub-t">Project itu belum ada.</p>
           <div className="hero-act" style={{ justifyContent: "center" }}>
             <Link className="btn primary" to="/work">Back to Work</Link>
           </div>
@@ -61,7 +61,7 @@ export default function ProjectDetail() {
               ))}
             </div>
             <p className="note" style={{ textAlign: "left" }}>
-              Media slots — drop real video / stills / behind-the-scenes here.
+              Slot media — taruh real video / stills / behind-the-scenes di sini.
             </p>
           </Reveal>
 

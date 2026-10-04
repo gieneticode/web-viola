@@ -19,7 +19,7 @@ export default function Home() {
             <div className="eyebrow c"><span className="dot" />Why Vio.co</div>
             <h2 className="layered lux-h"><span className="fg">Production that</span><span className="bg" aria-hidden="true">performs.</span></h2>
             <p className="sub-t">
-              One team from first idea to final frame — and everything after it.
+              Satu team dari first idea sampai final frame — dan semuanya setelah itu.
             </p>
           </Reveal>
           <StaggerGrid className="ringgrid" style={{ marginTop: 52 }}>
@@ -35,7 +35,7 @@ export default function Home() {
       {/* ===== Stats bar ===== */}
       <section id="stats" className="stats-strip">
         <div className="wrap stats-grid">
-          {[[ "100+","Projects delivered"],["50+","Happy clients"],["6yrs","Experience"],["3","Cities covered"]].map(([n,l],i)=>(
+          {[[ "100+","Project selesai"],["50+","Klien yang puas"],["6+","Tahun experience"],["3","Kota ter-cover"]].map(([n,l],i)=>(
             <Reveal key={l} className="stat-item" style={{ "--i": i }}>
               <div className="stat-num">{n}</div>
               <div className="stat-lbl">{l}</div>
@@ -62,7 +62,7 @@ export default function Home() {
           <Reveal className="center" from="left">
             <div className="eyebrow c"><span className="dot" />Trusted by</div>
             <h2 className="lux-h">Clients &amp; collaborations.</h2>
-            <p className="sub-t">Brands, institutions and teams we&apos;ve worked with across Indonesia.</p>
+            <p className="sub-t">Brands, institutions, dan teams yang pernah kerja bareng kami di seluruh Indonesia.</p>
           </Reveal>
           <Reveal className="logos" style={{ "--i": 1 }}>
             {CLIENTS.map(c => <div key={c}>{c}</div>)}
@@ -93,16 +93,16 @@ export default function Home() {
               Let&apos;s create something great.
             </h2>
             <p className="sub-t" style={{ textAlign: "center" }}>
-              Have a project in mind? Let&apos;s talk about your idea.
+              Punya project in mind? Yuk ngobrol soal ide kamu.
             </p>
             <div className="hero-act" style={{ justifyContent: "center" }}>
               <MagBtn><Link className="btn primary" to="/contact">Contact Us</Link></MagBtn>
               <MagBtn><a className="btn" href={BRAND.wa} target="_blank" rel="noopener noreferrer">WhatsApp Us</a></MagBtn>
             </div>
             <div className="cta-meta">
-              <span><b>Reply time</b> within 24 hours</span>
+              <span><b>Reply time</b> dalam 24 jam</span>
               <i />
-              <span><b>Brief</b> free consultation call</span>
+              <span><b>Konsultasi</b> gratis via call</span>
               <i />
               <span><b>Based in</b> Pekanbaru · Jakarta</span>
             </div>

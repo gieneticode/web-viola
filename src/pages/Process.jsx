@@ -11,8 +11,8 @@ export default function Process() {
             <div className="eyebrow c"><span className="dot" />Development roadmap</div>
             <h2 className="lux-h">Our process.</h2>
             <p className="sub-t">
-              A clear, structured approach to every production — from first
-              brief to final delivery.
+              Approach yang clear dan structured untuk setiap production — dari first
+              brief sampai final delivery.
             </p>
           </Reveal>
           <Reveal><RoadmapCircles months={ROADMAP} /></Reveal>
@@ -25,8 +25,8 @@ export default function Process() {
             <div className="eyebrow"><span className="dot" />Social media</div>
             <h2 className="lux-h">Social media is more than posting.</h2>
             <p className="sub-t">
-              Strategy, planning, production, publishing — and then we measure
-              what actually worked.
+              Strategy, planning, production, publishing — terus kami measure
+              apa yang actually worked.
             </p>
             <div className="flow">
               {SOCIAL_FLOW.map((s, i) => (
@@ -60,8 +60,8 @@ export default function Process() {
               Want the same process for your brand?
             </h2>
             <p className="sub-t" style={{ textAlign: "center", marginBottom: 22 }}>
-              Bring us a brief — or just an idea. We&apos;ll map the fastest
-              route from concept to published content.
+              Bawa brief ke kami — atau sekadar ide. Kami akan map route tercepat
+              dari concept sampai published content.
             </p>
             <div className="mini-steps">
               {[["1","Brief & goals"],["2","Creative concept"],["3","Production"],["4","Deliver & publish"]].map(([n,t]) => (
