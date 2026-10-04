@@ -226,7 +226,7 @@ h3{font-size:16px;font-weight:400}
   font-size:10px;color:rgba(255,255,255,.85);letter-spacing:.06em}
 
 /* marquee */
-.marq{border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);
+.marq{border-top:none;border-bottom:none;
   padding:22px 0;overflow:hidden;background:rgba(255,255,255,.015)}
 .marq .track{display:flex;gap:56px;white-space:nowrap;width:max-content;
   animation:slide 34s linear infinite}
@@ -739,8 +739,7 @@ body::before{
 .word.in{transform:none;opacity:1}
 
 /* ── Stats strip ── */
-.stats-strip{padding:50px 0;border-top:1px solid rgba(255,255,255,.06);
-  border-bottom:1px solid rgba(255,255,255,.06);
+.stats-strip{padding:50px 0;border-top:none;border-bottom:none;
   background:rgba(255,255,255,.014)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .stat-item{text-align:center;padding:20px 10px}
@@ -811,13 +810,13 @@ body::before{
 .testi{padding:26px 24px}
 .testi .stars{color:var(--cyan);letter-spacing:4px;font-size:12px;margin-bottom:12px}
 .testi .q{font-size:14.5px;line-height:1.65;color:var(--soft);margin:0 0 18px}
-.testi footer{display:flex;flex-direction:column;gap:2px;padding-top:14px;border-top:1px solid var(--brd)}
+.testi footer{display:flex;flex-direction:column;gap:2px;padding-top:14px;border-top:none}
 .testi footer b{font-size:12px;letter-spacing:.06em}
 .testi footer span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .cta-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;
-  margin-top:26px;padding-top:20px;border-top:1px solid var(--brd);
+  margin-top:26px;padding-top:0;border-top:none;
   font-size:12px;color:var(--muted)}
-.cta-meta i{width:1px;background:var(--brd);align-self:stretch}
+.cta-meta i{display:none}
 .cta-meta b{color:var(--soft);font-weight:500;margin-right:6px}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:900px;margin:0 auto}
 .why-item{background:rgba(255,255,255,.02);border:1px solid var(--brd);border-radius:14px;
@@ -916,8 +915,7 @@ header.app nav a:hover::after{right:0}
 
 /* 6. Section eyebrow divider — garis tipis kiri-kanan */
 .eyebrow.c{display:flex;align-items:center;justify-content:center;gap:12px}
-.eyebrow.c::before,.eyebrow.c::after{content:"";height:1px;width:34px;
-  background:linear-gradient(90deg,transparent,rgba(199,204,212,.5),transparent)}
+.eyebrow.c::before,.eyebrow.c::after{content:none}
 
 /* 7. CTA band — panel mewah dengan radial gold hint */
 .cta-band{background:
@@ -1002,7 +1000,7 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
 .tiara-quick button:hover:not(:disabled){border-color:rgba(199,204,212,.5);color:#fff}
 .tiara-quick button:disabled{opacity:.5;cursor:wait}
 
-.tiara-input{display:flex;gap:9px;padding:11px 12px;border-top:1px solid rgba(255,255,255,.07)}
+.tiara-input{display:flex;gap:9px;padding:11px 12px;border-top:none}
 .tiara-input input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
   border-radius:12px;padding:11px 14px;color:#fff;font-size:13.5px;outline:none;transition:border .25s}
 .tiara-input input:focus{border-color:rgba(199,204,212,.45)}
@@ -1031,7 +1029,7 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
 /* Navbar — frosted floating */
 header.app{background:rgba(10,14,26,.55) !important;
   backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);
-  border-bottom:1px solid var(--glass-brd)}
+  }
 header.app.scrolled{background:rgba(10,14,26,.72) !important}
 
 /* Cards — glass panel */
