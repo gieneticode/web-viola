@@ -17,7 +17,7 @@ export default function IDCardSection() {
       <div className="idcard-copy">
         <div className="eyebrow c"><span className="dot" />Production House &bull; Creative Agency &bull; Social Media Specialist</div>
         <h1 className="idcard-title">We create.<br/>We produce.<br/>We make your brand seen.</h1>
-        <p className="idcard-sub">Dari creative strategy sampai production, dari content hingga social media.</p>
+        <p className="idcard-sub">Dari creative strategy hingga production, dari content hingga social media.</p>
         <div className="idcard-act">
           <MagBtn><Link className="btn primary" to="/work">View Our Work</Link></MagBtn>
           <MagBtn><Link className="btn" to="/contact">Contact Us</Link></MagBtn>

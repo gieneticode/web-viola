@@ -24,7 +24,7 @@ export default function Services() {
           <Reveal className="center">
             <div className="eyebrow c"><span className="dot" />Services</div>
             <h2 className="lux-h">Everything your brand needs<br />to be seen and remembered.</h2>
-            <p className="sub-t">Satu team, dari first idea sampai final frame — dan semuanya setelah itu.</p>
+            <p className="sub-t">Satu team, dari first idea hingga final frame — dan seterusnya.</p>
           </Reveal>
 
           <div className="svc-grid">
@@ -63,7 +63,7 @@ export default function Services() {
               Not sure which service you need?
             </h2>
             <p className="sub-t" style={{ textAlign: "center" }}>
-              Ceritain goal-nya — kami akan propose production plan yang tepat.
+              Ceritakan goal kamu — dengan senang hati kami akan propose production plan yang tepat.
             </p>
             <div className="hero-act" style={{ justifyContent: "center" }}>
               <Link className="btn primary" to="/contact">Get a Proposal</Link>

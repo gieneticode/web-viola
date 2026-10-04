@@ -15,7 +15,7 @@ export default function ProjectDetail() {
       <div className="page">
         <div className="wrap center">
           <h2 className="lux-h">Project tidak ditemukan.</h2>
-          <p className="sub-t">Project itu belum ada.</p>
+          <p className="sub-t">Project tersebut belum tersedia.</p>
           <div className="hero-act" style={{ justifyContent: "center" }}>
             <Link className="btn primary" to="/work">Back to Work</Link>
           </div>

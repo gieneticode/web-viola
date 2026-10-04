@@ -11,14 +11,14 @@ export default function About() {
         <div className="wrap g2">
           <Reveal>
             <div className="eyebrow"><span className="dot" />Who we are</div>
-            <h2 className="lux-h">Dari creative strategy sampai production, dari content hingga social media.</h2>
+            <h2 className="lux-h">Dari creative strategy hingga production, dari content hingga social media.</h2>
             <p className="sub-t">
               Vio.co adalah creative production house dan social media specialist yang
-              mentransformasi ide jadi meaningful visual content.
+              mentransformasi ide menjadi meaningful visual content.
             </p>
             <p className="sub-t">
-              Dari strategy dan creative concepts sampai production dan digital distribution,
-              kami bantu brands dan organizations communicate lewat powerful visual storytelling.
+              Dari strategy dan creative concepts hingga production dan digital distribution,
+              kami membantu brands dan organizations communicate melalui powerful visual storytelling.
             </p>
             <div className="stack">
               {["Production House","Creative Agency","Social Media Specialist","End-to-end Production"]
@@ -81,14 +81,14 @@ export default function About() {
               We don&apos;t just shoot. We build brands.
             </h2>
             <p className="sub-t" style={{ textAlign: "center", marginBottom: 22 }}>
-              Strategy, production, dan distribution under one roof — biar nggak ada
-              yang lost di antara agencies.
+              Strategy, production, dan distribution under one roof — agar tidak ada
+              yang terlewat di antara agencies.
             </p>
             <div className="why-grid">
-              {[["◆","One team","Nggak ada handover gaps antara vendor dan agency"],
-                ["◈","Retainer-ready","Monthly content yang measured dan reported"],
+              {[["◆","One team","Tanpa handover gap antara vendor dan agency"],
+                ["◈","Retainer-ready","Monthly content yang terukur dan terlaporkan"],
                 ["◉","Full-stack kit","Cinema camera, drone, FPV, lighting in-house"],
-                ["◎","Platform-native","Di-cut untuk Reels, TikTok, YouTube, dan web"]].map(([ic,t,d]) => (
+                ["◎","Platform-native","Disesuaikan untuk Reels, TikTok, YouTube, dan web"]].map(([ic,t,d]) => (
                 <div className="why-item" key={t}>
                   <span className="ic">{ic}</span>
                   <b>{t}</b>

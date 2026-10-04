@@ -23,7 +23,7 @@ export default function Contact() {
             <VMark size={72} />
             <h2 className="lux-h">Let&apos;s create something great.</h2>
             <p className="sub-t" style={{ margin: "16px auto 0" }}>
-              Punya project in mind? Yuk ngobrol soal ide kamu.
+              Punya project in mind? Ceritakan ide kamu — kami siap mewujudkannya.
             </p>
 
             <div className="links">
@@ -36,8 +36,8 @@ export default function Contact() {
           <Reveal as="form" className="form" onSubmit={submit}>
             {sent && (
               <div className="ok" role="status">
-                Thanks{form.name ? `, ${form.name}` : ""} — brief kamu udah kami terima.
-                Kami akan reply via email atau WhatsApp segera.
+                Thanks{form.name ? `, ${form.name}` : ""} — brief kamu telah kami terima.
+                Kami akan segera menghubungi kamu via email atau WhatsApp.
               </div>
             )}
             <div className="row">
@@ -58,7 +58,7 @@ export default function Contact() {
             </label>
             <label>Project brief
               <textarea rows="5" required value={form.message} onChange={set("message")}
-                placeholder="Ceritain goal, timeline, dan budget range…" />
+                placeholder="Ceritakan goals, timeline, dan budget range kamu…" />
             </label>
             <button className="btn primary" type="submit"
               style={{ justifySelf: "start" }}>Send Brief</button>
