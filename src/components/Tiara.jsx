@@ -47,15 +47,18 @@ function renderMarkdown(text) {
 const SYSTEM = `Kamu adalah "Tiara Asistan", asisten AI resmi Vio.co — production house milik Viola Dwi Jenita (6+ tahun pengalaman, berbasis di Pekanbaru & Jakarta).
 Layanan Vio.co (6 kategori): Video Production, Photography, Branding & Design, Motion Graphics, Social Media Content, Event Coverage.
 Klien: Polda Riau, Harbour Hotel, Seraya Villa, Nusantara Coffee, Dinas Pariwisata, Griya Corp.
-Gaya bicara: santai, hangat, profesional, pakai bahasa Indonesia. Jawab singkat & jelas (2-4 kalimat kecuali ditanya detail). Kalau ditanya harga, bilang estimasinya mulai dari budget custom, ajak konsultasi gratis. Kalau tertarik serius, arahkan ke WhatsApp https://wa.me/6280000000000 atau email hello@vio.co.
+Gaya bicara: santai, hangat, profesional, pakai bahasa Indonesia. Jawab singkat & jelas (2-4 kalimat kecuali ditanya detail). Kalau ditanya harga, bilang estimasinya mulai dari budget custom, ajak konsultasi gratis. Kontak resmi: WhatsApp https://wa.me/6287840403048 · email hello@vioofficial.web.id · Instagram @violadwijenita · TikTok @violadwijenita · website https://vioofficial.web.id. Kalau tertarik serius, arahkan ke WhatsApp dulu.
 Jangan ngarang fakta yang gak ada di atas. Panggil user "kak" atau "kamu" biar akrab.`;
 
 const QUICK = ["Layanan apa aja?", "Berapa harganya?", "Portofolio?", "Kontak & sosmed"];
 
-const WA_URL = "https://wa.me/6280000000000";
-const EMAIL = "hello@vio.co";
+const WA_URL = "https://wa.me/6287840403048";
+const EMAIL = "hello@vioofficial.web.id";
+const IG_URL = "https://instagram.com/violadwijenita";
+const TIKTOK_URL = "https://tiktok.com/@violadwijenita";
+const SITE_URL = "https://vioofficial.web.id";
 
-/* Kartu kontak klikable (tombol WhatsApp & Email) */
+/* Kartu kontak klikable (WhatsApp, Email, IG, TikTok, Web) */
 function ContactCard() {
   return (
     <div className="tiara-contact">
@@ -63,6 +66,10 @@ function ContactCard() {
       <div className="tiara-contact-btns">
         <a className="tc-btn wa" href={WA_URL} target="_blank" rel="noreferrer">💬 WhatsApp</a>
         <a className="tc-btn em" href={`mailto:${EMAIL}`}>✉️ Email</a>
+      </div>
+      <div className="tiara-contact-btns">
+        <a className="tc-btn ig" href={IG_URL} target="_blank" rel="noreferrer">📷 Instagram</a>
+        <a className="tc-btn tk" href={TIKTOK_URL} target="_blank" rel="noreferrer">🎵 TikTok</a>
       </div>
     </div>
   );
@@ -155,7 +162,7 @@ export default function Tiara() {
     setShowTyping(false);
     const finalReply =
       reply ||
-      "Waduh, koneksinya lagi bermasalah 😅 Coba lagi ya, atau langsung WhatsApp kami di https://wa.me/6280000000000";
+      "Waduh, koneksinya lagi bermasalah 😅 Coba lagi ya, atau langsung WhatsApp kami di https://wa.me/6287840403048";
 
     setMsgs((m) => [...m, { from: "tiara", text: "", done: false, typing: true }]);
     await typeOut(finalReply, myId);
