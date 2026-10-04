@@ -72,18 +72,16 @@ const LogoMail = () => (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 7L22 7"/></svg>
 );
 
-/* Kartu kontak klikable (logo brand asli) */
+/* Barisan kontak: icon logo aja — bersih, gak kotak-kotak */
 function ContactCard() {
   return (
     <div className="tiara-contact">
       <span>Butuh langsung?</span>
-      <div className="tiara-contact-btns">
-        <a className="tc-btn wa" href={WA_URL} target="_blank" rel="noreferrer"><LogoWA /> WhatsApp</a>
-        <a className="tc-btn em" href={`mailto:${EMAIL}`}><LogoMail /> Email</a>
-      </div>
-      <div className="tiara-contact-btns">
-        <a className="tc-btn ig" href={IG_URL} target="_blank" rel="noreferrer"><LogoIG /> Instagram</a>
-        <a className="tc-btn tk" href={TIKTOK_URL} target="_blank" rel="noreferrer"><LogoTK /> TikTok</a>
+      <div className="tiara-icons">
+        <a href={WA_URL} target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp"><LogoWA /></a>
+        <a href={IG_URL} target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram"><LogoIG /></a>
+        <a href={TIKTOK_URL} target="_blank" rel="noreferrer" aria-label="TikTok" title="TikTok"><LogoTK /></a>
+        <a href={`mailto:${EMAIL}`} aria-label="Email" title="Email"><LogoMail /></a>
       </div>
     </div>
   );
@@ -230,7 +228,10 @@ export default function Tiara() {
           ))}
         </div>
 
-        <div className="tiara-input">
+        <div className="tiara-input rich">
+          <button className="tiara-tool" title="Layanan" onClick={() => send("Layanan apa aja?")} disabled={typing}>✦</button>
+          <button className="tiara-tool" title="Harga" onClick={() => send("Berapa harganya?")} disabled={typing}>◎</button>
+          <button className="tiara-tool" title="Kontak" onClick={() => send("Kontak & sosmed")} disabled={typing}>☎</button>
           <input
             value={input}
             placeholder="Tanya Tiara apa aja…"
@@ -238,7 +239,10 @@ export default function Tiara() {
             onKeyDown={(e) => e.key === "Enter" && send()}
             disabled={typing}
           />
-          <button onClick={() => send()} disabled={typing || !input.trim()} aria-label="Kirim">➤</button>
+          <button className={`tiara-send ${input.trim() ? "ready" : ""}`} onClick={() => send()}
+            disabled={typing || !input.trim()} aria-label="Kirim">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3.4 20.4l17.45-7.48a1 1 0 0 0 0-1.84L3.4 3.6a1 1 0 0 0-1.39 1.06l1.5 6.34L14 12l-10.5 1-.99 6.34c-.1.65.62 1.15 1.19.86z" transform="rotate(90 12 12)"/></svg>
+          </button>
         </div>
         <div className="tiara-foot">Tiara AI · asisten resmi Vio.co</div>
       </div>
