@@ -21,7 +21,7 @@ export default function Contact() {
         <div className="wrap contact">
           <Reveal>
             <VMark size={72} />
-            <h2>Let&apos;s create something great.</h2>
+            <h2 className="lux-h">Let&apos;s create something great.</h2>
             <p className="sub-t" style={{ margin: "16px auto 0" }}>
               Have a project in mind? Let&apos;s talk about your idea.
             </p>

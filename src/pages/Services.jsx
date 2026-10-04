@@ -23,7 +23,7 @@ export default function Services() {
         <div className="wrap">
           <Reveal className="center">
             <div className="eyebrow c"><span className="dot" />Services</div>
-            <h2>Everything your brand needs<br />to be seen and remembered.</h2>
+            <h2 className="lux-h">Everything your brand needs<br />to be seen and remembered.</h2>
             <p className="sub-t">One team, from first idea to final frame — and everything after it.</p>
           </Reveal>
 
@@ -48,7 +48,7 @@ export default function Services() {
         <div className="wrap">
           <Reveal className="center">
             <div className="eyebrow c"><span className="dot" />Production capability</div>
-            <h2>Built to shoot anywhere.</h2>
+            <h2 className="lux-h">Built to shoot anywhere.</h2>
           </Reveal>
           <Reveal className="caps">
             {CAPS.map(([e, t]) => <div className="cap" key={t}><i>{e}</i>{t}</div>)}

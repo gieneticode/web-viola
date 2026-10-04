@@ -9,7 +9,7 @@ export default function Process() {
         <div className="wrap">
           <Reveal className="center">
             <div className="eyebrow c"><span className="dot" />Development roadmap</div>
-            <h2>Our process.</h2>
+            <h2 className="lux-h">Our process.</h2>
             <p className="sub-t">
               A clear, structured approach to every production — from first
               brief to final delivery.
@@ -23,7 +23,7 @@ export default function Process() {
         <div className="wrap g2">
           <Reveal>
             <div className="eyebrow"><span className="dot" />Social media</div>
-            <h2>Social media is more than posting.</h2>
+            <h2 className="lux-h">Social media is more than posting.</h2>
             <p className="sub-t">
               Strategy, planning, production, publishing — and then we measure
               what actually worked.

@@ -17,7 +17,7 @@ export default function Home() {
         <div className="wrap center">
           <Reveal as="div" from="left">
             <div className="eyebrow c"><span className="dot" />Why Vio.co</div>
-            <h2 className="layered"><span className="fg">Production that</span><span className="bg" aria-hidden="true">performs.</span></h2>
+            <h2 className="layered lux-h"><span className="fg">Production that</span><span className="bg" aria-hidden="true">performs.</span></h2>
             <p className="sub-t">
               One team from first idea to final frame — and everything after it.
             </p>
@@ -48,7 +48,7 @@ export default function Home() {
         <div className="wrap">
           <Reveal className="center" from="right">
             <div className="eyebrow c"><span className="dot" />Capabilities</div>
-            <h2>From idea to final frame.</h2>
+            <h2 className="lux-h">From idea to final frame.</h2>
           </Reveal>
           <Reveal><Steps steps={CAPABILITY_STEPS} /></Reveal>
         </div>
@@ -61,7 +61,7 @@ export default function Home() {
         <div className="wrap">
           <Reveal className="center" from="left">
             <div className="eyebrow c"><span className="dot" />Trusted by</div>
-            <h2>Clients &amp; collaborations.</h2>
+            <h2 className="lux-h">Clients &amp; collaborations.</h2>
             <p className="sub-t">Brands, institutions and teams we&apos;ve worked with across Indonesia.</p>
           </Reveal>
           <Reveal className="logos" style={{ "--i": 1 }}>

@@ -276,7 +276,8 @@ h3{font-size:16px;font-weight:400}
   aspect-ratio:4/3;cursor:pointer;text-align:left;padding:0;
   background:linear-gradient(150deg,#12304a,#0a1622 60%,#05080f);
   transition:transform .35s var(--ease),border-color .35s}
-.work:hover{transform:translateY(-5px);border-color:var(--brd-hi)}
+.work{display:block}
+.work:hover{transform:translateY(-5px);border-color:var(--brd-hi);box-shadow:inset 0 0 0 1px rgba(0,212,224,.55),0 24px 60px -18px rgba(0,0,0,.7)}
 .work::after{content:"";position:absolute;inset:0;
   background:linear-gradient(200deg,transparent 38%,rgba(5,8,15,.9));transition:.35s}
 .work:hover::after{background:linear-gradient(200deg,rgba(0,212,224,.14),rgba(5,8,15,.94))}
@@ -563,7 +564,7 @@ footer .fine a:hover{color:#fff}
   .work{flex:0 0 auto;width:min(80%,300px);min-width:0;scroll-snap-align:start}
   /* StaggerGrid wraps each card in .sg-item — override carousel rules for nested case */
   .work-grid .sg-item{flex:0 0 auto;width:min(80%,300px);scroll-snap-align:start}
-  .work-grid .sg-item .work{width:100%;flex:none}
+  .work-grid .sg-item .work{display:block;width:100%;flex:none}
 
   /* ---- FILTERS: horizontal scroll strip (vs desktop centered wrap) ---- */
   .filters{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;
@@ -835,4 +836,37 @@ body::before{
   .why-grid{grid-template-columns:1fr 1fr}
   .cta-meta{flex-direction:column;align-items:center;gap:8px}
   .cta-meta i{display:none}
+}
+
+
+/* ═══════════ CINEMATIC PREMIUM PASS ═══════════ */
+
+/* sweep cahaya sinematik di kartu work */
+.work .sweep{position:absolute;top:0;left:-70%;width:45%;height:100%;z-index:3;
+  pointer-events:none;transform:skewX(-18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.10),transparent)}
+.work:hover .sweep{animation:sweepX .9s var(--ease) forwards}
+@keyframes sweepX{to{left:125%}}
+
+/* Page cinematic entrance */
+.cine-in{animation:cineIn 1.1s var(--ease) both}
+@keyframes cineIn{from{opacity:0;transform:scale(1.015)}to{opacity:1;transform:none}}
+
+/* Judul besar — gradasi metal editorial */
+.lux-h{background:linear-gradient(160deg,#ffffff 30%,rgba(255,255,255,.55) 65%,rgba(0,212,224,.85));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:-.02em}
+.lux-h::selection{background:rgba(0,212,224,.35);color:#fff}
+
+/* Statistik — angka gradasi cyan */
+.stat-num{background:linear-gradient(150deg,#fff 25%,rgba(0,212,224,.9));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Vignette halus tepi viewport — depth sinematik */
+body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 45%,transparent 62%,rgba(2,4,10,.5) 100%)}
+main{position:relative;z-index:2}
+
+@media(prefers-reduced-motion:reduce){
+  .work .sweep,.cine-in{animation:none}
 }

@@ -14,7 +14,7 @@ export default function Work() {
         <div className="wrap">
           <Reveal className="center">
             <div className="eyebrow c"><span className="dot" />Our work</div>
-            <h2>Selected projects.</h2>
+            <h2 className="lux-h">Selected projects.</h2>
             <p className="sub-t">Real work for real clients. Click any project for the full breakdown.</p>
           </Reveal>
 
@@ -33,6 +33,7 @@ export default function Work() {
                   {w.cover
                     ? <img className="work-cover" src={w.cover} alt={w.t} loading="lazy" />
                     : <WorkArt cat={w.cat} />}
+                  <span className="sweep" aria-hidden="true" />
                   <span className="cat">{w.cat}</span>
                   <div className="info"><b>{w.t}</b><span>{w.project}</span></div>
                   <span className="go">View →</span>

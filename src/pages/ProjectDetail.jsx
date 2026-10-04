@@ -14,7 +14,7 @@ export default function ProjectDetail() {
     return (
       <div className="page">
         <div className="wrap center">
-          <h2>Project not found.</h2>
+          <h2 className="lux-h">Project not found.</h2>
           <p className="sub-t">That project does not exist (yet).</p>
           <div className="hero-act" style={{ justifyContent: "center" }}>
             <Link className="btn primary" to="/work">Back to Work</Link>

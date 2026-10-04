@@ -11,7 +11,7 @@ export default function About() {
         <div className="wrap g2">
           <Reveal>
             <div className="eyebrow"><span className="dot" />Who we are</div>
-            <h2>From creative strategy to production, from content to social media.</h2>
+            <h2 className="lux-h">From creative strategy to production, from content to social media.</h2>
             <p className="sub-t">
               Vio.co is a creative production house and social media specialist that
               transforms ideas into meaningful visual content.
@@ -46,7 +46,7 @@ export default function About() {
         <div className="wrap">
           <Reveal className="center">
             <div className="eyebrow c"><span className="dot" />Our team</div>
-            <h2>A team, not a one-man band.</h2>
+            <h2 className="lux-h">A team, not a one-man band.</h2>
             <p className="sub-t">Director, camera crew, drone pilot, lighting, makeup, editing.</p>
           </Reveal>
           <StaggerGrid className="card-grid" style={{
@@ -67,7 +67,7 @@ export default function About() {
         <div className="wrap">
           <Reveal className="center">
             <div className="eyebrow c"><span className="dot" />Behind the scenes</div>
-            <h2>Our process.</h2>
+            <h2 className="lux-h">Our process.</h2>
           </Reveal>
           <Reveal><Steps steps={PROCESS_STEPS} /></Reveal>
         </div>
