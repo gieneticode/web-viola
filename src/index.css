@@ -1010,7 +1010,7 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
 .tiara-input{display:flex;gap:9px;padding:11px 12px;border-top:none}
 .tiara-input input{flex:1;background:rgba(255,255,255,.09);border:none;
   border-radius:12px;padding:11px 14px;color:#fff;font-size:13.5px;outline:none;transition:border .25s}
-.tiara-input input:focus{box-shadow:0 0 0 2px rgba(0,212,224,.25)}
+.tiara-input input:focus{background:rgba(255,255,255,.12)}
 .tiara-input button{width:44px;border-radius:12px;border:none;cursor:pointer;
   background:linear-gradient(135deg,#0e7490,#134b5f);color:#fff;font-size:15px;
   transition:opacity .2s,transform .2s}
@@ -1201,7 +1201,7 @@ header.app.scrolled{box-shadow:0 10px 24px -8px rgba(0,0,0,.65),0 22px 44px -18p
 .tiara-tool{width:32px;height:32px;border-radius:10px;border:none;cursor:pointer;
   background:rgba(255,255,255,.06);color:var(--titanium-dim);font-size:13px;
   display:grid;place-items:center;transition:background .25s,color .25s,transform .25s var(--ease)}
-.tiara-tool:hover:not(:disabled){background:rgba(0,212,224,.15);color:var(--cyan);transform:translateY(-1px)}
+.tiara-tool:hover:not(:disabled){background:rgba(255,255,255,.12);color:#fff;transform:translateY(-1px)}
 .tiara-tool:disabled{opacity:.4}
 .tiara-send{width:40px;height:40px;border-radius:12px;border:none;cursor:pointer;
   display:grid;place-items:center;color:#fff;
@@ -1217,8 +1217,7 @@ header.app.scrolled{box-shadow:0 10px 24px -8px rgba(0,0,0,.65),0 22px 44px -18p
 .tiara-body{scrollbar-width:none;-ms-overflow-style:none}
 .tiara-body::-webkit-scrollbar{display:none}
 /* focus outline default browser di dalam widget diganti glow halus */
-.tiara-panel :focus-visible,.tiara-fab:focus-visible{outline:none;
-  box-shadow:0 0 0 2px rgba(0,212,224,.35)}
+.tiara-panel :focus-visible,.tiara-fab:focus-visible{outline:none}
 /* header panel: pastikan gak ada garis psuedo */
 .tiara-head::before,.tiara-head::after{content:none}
 /* garis tipis dari hr markdown di chat diganti spacing aja */
