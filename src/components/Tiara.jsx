@@ -1,16 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 
 /* ═══════════ TIARA ASISTAN — AI chat widget Vio.co ═══════════
-   Backend: Dahl inference (OpenAI-compatible) langsung dari browser.
-   CORS-nya udah allow domain vercel ini, jadi gak perlu server.
-   Key di-rotate antar request biar credit-nya awet. */
+   Backend: rantai fallback (lihat tiaraConfig.js):
+   1. deepseek-bansos @ 9router VPS (sesuai spesifikasi owner)
+   2. atria @ 9router VPS (model cepat, server sama)
+   3. DeepSeek-V4-Flash @ Dahl (cadangan publik, cepat & stabil)
+   Efek typing per-karakter dengan jeda variabel = kesan real. */
 
-const DAHL_BASE = "https://inference.dahl.global/v1/chat/completions";
-const DAHL_MODEL = "deepseek-ai/DeepSeek-V4-Flash-0731";
-
-/* Key pool — dirotasi round-robin */
-import { DAHL_KEYS } from "../dahlKeys.js";
-const KEYS = DAHL_KEYS;
+import { CHAIN } from "../tiaraConfig.js";
 
 const SYSTEM = `Kamu adalah "Tiara Asistan", asisten AI resmi Vio.co — production house milik Viola Dwi Jenita (6+ tahun pengalaman, berbasis di Pekanbaru & Jakarta).
 Layanan Vio.co (6 kategori): Video Production, Photography, Branding & Design, Motion Graphics, Social Media Content, Event Coverage.
@@ -57,30 +54,30 @@ export default function Tiara() {
       setTimeout(step, 350);
     });
 
-  const askDahl = async (history) => {
-    // coba max 3 key berbeda sebelum nyerah
-    for (let attempt = 0; attempt < 3; attempt++) {
-      const key = KEYS[keyIdx.current % KEYS.length];
-      keyIdx.current += 1;
-      try {
-        const r = await fetch(DAHL_BASE, {
+  const askBackend = async (history) => {
+    // Coba tiap backend di rantai sampai ada yang jawab
+    for (const be of CHAIN) {
+      const res = await Promise.race([
+        fetch(be.url, {
           method: "POST",
-          headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${be.key}` },
           body: JSON.stringify({
-            model: DAHL_MODEL,
+            model: be.model,
             messages: [{ role: "system", content: SYSTEM }, ...history],
             max_tokens: 400,
             temperature: 0.8,
           }),
-        });
-        if (!r.ok) continue; // coba key lain
-        const d = await r.json();
-        const txt = d?.choices?.[0]?.message?.content;
-        if (txt) {
+        }).then(async (r) => {
+          if (!r.ok) throw new Error("bad status " + r.status);
+          const d = await r.json();
+          const txt = d?.choices?.[0]?.message?.content;
+          if (!txt) throw new Error("empty");
           // bersihin tag <think> kalau model reasoning
           return txt.replace(/<think>[\s\S]*?<\/think>/g, "").trim() || txt.trim();
-        }
-      } catch { /* lanjut key berikutnya */ }
+        }),
+        new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), be.timeout)),
+      ]).catch(() => null);
+      if (res) return res;
     }
     return null;
   };
@@ -100,7 +97,7 @@ export default function Tiara() {
     setShowTyping(true);
 
     const [reply] = await Promise.all([
-      askDahl(history),
+      askBackend(history),
       new Promise((r) => setTimeout(r, 900)), // minimal feel "mikir"
     ]);
 
