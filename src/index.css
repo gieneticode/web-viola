@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 /* ============================================================
    VIO.CO — Design System
@@ -908,8 +908,8 @@ main{position:relative}
 /* ═══════════ LUXURY PASS — professional & canggih ═══════════ */
 
 /* 1. Tipografi mewah: heading pakai font display serif kontras (font import di paling atas file) */
-h1,h2,.layered,.lux-h{font-family:"Fraunces","Montserrat",serif;
-  font-weight:600;letter-spacing:-.02em}
+h1,h2,.layered,.lux-h{font-family:"Archivo","Montserrat",sans-serif;
+  font-weight:700;letter-spacing:-.02em}
 .idcard-title{font-weight:400;font-size:clamp(34px,8.5vw,92px)}
 
 /* 2. Gold accent — aksen champanye buat kesan luxury (dipake hemat) */
@@ -1285,7 +1285,7 @@ button:active{transform:scale(.96);filter:brightness(.93)}
     transform:none;filter:none}
 }
 
-/* ═══════════ HERO TYPOGRAPHY REFINEMENT — muted eyebrow + Fraunces headline ═══ */
+/* ═══════════ HERO TYPOGRAPHY REFINEMENT — muted eyebrow + Bebas headline ═══ */
 /* Eyebrow: professional muted gray-white, whispers instead of shouting (no cyan, no glow) */
 .idcard-copy .eyebrow{color:#a8b0bf}
 .idcard-copy .eyebrow .dot{background:#a8b0bf;box-shadow:none}
