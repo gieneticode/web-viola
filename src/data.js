@@ -61,17 +61,17 @@ export const SERVICES = [
     img:"/assets/services/post-production.jpg" },
 ];
 
-export const CATS = ["All","Video","Social Media","Branding","Commercial","Event","Drone"];
+export const CATS = ["All","Film","Social Media","Branding","Commercial","Event","Drone"];
 
 export const WORK = [
-  { slug:"polda-riau-project", t:"Polda Riau Project", cat:"Video", client:"Polda Riau",
+  { slug:"polda-riau-project", t:"Polda Riau Project", cat:"Film", client:"Polda Riau",
     project:"Polda Riau — 2 Films",
     services:"Production | Direction | Cinematography | FPV | Editing",
     desc:"Project kolaborasi dengan Polda Riau — 2 short movie yang diproduksi end-to-end oleh Vio.co, dari script development, direction, cinematography, hingga final edit.",
     role:"Full production oleh Vio.co sebagai production house dan creative lead.",
     cover:"/assets/work/tim-raga/01-crew-group.jpg",
     films:["tim-raga","call-110"] },
-  { slug:"tim-raga", t:"Tim Raga", cat:"Video", client:"Polda Riau", child:true,
+  { slug:"tim-raga", t:"Tim Raga", cat:"Film", client:"Polda Riau", child:true,
     project:"Short Movie — Tim Raga",
     services:"Production | Direction | Cinematography | FPV | Editing",
     desc:"Short narrative film yang diproduksi end-to-end — dari script development, direction, cinematography, FPV aerial sequences, hingga final edit.",
@@ -91,7 +91,7 @@ export const WORK = [
       "/assets/work/tim-raga/10-lighting-setup.jpg",
       "/assets/work/tim-raga/11-makeup-actor.jpg",
       "/assets/work/tim-raga/12-camera-crew.jpg" ] },
-  { slug:"call-110", t:"Call 110", cat:"Video", client:"Polda Riau", child:true,
+  { slug:"call-110", t:"Call 110", cat:"Film", client:"Polda Riau", child:true,
     project:"Short Movie — Call 110",
     services:"Production | Direction | Cinematography | FPV | Editing",
     desc:"Film kedua dari Polda Riau Project — short movie yang diproduksi end-to-end oleh Vio.co. Foto dan video menyusul.",
