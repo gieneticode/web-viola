@@ -25,14 +25,8 @@ export default function ProjectDetail() {
 
   // Lightbox untuk galeri Behind The Scenes
   const [lightIdx, setLightIdx] = React.useState(null);
-  React.useEffect(() => {
-    if (lightIdx === null) return;
-    const h = (e) => { if (e.key === "Escape") setLightIdx(null); };
-    window.addEventListener("keydown", h);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { window.removeEventListener("keydown", h); document.body.style.overflow = prev; };
-  }, [lightIdx]);
+  const touchX = React.useRef(0);
+  const swiped = React.useRef(false);
 
   if (!w) {
     return (
@@ -51,6 +45,20 @@ export default function ProjectDetail() {
   const related = WORK.filter((x) => x.slug !== w.slug && !(w.films || []).includes(x.slug)).slice(0, 3);
   const vidSrc = toEmbedUrl(w.video);
   const vidDirect = !vidSrc && isDirectVideo(w.video);
+
+  React.useEffect(() => {
+    if (lightIdx === null || !w.gallery) return;
+    const len = w.gallery.length;
+    const h = (e) => {
+      if (e.key === "Escape") setLightIdx(null);
+      if (e.key === "ArrowRight") setLightIdx((i) => (i + 1) % len);
+      if (e.key === "ArrowLeft") setLightIdx((i) => (i - 1 + len) % len);
+    };
+    window.addEventListener("keydown", h);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", h); document.body.style.overflow = prev; };
+  }, [lightIdx, w]);
 
   return (
     <div className="page">
@@ -161,19 +169,49 @@ export default function ProjectDetail() {
         </div>
       </section>
       {lightIdx !== null && w.gallery && (
-        <div onClick={() => setLightIdx(null)}
+        <div
+          onClick={() => { if (swiped.current) { swiped.current = false; return; } setLightIdx(null); }}
+          onTouchStart={(e) => { touchX.current = e.touches[0].clientX; swiped.current = false; }}
+          onTouchEnd={(e) => {
+            const dx = e.changedTouches[0].clientX - touchX.current;
+            if (Math.abs(dx) > 50) {
+              swiped.current = true;
+              const dir = dx < 0 ? 1 : -1;
+              setLightIdx((i) => (i + dir + w.gallery.length) % w.gallery.length);
+            }
+          }}
           style={{ position:"fixed", inset:0, zIndex:200, background:"rgba(4,6,10,.94)",
             display:"flex", alignItems:"center", justifyContent:"center",
-            padding:24, cursor:"zoom-out" }}>
+            cursor:"zoom-out", touchAction:"pan-y" }}>
           <button onClick={() => setLightIdx(null)} aria-label="Tutup"
-            style={{ position:"fixed", top:18, right:18, zIndex:201, width:44, height:44,
+            style={{ position:"fixed", top:14, right:14, zIndex:203, width:44, height:44,
               borderRadius:"50%", background:"rgba(255,255,255,.08)",
               border:"1px solid rgba(255,255,255,.16)", color:"#fff",
               fontSize:20, cursor:"pointer", lineHeight:1 }}>✕</button>
+          <button aria-label="Foto sebelumnya"
+            onClick={(e) => { e.stopPropagation(); setLightIdx((i) => (i - 1 + w.gallery.length) % w.gallery.length); }}
+            style={{ position:"fixed", left:10, top:"50%", transform:"translateY(-50%)", zIndex:203,
+              width:48, height:48, borderRadius:"50%", background:"rgba(255,255,255,.08)",
+              border:"1px solid rgba(255,255,255,.16)", color:"#fff",
+              fontSize:24, cursor:"pointer", lineHeight:1 }}>‹</button>
+          <button aria-label="Foto berikutnya"
+            onClick={(e) => { e.stopPropagation(); setLightIdx((i) => (i + 1) % w.gallery.length); }}
+            style={{ position:"fixed", right:10, top:"50%", transform:"translateY(-50%)", zIndex:203,
+              width:48, height:48, borderRadius:"50%", background:"rgba(255,255,255,.08)",
+              border:"1px solid rgba(255,255,255,.16)", color:"#fff",
+              fontSize:24, cursor:"pointer", lineHeight:1 }}>›</button>
           <img src={w.gallery[lightIdx]} alt={`Behind the scenes ${lightIdx + 1}`}
-            onClick={(e) => e.stopPropagation()}
-            style={{ maxWidth:"100%", maxHeight:"88vh", objectFit:"contain", borderRadius:14,
-              boxShadow:"0 24px 80px rgba(0,0,0,.6)", cursor:"default" }} />
+            onClick={(e) => e.stopPropagation()} draggable={false}
+            style={{ maxWidth:"94vw", maxHeight:"82vh", objectFit:"contain", borderRadius:14,
+              boxShadow:"0 24px 80px rgba(0,0,0,.6)", cursor:"default",
+              userSelect:"none", WebkitUserSelect:"none" }} />
+          <div onClick={(e) => e.stopPropagation()}
+            style={{ position:"fixed", bottom:16, left:"50%", transform:"translateX(-50%)",
+              zIndex:203, color:"rgba(255,255,255,.8)", fontSize:14, letterSpacing:".08em",
+              background:"rgba(255,255,255,.08)", border:"1px solid rgba(255,255,255,.12)",
+              padding:"6px 16px", borderRadius:20 }}>
+            {lightIdx + 1} / {w.gallery.length}
+          </div>
         </div>
       )}
     </div>
