@@ -46,6 +46,14 @@ export default function ProjectDetail() {
   const vidSrc = toEmbedUrl(w.video);
   const vidDirect = !vidSrc && isDirectVideo(w.video);
 
+  // Breakpoint lightbox — dibaca tiap render (segar saat lightbox dibuka)
+  const lbBp = typeof window !== "undefined" && window.innerWidth <= 480 ? "phone"
+    : typeof window !== "undefined" && window.innerWidth <= 1024 ? "tablet" : "desktop";
+  const lbArrow = lbBp === "phone" ? 44 : lbBp === "tablet" ? 52 : 56;
+  const lbArrowInset = lbBp === "phone" ? 8 : lbBp === "tablet" ? 16 : 24;
+  const lbPhotoW = lbBp === "phone" ? "94vw" : lbBp === "tablet" ? "min(900px, 90vw)" : "min(1100px, 88vw)";
+  const lbPhotoH = lbBp === "phone" ? "78vh" : lbBp === "tablet" ? "82vh" : "84vh";
+
   React.useEffect(() => {
     if (lightIdx === null || !w.gallery) return;
     const len = w.gallery.length;
@@ -184,25 +192,31 @@ export default function ProjectDetail() {
             display:"flex", alignItems:"center", justifyContent:"center",
             cursor:"zoom-out", touchAction:"pan-y" }}>
           <button onClick={() => setLightIdx(null)} aria-label="Tutup"
-            style={{ position:"fixed", top:14, right:14, zIndex:203, width:44, height:44,
-              borderRadius:"50%", background:"rgba(255,255,255,.08)",
-              border:"1px solid rgba(255,255,255,.16)", color:"#fff",
-              fontSize:20, cursor:"pointer", lineHeight:1 }}>✕</button>
+            style={{ position:"fixed", top:"max(16px, env(safe-area-inset-top))", right:16, zIndex:210,
+              width:52, height:52, borderRadius:"50%", background:"rgba(0,0,0,.55)",
+              backdropFilter:"blur(8px)", WebkitBackdropFilter:"blur(8px)",
+              border:"1px solid rgba(255,255,255,.22)", color:"#fff",
+              fontSize:24, cursor:"pointer", lineHeight:1,
+              display:"flex", alignItems:"center", justifyContent:"center" }}>✕</button>
           <button aria-label="Foto sebelumnya"
             onClick={(e) => { e.stopPropagation(); setLightIdx((i) => (i - 1 + w.gallery.length) % w.gallery.length); }}
-            style={{ position:"fixed", left:10, top:"50%", transform:"translateY(-50%)", zIndex:203,
-              width:48, height:48, borderRadius:"50%", background:"rgba(255,255,255,.08)",
-              border:"1px solid rgba(255,255,255,.16)", color:"#fff",
-              fontSize:24, cursor:"pointer", lineHeight:1 }}>‹</button>
+            style={{ position:"fixed", left:lbArrowInset, top:"50%", transform:"translateY(-50%)", zIndex:203,
+              width:lbArrow, height:lbArrow, borderRadius:"50%", background:"rgba(0,0,0,.45)",
+              backdropFilter:"blur(8px)", WebkitBackdropFilter:"blur(8px)",
+              border:"1px solid rgba(255,255,255,.18)", color:"#fff",
+              fontSize:26, cursor:"pointer", lineHeight:1,
+              display:"flex", alignItems:"center", justifyContent:"center" }}>‹</button>
           <button aria-label="Foto berikutnya"
             onClick={(e) => { e.stopPropagation(); setLightIdx((i) => (i + 1) % w.gallery.length); }}
-            style={{ position:"fixed", right:10, top:"50%", transform:"translateY(-50%)", zIndex:203,
-              width:48, height:48, borderRadius:"50%", background:"rgba(255,255,255,.08)",
-              border:"1px solid rgba(255,255,255,.16)", color:"#fff",
-              fontSize:24, cursor:"pointer", lineHeight:1 }}>›</button>
+            style={{ position:"fixed", right:lbArrowInset, top:"50%", transform:"translateY(-50%)", zIndex:203,
+              width:lbArrow, height:lbArrow, borderRadius:"50%", background:"rgba(0,0,0,.45)",
+              backdropFilter:"blur(8px)", WebkitBackdropFilter:"blur(8px)",
+              border:"1px solid rgba(255,255,255,.18)", color:"#fff",
+              fontSize:26, cursor:"pointer", lineHeight:1,
+              display:"flex", alignItems:"center", justifyContent:"center" }}>›</button>
           <img src={w.gallery[lightIdx]} alt={`Behind the scenes ${lightIdx + 1}`}
             onClick={(e) => e.stopPropagation()} draggable={false}
-            style={{ maxWidth:"94vw", maxHeight:"82vh", objectFit:"contain", borderRadius:14,
+            style={{ maxWidth:lbPhotoW, maxHeight:lbPhotoH, objectFit:"contain", borderRadius:14,
               boxShadow:"0 24px 80px rgba(0,0,0,.6)", cursor:"default",
               userSelect:"none", WebkitUserSelect:"none" }} />
           <div onClick={(e) => e.stopPropagation()}
