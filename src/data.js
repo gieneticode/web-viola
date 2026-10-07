@@ -70,8 +70,20 @@ export const WORK = [
     desc:"Short narrative film yang diproduksi end-to-end — dari script development, direction, cinematography, FPV aerial sequences, hingga final edit.",
     role:"Full production oleh Vio.co sebagai production house dan creative lead.",
     cover:"/assets/work/tim-raga.jpg",
-    // isi URL video YouTube nanti (kosong = tidak tampil)
-    video:"" },
+    video:"",
+    // Galeri behind-the-scenes Tim Raga (11 foto, cover dikecualikan)
+    gallery:[
+      "/assets/work/tim-raga/01-crew-group.jpg",
+      "/assets/work/tim-raga/02-makeup-blood.jpg",
+      "/assets/work/tim-raga/04-cast-trio.jpg",
+      "/assets/work/tim-raga/05-tactical-bw.jpg",
+      "/assets/work/tim-raga/06-fpv-pilot.jpg",
+      "/assets/work/tim-raga/07-tactical-lineup.jpg",
+      "/assets/work/tim-raga/08-tactical-flag.jpg",
+      "/assets/work/tim-raga/09-director-pilot.jpg",
+      "/assets/work/tim-raga/10-lighting-setup.jpg",
+      "/assets/work/tim-raga/11-makeup-actor.jpg",
+      "/assets/work/tim-raga/12-camera-crew.jpg" ] },
   { slug:"harbour-hotel", t:"Harbour Hotel", cat:"Drone", client:"Harbour Hotel",
     project:"Property Aerial Film",
     services:"Aerial | FPV | Editing | Color Grading",

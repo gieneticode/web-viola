@@ -89,9 +89,24 @@ export default function ProjectDetail() {
                 </div>
               ))}
             </div>
-            <p className="note" style={{ textAlign: "left" }}>
-              Slot media — taruh real video / stills / behind-the-scenes di sini.
-            </p>
+            {!(w.gallery && w.gallery.length) && (
+              <p className="note" style={{ textAlign: "left" }}>
+                Slot media — taruh real video / stills / behind-the-scenes di sini.
+              </p>
+            )}
+            {w.gallery && w.gallery.length > 0 && (
+              <Reveal as="div" style={{ marginTop: 48 }}>
+                <h2 className="lux-h" style={{ fontSize: "clamp(22px,3vw,34px)" }}>Behind The Scenes</h2>
+                <div className="thumbs" style={{ marginTop: 18 }}>
+                  {w.gallery.map((src, i) => (
+                    <div key={"g"+i} style={{ position:"relative", overflow:"hidden", borderRadius:14 }}>
+                      <img src={src} alt={`Behind the scenes ${i + 1}`} loading="lazy"
+                        style={{ width:"100%", height:"100%", objectFit:"cover", position:"absolute", inset:0 }} />
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            )}
           </Reveal>
 
           <Reveal as="div" style={{ marginTop: 72 }}>
