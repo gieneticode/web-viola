@@ -3,6 +3,19 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { WORK, ABOUT_PHOTOS } from "../data.js";
 import { Reveal } from "../components/Bits.jsx";
 
+// Ubah URL YouTube (watch/shorts/youtu.be) jadi URL embed.
+// URL video langsung (.mp4/.webm/.mov) dipakai apa adanya via tag <video>.
+function toEmbedUrl(url) {
+  if (!url) return null;
+  const m = String(url).trim().match(
+    /(?:youtube\.com\/watch\?[^#]*v=|youtu\.be\/|youtube\.com\/shorts\/|youtube\.com\/embed\/)([\w-]{6,})/
+  );
+  return m ? "https://www.youtube.com/embed/" + m[1] : null;
+}
+function isDirectVideo(url) {
+  return /\.(mp4|webm|mov)(\?|#|$)/i.test(String(url || ""));
+}
+
 export default function ProjectDetail() {
   const { slug } = useParams();
   const nav = useNavigate();
@@ -25,6 +38,8 @@ export default function ProjectDetail() {
   }
 
   const related = WORK.filter((x) => x.slug !== w.slug).slice(0, 3);
+  const vidSrc = toEmbedUrl(w.video);
+  const vidDirect = !vidSrc && isDirectVideo(w.video);
 
   return (
     <div className="page">
@@ -51,6 +66,20 @@ export default function ProjectDetail() {
             <p className="sub-t" style={{ maxWidth: "62ch" }}>
               <strong style={{ fontWeight: 400, color: "#fff" }}>Vio.co role: </strong>{w.role}
             </p>
+
+            {(vidSrc || vidDirect) && (
+              <div style={{ marginTop: 28, borderRadius: 14, overflow: "hidden", background: "#0a0e14" }}>
+                {vidSrc ? (
+                  <iframe src={vidSrc} title={w.t + " video"}
+                    style={{ width: "100%", aspectRatio: "16/9", border: 0, display: "block" }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen loading="lazy" />
+                ) : (
+                  <video src={w.video} controls preload="metadata"
+                    style={{ width: "100%", aspectRatio: "16/9", display: "block", background: "#000" }} />
+                )}
+              </div>
+            )}
 
             <div className="thumbs">
               {ABOUT_PHOTOS.map((src, i) => (
