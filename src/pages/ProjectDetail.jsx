@@ -23,6 +23,17 @@ export default function ProjectDetail() {
 
   React.useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
+  // Lightbox untuk galeri Behind The Scenes
+  const [lightIdx, setLightIdx] = React.useState(null);
+  React.useEffect(() => {
+    if (lightIdx === null) return;
+    const h = (e) => { if (e.key === "Escape") setLightIdx(null); };
+    window.addEventListener("keydown", h);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", h); document.body.style.overflow = prev; };
+  }, [lightIdx]);
+
   if (!w) {
     return (
       <div className="page">
@@ -81,7 +92,7 @@ export default function ProjectDetail() {
               </div>
             )}
 
-            {!w.films && (
+            {!w.films && !(w.gallery && w.gallery.length) && (
             <div className="thumbs">
               {ABOUT_PHOTOS.map((src, i) => (
                 <div key={i} style={{ position:"relative", overflow:"hidden", borderRadius:14 }}>
@@ -101,7 +112,8 @@ export default function ProjectDetail() {
                 <h2 className="lux-h" style={{ fontSize: "clamp(22px,3vw,34px)" }}>Behind The Scenes</h2>
                 <div className="thumbs" style={{ marginTop: 18 }}>
                   {w.gallery.map((src, i) => (
-                    <div key={"g"+i} style={{ position:"relative", overflow:"hidden", borderRadius:14 }}>
+                    <div key={"g"+i} onClick={() => setLightIdx(i)}
+                      style={{ position:"relative", overflow:"hidden", borderRadius:14, cursor:"zoom-in" }}>
                       <img src={src} alt={`Behind the scenes ${i + 1}`} loading="lazy"
                         style={{ width:"100%", height:"100%", objectFit:"cover", position:"absolute", inset:0 }} />
                     </div>
@@ -148,6 +160,22 @@ export default function ProjectDetail() {
           </Reveal>
         </div>
       </section>
+      {lightIdx !== null && w.gallery && (
+        <div onClick={() => setLightIdx(null)}
+          style={{ position:"fixed", inset:0, zIndex:200, background:"rgba(4,6,10,.94)",
+            display:"flex", alignItems:"center", justifyContent:"center",
+            padding:24, cursor:"zoom-out" }}>
+          <button onClick={() => setLightIdx(null)} aria-label="Tutup"
+            style={{ position:"fixed", top:18, right:18, zIndex:201, width:44, height:44,
+              borderRadius:"50%", background:"rgba(255,255,255,.08)",
+              border:"1px solid rgba(255,255,255,.16)", color:"#fff",
+              fontSize:20, cursor:"pointer", lineHeight:1 }}>✕</button>
+          <img src={w.gallery[lightIdx]} alt={`Behind the scenes ${lightIdx + 1}`}
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxWidth:"100%", maxHeight:"88vh", objectFit:"contain", borderRadius:14,
+              boxShadow:"0 24px 80px rgba(0,0,0,.6)", cursor:"default" }} />
+        </div>
+      )}
     </div>
   );
 }
