@@ -6,7 +6,7 @@ import { StaggerGrid } from "../components/Premium.jsx";
 
 export default function Work() {
   const [cat, setCat] = React.useState("All");
-  const list = cat === "All" ? WORK : WORK.filter((w) => w.cat === cat);
+  const list = (cat === "All" ? WORK : WORK.filter((w) => w.cat === cat)).filter((w) => !w.child);
 
   return (
     <div className="page">

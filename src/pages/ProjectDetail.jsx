@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { WORK, ABOUT_PHOTOS } from "../data.js";
-import { Reveal } from "../components/Bits.jsx";
+import { Reveal, WorkArt } from "../components/Bits.jsx";
 
 // Ubah URL YouTube (watch/shorts/youtu.be) jadi URL embed.
 // URL video langsung (.mp4/.webm/.mov) dipakai apa adanya via tag <video>.
@@ -37,7 +37,7 @@ export default function ProjectDetail() {
     );
   }
 
-  const related = WORK.filter((x) => x.slug !== w.slug).slice(0, 3);
+  const related = WORK.filter((x) => x.slug !== w.slug && !(w.films || []).includes(x.slug)).slice(0, 3);
   const vidSrc = toEmbedUrl(w.video);
   const vidDirect = !vidSrc && isDirectVideo(w.video);
 
@@ -81,6 +81,7 @@ export default function ProjectDetail() {
               </div>
             )}
 
+            {!w.films && (
             <div className="thumbs">
               {ABOUT_PHOTOS.map((src, i) => (
                 <div key={i} style={{ position:"relative", overflow:"hidden", borderRadius:14 }}>
@@ -89,7 +90,8 @@ export default function ProjectDetail() {
                 </div>
               ))}
             </div>
-            {!(w.gallery && w.gallery.length) && (
+            )}
+            {!w.films && !(w.gallery && w.gallery.length) && (
               <p className="note" style={{ textAlign: "left" }}>
                 Slot media — taruh real video / stills / behind-the-scenes di sini.
               </p>
@@ -108,6 +110,31 @@ export default function ProjectDetail() {
               </Reveal>
             )}
           </Reveal>
+
+          {w.films && w.films.length > 0 && (
+            <Reveal as="div" style={{ marginTop: 48 }}>
+              <div className="eyebrow"><span className="dot" />Films</div>
+              <h2 className="lux-h" style={{ fontSize: "clamp(22px,3vw,34px)" }}>2 Films</h2>
+              <div className="work-grid" style={{ marginTop: 18 }}>
+                {w.films.map((fs) => {
+                  const f = WORK.find((x) => x.slug === fs);
+                  if (!f) return null;
+                  return (
+                    <Link to={`/work/${f.slug}`} key={f.slug} className="work"
+                      style={{ textDecoration: "none" }}>
+                      {f.cover
+                        ? <img className="work-cover" src={f.cover} alt={f.t} loading="lazy" />
+                        : <WorkArt cat={f.cat} />}
+                      <span className="sweep" aria-hidden="true" />
+                      <span className="cat">{f.cat}</span>
+                      <div className="info"><b>{f.t}</b><span>{f.project}</span></div>
+                      <span className="go">View →</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </Reveal>
+          )}
 
           <Reveal as="div" style={{ marginTop: 72 }}>
             <div className="eyebrow"><span className="dot" />More work</div>
