@@ -1292,3 +1292,10 @@ button:active{transform:scale(.96);filter:brightness(.93)}
 /* Headline: Bebas Neue condensed display for the bold hero look */
 .idcard-title{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-weight:400;
   letter-spacing:.015em;line-height:1.04}
+
+/* ---- Navbar brand twirl: per-letter 3D flip, staggered (original) ---- */
+.brand b.twirl{perspective:420px}
+.brand b.twirl .tl{display:inline-block;transform-style:preserve-3d;
+  animation:vioTwirl .7s cubic-bezier(.22,.61,.36,1) both}
+@keyframes vioTwirl{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+@media (prefers-reduced-motion:reduce){.brand b.twirl .tl{animation:none}}

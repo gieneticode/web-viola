@@ -7,6 +7,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
   const [mobile, setMobile] = React.useState(false);
   const [drop, setDrop] = React.useState(null);
+  const [twirl, setTwirl] = React.useState(0); // restart key for brand twirl
   const { pathname } = useLocation();
 
   React.useEffect(() => {
@@ -29,9 +30,17 @@ export default function Navbar() {
   return (
     <header className={`app ${scrolled ? "scrolled" : ""}`}>
       <div className="wrap nav">
-        <Link className="brand" to="/" aria-label="Vio.co home">
+        <Link className="brand" to="/" aria-label="Vio.co home"
+          onMouseEnter={() => setTwirl((t) => t + 1)}
+          onTouchStart={() => setTwirl((t) => t + 1)}>
           <VMark />
-          <b>VIO.CO</b>
+          <b key={twirl} className="twirl" aria-hidden="true">
+            {"VIO.CO".split("").map((ch, i) => (
+              <span key={i} className="tl" style={{ animationDelay: `${i * 60}ms` }}>
+                {ch}
+              </span>
+            ))}
+          </b>
         </Link>
 
         <nav>
