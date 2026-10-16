@@ -127,27 +127,38 @@ export default function Tiara() {
   const askBackend = async (history) => {
     // Coba tiap backend di rantai sampai ada yang jawab
     for (const be of CHAIN) {
-      const res = await Promise.race([
-        fetch(be.url, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Authorization: `Bearer ${be.key}` },
-          body: JSON.stringify({
-            model: be.model,
-            messages: [{ role: "system", content: SYSTEM }, ...history],
-            max_tokens: 400,
-            temperature: 0.8,
+      // Retry up to 3x per backend (concurrency capacity is transient)
+      for (let attempt = 0; attempt < 3; attempt++) {
+        const res = await Promise.race([
+          fetch(be.url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${be.key}` },
+            body: JSON.stringify({
+              model: be.model,
+              messages: [{ role: "system", content: SYSTEM }, ...history],
+              max_tokens: 400,
+              temperature: 0.8,
+            }),
+          }).then(async (r) => {
+            const d = await r.json().catch(() => ({}));
+            // Concurrency capacity: retry after short delay
+            if (!r.ok && d?.error?.code === "model_concurrency") {
+              throw new Error("concurrency");
+            }
+            if (!r.ok) throw new Error("bad status " + r.status);
+            const txt = d?.choices?.[0]?.message?.content;
+            if (!txt) throw new Error("empty");
+            return txt.replace(/<think>[\s\S]*?<\/think>/g, "").trim() || txt.trim();
           }),
-        }).then(async (r) => {
-          if (!r.ok) throw new Error("bad status " + r.status);
-          const d = await r.json();
-          const txt = d?.choices?.[0]?.message?.content;
-          if (!txt) throw new Error("empty");
-          // bersihin tag <think> kalau model reasoning
-          return txt.replace(/<think>[\s\S]*?<\/think>/g, "").trim() || txt.trim();
-        }),
-        new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), be.timeout)),
-      ]).catch(() => null);
-      if (res) return res;
+          new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), be.timeout)),
+        ]).catch((e) => (e?.message === "concurrency" ? "retry" : null));
+        if (res === "retry") {
+          await new Promise((r) => setTimeout(r, 2500 * (attempt + 1)));
+          continue;
+        }
+        if (res) return res;
+        break;
+      }
     }
     return null;
   };
