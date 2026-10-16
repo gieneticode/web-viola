@@ -212,10 +212,7 @@ export default function Tiara() {
           ))}
         </div>
 
-        <div className="tiara-input rich">
-          <button className="tiara-tool" title="Layanan" onClick={() => send("Layanan apa aja?")} disabled={typing}>✦</button>
-          <button className="tiara-tool" title="Harga" onClick={() => send("Berapa harganya?")} disabled={typing}>◎</button>
-          <button className="tiara-tool" title="Kontak" onClick={() => send("Kontak & sosmed")} disabled={typing}>☎</button>
+        <div className="tiara-inputbar">
           <input
             value={input}
             placeholder="Tanya Tiara apa aja…"
@@ -223,9 +220,9 @@ export default function Tiara() {
             onKeyDown={(e) => e.key === "Enter" && send()}
             disabled={typing}
           />
-          <button className={`tiara-send ${input.trim() ? "ready" : ""}`} onClick={() => send()}
+          <button className={`tiara-sendbtn ${input.trim() ? "ready" : ""}`} onClick={() => send()}
             disabled={typing || !input.trim()} aria-label="Kirim">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3.4 20.4l17.45-7.48a1 1 0 0 0 0-1.84L3.4 3.6a1 1 0 0 0-1.39 1.06l1.5 6.34L14 12l-10.5 1-.99 6.34c-.1.65.62 1.15 1.19.86z" transform="rotate(90 12 12)"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
           </button>
         </div>
         <div className="tiara-foot">Tiara AI · asisten resmi Vio.co</div>

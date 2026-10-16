@@ -1032,15 +1032,25 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
 .tiara-quick button:hover:not(:disabled){background:rgba(255,255,255,.12);color:#fff}
 .tiara-quick button:disabled{opacity:.5;cursor:wait}
 
-.tiara-input{display:flex;gap:9px;padding:11px 12px;border-top:none}
-.tiara-input input{flex:1;background:rgba(255,255,255,.09);border:none;
-  border-radius:12px;padding:11px 14px;color:#fff;font-size:13.5px;outline:none;transition:border .25s}
-.tiara-input input:focus{background:rgba(255,255,255,.12)}
-.tiara-input button{width:44px;border-radius:12px;border:none;cursor:pointer;
-  background:linear-gradient(135deg,#0e7490,#134b5f);color:#fff;font-size:15px;
-  transition:opacity .2s,transform .2s}
-.tiara-input button:hover:not(:disabled){transform:scale(1.06)}
-.tiara-input button:disabled{opacity:.45;cursor:not-allowed}
+.tiara-inputbar{display:flex;gap:8px;padding:12px 14px;align-items:center}
+.tiara-inputbar input{flex:1;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:999px;padding:13px 18px;color:#fff;font-size:14px;outline:none;
+  transition:border-color .25s,background .25s,box-shadow .25s}
+.tiara-inputbar input::placeholder{color:rgba(255,255,255,.38)}
+.tiara-inputbar input:focus{background:rgba(255,255,255,.1);
+  border-color:rgba(0,212,224,.45);
+  box-shadow:0 0 0 3px rgba(0,212,224,.12)}
+.tiara-inputbar input:disabled{opacity:.5}
+.tiara-sendbtn{width:46px;height:46px;flex-shrink:0;border-radius:50%;border:none;cursor:pointer;
+  display:grid;place-items:center;color:rgba(255,255,255,.4);
+  background:rgba(255,255,255,.08);
+  transition:background .3s,color .3s,transform .25s,box-shadow .3s}
+.tiara-sendbtn.ready{background:linear-gradient(135deg,#00d4e0,#0e7490);color:#04121a;
+  box-shadow:0 8px 22px -6px rgba(0,212,224,.55)}
+.tiara-sendbtn.ready:hover{transform:scale(1.08)}
+.tiara-sendbtn.ready:active{transform:scale(.96)}
+.tiara-sendbtn:disabled{cursor:not-allowed}
 .tiara-foot{text-align:center;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--muted);padding:0 0 9px}
 
@@ -1094,7 +1104,7 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
   border-color:rgba(255,255,255,.22)}
 
 /* Input glass */
-.tiara-input input,.tiara-quick button{
+.tiara-inputbar input,.tiara-quick button{
   background:rgba(255,255,255,.07);border:none}
 
 
@@ -1220,19 +1230,7 @@ footer{border-top:1px solid rgba(255,255,255,.06)}
 .tc-btn svg{flex:0 0 auto}
 
 /* ── Rich messaging bar ── */
-.tiara-input.rich{align-items:center}
-.tiara-tool{width:32px;height:32px;border-radius:10px;border:none;cursor:pointer;
-  background:rgba(255,255,255,.06);color:var(--titanium-dim);font-size:13px;
-  display:grid;place-items:center;transition:background .25s,color .25s,transform .25s var(--ease)}
-.tiara-tool:hover:not(:disabled){background:rgba(255,255,255,.12);color:#fff;transform:translateY(-1px)}
-.tiara-tool:disabled{opacity:.4}
-.tiara-send{width:40px;height:40px;border-radius:12px;border:none;cursor:pointer;
-  display:grid;place-items:center;color:#fff;
-  background:rgba(255,255,255,.1);
-  transition:background .3s,transform .3s var(--ease),box-shadow .3s}
-.tiara-send.ready{background:linear-gradient(135deg,#0e7490,#155e75);
-  box-shadow:0 6px 18px -6px rgba(0,212,224,.5)}
-.tiara-send.ready:hover{transform:translateY(-2px) scale(1.05)}
+
 .tiara-send:disabled{opacity:.45}
 
 /* ── Bersihkan garis sisa di widget chat ── */
