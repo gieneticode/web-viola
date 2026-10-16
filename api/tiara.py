@@ -42,7 +42,7 @@ async def app(scope, receive, send):
     except Exception:
         history = []
 
-    key = os.environ.get("NINEROUTER_API_KEY", "")
+    key = os.environ.get("NINEROUTER_API_KEY", "sk-604375e5b83ed932-q8kig0-5ebf9200")
     if not key:
         await send_json(200, json.dumps({"reply": "Maaf, konfigurasi Tiara belum lengkap. Hubungi WhatsApp kami: https://wa.me/6287840403048", "model": "fallback"}))
         return
