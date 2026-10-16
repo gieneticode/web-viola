@@ -179,7 +179,7 @@ export default function Tiara() {
       {/* Chat panel */}
       <div className={`tiara-panel ${open ? "open" : ""}`} role="dialog" aria-label="Tiara Asistan">
         <div className="tiara-head">
-          <div className="tiara-ava">T</div>
+          <div className="tiara-ava"><img src="/assets/tiara-avatar.webp" alt="Tiara" /></div>
           <div className="tiara-id">
             <b>Tiara Asistan</b>
             <span><i className="tiara-status" />Online — Vio.co AI</span>
