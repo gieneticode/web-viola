@@ -1,7 +1,7 @@
 import json, os, urllib.request
 
 BASE = "https://gienetic-agent.web.id/v1"
-MODEL = "glm_unce"
+MODEL = "deepseek"
 
 SYSTEM = open(os.path.join(os.path.dirname(__file__), "system_prompt.txt"), encoding="utf-8").read()
 
