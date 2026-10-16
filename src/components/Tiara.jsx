@@ -190,7 +190,7 @@ export default function Tiara() {
         <div className="tiara-body" ref={bodyRef}>
           {msgs.map((m, i) => (
             <div key={i} className={`tiara-msg ${m.from}`}>
-              {m.from === "tiara" && <div className="tiara-mini">T</div>}
+              {m.from === "tiara" && <div className="tiara-mini"><img src="/assets/tiara-avatar.webp" alt="Tiara" /></div>}
               <div className="tiara-bubble">
                 {m.from === "tiara" && m.done ? renderMarkdown(m.text) : m.text}
                 {m.from === "tiara" && m.text && m.typing && <span className="tiara-caret" />}
@@ -200,7 +200,7 @@ export default function Tiara() {
           ))}
           {showTyping && (
             <div className="tiara-msg tiara">
-              <div className="tiara-mini">T</div>
+              <div className="tiara-mini"><img src="/assets/tiara-avatar.webp" alt="Tiara" /></div>
               <div className="tiara-bubble typing"><i /><i /><i /></div>
             </div>
           )}
