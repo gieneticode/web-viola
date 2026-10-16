@@ -172,7 +172,7 @@ export default function Tiara() {
       {/* Floating button */}
       <button className={`tiara-fab ${open ? "open" : ""}`} onClick={() => setOpen(!open)}
         aria-label="Chat dengan Tiara Asistan">
-        {open ? "✕" : "💬"}
+        {open ? "✕" : <img src="/assets/tiara-avatar.webp" alt="Tiara" />}
         {!open && <span className="tiara-dot" />}
       </button>
 
