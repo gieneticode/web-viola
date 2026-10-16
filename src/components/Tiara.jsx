@@ -1,13 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 
 /* ═══════════ TIARA ASISTAN — AI chat widget Vio.co ═══════════
-   Backend: rantai fallback (lihat tiaraConfig.js):
-   1. deepseek-bansos @ 9router VPS (sesuai spesifikasi owner)
-   2. atria @ 9router VPS (model cepat, server sama)
-   3. DeepSeek-V4-Flash @ Dahl (cadangan publik, cepat & stabil)
+   Backend: /api/tiara (Vercel serverless) → 9Router (glm_unce).
+   API key aman di env var server, tidak terekspos ke browser.
    Efek typing per-karakter dengan jeda variabel = kesan real. */
-
-import { CHAIN } from "../tiaraConfig.js";
 
 
 /* Markdown mini-renderer: **bold**, *italic*, `code`, link, list, line breaks.
@@ -125,42 +121,19 @@ export default function Tiara() {
     });
 
   const askBackend = async (history) => {
-    // Coba tiap backend di rantai sampai ada yang jawab
-    for (const be of CHAIN) {
-      // Retry up to 3x per backend (concurrency capacity is transient)
-      for (let attempt = 0; attempt < 3; attempt++) {
-        const res = await Promise.race([
-          fetch(be.url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json", Authorization: `Bearer ${be.key}` },
-            body: JSON.stringify({
-              model: be.model,
-              messages: [{ role: "system", content: SYSTEM }, ...history],
-              max_tokens: 400,
-              temperature: 0.8,
-            }),
-          }).then(async (r) => {
-            const d = await r.json().catch(() => ({}));
-            // Concurrency capacity: retry after short delay
-            if (!r.ok && d?.error?.code === "model_concurrency") {
-              throw new Error("concurrency");
-            }
-            if (!r.ok) throw new Error("bad status " + r.status);
-            const txt = d?.choices?.[0]?.message?.content;
-            if (!txt) throw new Error("empty");
-            return txt.replace(/<think>[\s\S]*?<\/think>/g, "").trim() || txt.trim();
-          }),
-          new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), be.timeout)),
-        ]).catch((e) => (e?.message === "concurrency" ? "retry" : null));
-        if (res === "retry") {
-          await new Promise((r) => setTimeout(r, 2500 * (attempt + 1)));
-          continue;
-        }
-        if (res) return res;
-        break;
-      }
+    // Via backend /api/tiara → 9Router (glm_unce). Key aman di server.
+    try {
+      const r = await fetch("/api/tiara", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: history }),
+      });
+      if (!r.ok) return null;
+      const d = await r.json();
+      return d?.reply?.trim() || null;
+    } catch {
+      return null;
     }
-    return null;
   };
 
   const send = async (text) => {
