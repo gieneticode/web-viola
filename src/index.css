@@ -987,9 +987,8 @@ a:focus-visible,button:focus-visible{outline:1px solid rgba(199,204,212,.6);outl
 .tiara-fab img{width:100%;height:100%;object-fit:cover;display:block}
 .tiara-fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 18px 50px -10px rgba(8,145,178,.5)}
 .tiara-fab.open{background:#1a2030}
-.tiara-dot{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;
-  background:#0fd6c3;box-shadow:0 0 8px rgba(15,214,195,.8);animation:tiaraPulse 2s infinite}
-@keyframes tiaraPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+.tiara-dot{position:absolute;bottom:3px;right:3px;width:14px;height:14px;border-radius:50%;
+  background:#22c55e;border:2.5px solid #0a0e1a;z-index:1}
 
 .tiara-panel{position:fixed;right:18px;bottom:86px;z-index:3000;width:min(360px,calc(100vw - 24px));
   height:min(520px,calc(100vh - 120px));display:flex;flex-direction:column;
