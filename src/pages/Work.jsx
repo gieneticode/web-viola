@@ -15,7 +15,7 @@ export default function Work() {
           <Reveal className="center">
             <div className="eyebrow c"><span className="dot" />Our work</div>
             <h2 className="lux-h">Selected projects.</h2>
-            <p className="sub-t">Real work untuk real clients. Klik project mana pun untuk full breakdown.</p>
+            <p className="sub-t">Karya nyata untuk klien nyata. Klik proyek mana pun untuk rincian lengkap.</p>
           </Reveal>
 
           <div className="filters">

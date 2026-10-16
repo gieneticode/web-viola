@@ -40,7 +40,7 @@ export default function Home() {
             <div className="eyebrow c"><span className="dot" />Why Vio.co</div>
             <h2 className="layered lux-h"><span className="fg">Production that</span><span className="bg" aria-hidden="true">performs.</span></h2>
             <p className="sub-t">
-              Satu tim dari first idea hingga final frame — dan seterusnya.
+              Satu tim dari ide pertama hingga frame terakhir — dan seterusnya.
             </p>
           </Reveal>
           <StaggerGrid className="ringgrid" style={{ marginTop: 52 }}>
@@ -83,7 +83,7 @@ export default function Home() {
           <Reveal className="center" from="left">
             <div className="eyebrow c"><span className="dot" />Trusted by</div>
             <h2 className="lux-h">Clients &amp; collaborations.</h2>
-            <p className="sub-t">Brands, institutions, dan teams yang pernah bekerja sama dengan kami di seluruh Indonesia.</p>
+            <p className="sub-t">Brand, institusi, dan tim yang pernah bekerja sama dengan kami di seluruh Indonesia.</p>
           </Reveal>
           <Reveal className="logos" style={{ "--i": 1 }}>
             {CLIENTS.map(c => <div key={c}>{c}</div>)}
@@ -114,16 +114,16 @@ export default function Home() {
               Let&apos;s create something great.
             </h2>
             <p className="sub-t" style={{ textAlign: "center" }}>
-              Punya project in mind? Ceritakan ide kamu — kami siap mewujudkannya.
+              Punya proyek dalam pikiran? Ceritakan ide kamu — kami siap mewujudkannya.
             </p>
             <div className="hero-act" style={{ justifyContent: "center" }}>
               <MagBtn><Link className="btn primary" to="/contact">Contact Us</Link></MagBtn>
               <MagBtn><a className="btn" href={BRAND.wa} target="_blank" rel="noopener noreferrer">WhatsApp Us</a></MagBtn>
             </div>
             <div className="cta-meta">
-              <span><b>Reply time</b> dalam 24 jam</span>
+              <span><b>Respon</b> dalam 24 jam</span>
               <i />
-              <span><b>Konsultasi</b> gratis via call</span>
+              <span><b>Konsultasi</b> gratis via telepon</span>
               <i />
               <span><b>Based in</b> Pekanbaru · Jakarta</span>
             </div>

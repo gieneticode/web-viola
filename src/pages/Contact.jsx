@@ -12,7 +12,6 @@ export default function Contact() {
   const submit = (e) => {
     e.preventDefault();
     setSent(true);
-    // ponytail: no backend — swap for fetch('/api/contact') or a form service when needed
   };
 
   return (
@@ -23,7 +22,7 @@ export default function Contact() {
             <VMark size={72} />
             <h2 className="lux-h">Let&apos;s create something great.</h2>
             <p className="sub-t" style={{ margin: "16px auto 0" }}>
-              Punya project in mind? Ceritakan ide kamu — kami siap mewujudkannya.
+              Punya proyek dalam pikiran? Ceritakan ide kamu — kami siap mewujudkannya.
             </p>
 
             <div className="links">
@@ -36,29 +35,29 @@ export default function Contact() {
           <Reveal as="form" className="form" onSubmit={submit}>
             {sent && (
               <div className="ok" role="status">
-                Thanks{form.name ? `, ${form.name}` : ""} — brief kamu telah kami terima.
-                Kami akan segera menghubungi kamu via email atau WhatsApp.
+                Terima kasih{form.name ? `, ${form.name}` : ""} — brief kamu sudah kami terima.
+                Kami akan segera menghubungimu via email atau WhatsApp.
               </div>
             )}
             <div className="row">
-              <label>Name
+              <label>Nama
                 <input required value={form.name} onChange={set("name")} placeholder="Nama kamu" />
               </label>
               <label>Email
                 <input required type="email" value={form.email} onChange={set("email")}
-                  placeholder="you@brand.com" />
+                  placeholder="kamu@brand.com" />
               </label>
             </div>
-            <label>Service
+            <label>Layanan
               <select value={form.service} onChange={set("service")}>
-                <option value="">Pilih service…</option>
+                <option value="">Pilih layanan…</option>
                 {SERVICES.map((s) => <option key={s.id} value={s.t}>{s.t}</option>)}
-                <option value="Full package">Full package (end-to-end)</option>
+                <option value="Full package">Paket full (end-to-end)</option>
               </select>
             </label>
-            <label>Project brief
+            <label>Brief proyek
               <textarea rows="5" required value={form.message} onChange={set("message")}
-                placeholder="Ceritakan goals, timeline, dan budget range kamu…" />
+                placeholder="Ceritakan tujuan, timeline, dan kisaran budget kamu…" />
             </label>
             <button className="btn primary" type="submit"
               style={{ justifySelf: "start" }}>Send Brief</button>

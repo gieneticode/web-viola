@@ -18,12 +18,24 @@ export default function Footer() {
               <VMark /><b>VIO.CO</b>
             </Link>
             <p>{BRAND.tagline}</p>
-            <p style={{ marginTop: 14, fontSize: 13, lineHeight: 1.8 }}>
-              📍 Pekanbaru · Jakarta<br />
-              🕘 Senin–Sabtu, 09.00–18.00 WIB<br />
-              ✉️ {BRAND.email}<br />
-              💬 <a href={BRAND.wa} target="_blank" rel="noopener noreferrer">+62 878-4040-3048</a>
-            </p>
+            <address className="foot-contact">
+              <span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Pekanbaru · Jakarta
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+                Senin–Sabtu, 09.00–18.00 WIB
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+                {BRAND.email}
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg>
+                <a href={BRAND.wa} target="_blank" rel="noopener noreferrer">+62 878-4040-3048</a>
+              </span>
+            </address>
           </div>
           {cols.map((c) => (
             <div key={c.h}>

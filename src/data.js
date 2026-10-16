@@ -19,10 +19,10 @@ export const ROADMAP = [
 
 /* capability progress rings — shown as futuristic feature cards */
 export const METRICS = [
-  { label: "Performa sistem", pct: 95, sub: "Delivery yang andal" },
-  { label: "Tepat waktu", pct: 90, sub: "Disiplin schedule" },
+  { label: "Performa sistem", pct: 95, sub: "Pengiriman yang andal" },
+  { label: "Tepat waktu", pct: 90, sub: "Disiplin jadwal" },
   { label: "Retensi klien", pct: 88, sub: "Mitra jangka panjang" },
-  { label: "Output kreatif", pct: 92, sub: "Dari concept hingga final" },
+  { label: "Output kreatif", pct: 92, sub: "Dari konsep hingga final" },
 ];
 
 export const NAV = [
@@ -42,22 +42,22 @@ export const NAV = [
 ];
 
 export const SERVICES = [
-  { id:"video", n:"01", t:"Video Production", d:"Dari concept hingga final cut, dirancang untuk brand storytelling.", items:[
+  { id:"video", n:"01", t:"Video Production", d:"Dari konsep hingga final cut — dirancang untuk cerita brand yang kuat.", items:[
     "Company & Brand Videos","Commercials / Advertisements","Short Movie & Documentaries","Social Media & Campaign Video"],
     img:"/assets/services/video-production.jpg" },
-  { id:"social", n:"02", t:"Social Media", d:"Planning, production, dan management content yang berperforma tinggi.", items:[
+  { id:"social", n:"02", t:"Social Media", d:"Perencanaan, produksi, dan manajemen konten yang berperforma tinggi.", items:[
     "Social Media Management","Content Strategy & Planning","Monthly Content Production","Copywriting & Calendar"],
     img:"/assets/services/social-media.jpg" },
-  { id:"creative", n:"03", t:"Creative & Branding", d:"Pemikiran yang mendahului setiap shooting.", items:[
+  { id:"creative", n:"03", t:"Creative & Branding", d:"Pemikiran yang mendahului setiap syuting.", items:[
     "Creative & Campaign Concepts","Visual Direction","Brand Communication","Personal & Social Branding"],
     img:"/assets/services/creative-branding.jpg" },
-  { id:"photo", n:"04", t:"Photo & Visual", d:"Stills dengan kualitas visual setara motion.", items:[
+  { id:"photo", n:"04", t:"Photo & Visual", d:"Foto stills dengan kualitas visual setara motion.", items:[
     "Product Photography","Event & Corporate Shoots","Portrait & Commercial","Documentation"],
     img:"/assets/services/photography.jpg" },
-  { id:"aerial", n:"05", t:"Aerial Production", d:"Perspective yang tak terjangkau tripod.", items:[
+  { id:"aerial", n:"05", t:"Aerial Production", d:"Sudut pandang yang tak terjangkau tripod.", items:[
     "Aerial Photo & Video","FPV Drone Sequences","Cinematic Drone","Property / Hotel / Villa"],
     img:"/assets/services/aerial.jpg" },
-  { id:"post", n:"06", t:"Post Production", d:"Di mana footage bertransformasi menjadi film.", items:[
+  { id:"post", n:"06", t:"Post Production", d:"Tempat footage bertransformasi menjadi film.", items:[
     "Cinematic Video Editing","Color Grading & Mastering","Motion Graphics","Sound Design & Mix"],
     img:"/assets/services/post-production.jpg" },
 ];
@@ -66,17 +66,17 @@ export const CATS = ["All","Film","Social Media","Branding","Commercial","Event"
 
 export const WORK = [
   { slug:"polda-riau-project", t:"Polda Riau Project", cat:"Film", client:"Polda Riau",
-    project:"Polda Riau — 2 Films",
+    project:"Polda Riau — 2 Film",
     services:"Production | Direction | Cinematography | FPV | Editing",
-    desc:"Project kolaborasi dengan Polda Riau — 2 short movie yang diproduksi end-to-end oleh Vio.co, dari script development, direction, cinematography, hingga final edit.",
-    role:"Full production oleh Vio.co sebagai production house dan creative lead.",
+    desc:"Proyek kolaborasi dengan Polda Riau — 2 film pendek yang diproduksi end-to-end oleh Vio.co, dari pengembangan naskah, penyutradaraan, sinematografi, hingga edit final.",
+    role:"Produksi penuh oleh Vio.co sebagai production house dan creative lead.",
     cover:"/assets/work/tim-raga/01-crew-group.jpg",
     films:["tim-raga","call-110"] },
   { slug:"tim-raga", t:"Tim Raga", cat:"Film", client:"Polda Riau", child:true,
-    project:"Short Movie — Tim Raga",
+    project:"Film Pendek — Tim Raga",
     services:"Production | Direction | Cinematography | FPV | Editing",
-    desc:"Short narrative film yang diproduksi end-to-end — dari script development, direction, cinematography, FPV aerial sequences, hingga final edit.",
-    role:"Full production oleh Vio.co sebagai production house dan creative lead.",
+    desc:"Film naratif pendek yang diproduksi end-to-end — dari pengembangan naskah, penyutradaraan, sinematografi, sekuens aerial FPV, hingga edit final.",
+    role:"Produksi penuh oleh Vio.co sebagai production house dan creative lead.",
     cover:"/assets/work/tim-raga.jpg",
     video:"",
     // Galeri behind-the-scenes Tim Raga (11 foto, cover dikecualikan)
@@ -93,58 +93,58 @@ export const WORK = [
       "/assets/work/tim-raga/11-makeup-actor.jpg",
       "/assets/work/tim-raga/12-camera-crew.jpg" ] },
   { slug:"call-110", t:"Call 110", cat:"Film", client:"Polda Riau", child:true,
-    project:"Short Movie — Call 110",
+    project:"Film Pendek — Call 110",
     services:"Production | Direction | Cinematography | FPV | Editing",
-    desc:"Film kedua dari Polda Riau Project — short movie yang diproduksi end-to-end oleh Vio.co. Foto dan video menyusul.",
-    role:"Full production oleh Vio.co sebagai production house dan creative lead.",
+    desc:"Film kedua dari Polda Riau Project — film pendek yang diproduksi end-to-end oleh Vio.co. Foto dan video menyusul.",
+    role:"Produksi penuh oleh Vio.co sebagai production house dan creative lead.",
     cover:"/assets/work/call-110.jpg",
     video:"" },
   { slug:"harbour-hotel", t:"Harbour Hotel", cat:"Drone", client:"Harbour Hotel",
-    project:"Property Aerial Film",
+    project:"Film Aerial Properti",
     services:"Aerial | FPV | Editing | Color Grading",
-    desc:"Cinematic aerial showcase dari properti tersebut — pool, suites, dan surroundings — yang disesuaikan untuk web dan social.",
-    role:"Aerial unit, direction, dan post production.",
+    desc:"Showcase aerial sinematik dari properti — kolam, suite, dan sekitarnya — yang disesuaikan untuk web dan sosial media.",
+    role:"Unit aerial, penyutradaraan, dan pasca-produksi.",
     cover:"/assets/work/harbour-hotel.jpg" },
   { slug:"seraya-villa", t:"Seraya Villa", cat:"Commercial", client:"Seraya Villa",
-    project:"Brand Commercial",
+    project:"Iklan Brand",
     services:"Creative Concept | Direction | Production | Post",
-    desc:"Commercial 45 detik tentang experience of arrival, diproduksi dalam dua hari on location.",
-    role:"Concept, direction, production, dan post.",
+    desc:"Iklan 45 detik tentang pengalaman kedatangan, diproduksi dalam dua hari di lokasi.",
+    role:"Konsep, penyutradaraan, produksi, dan pasca.",
     cover:"/assets/work/seraya-villa.jpg" },
   { slug:"nusantara-coffee", t:"Nusantara Coffee", cat:"Social Media", client:"Nusantara Coffee",
-    project:"Monthly Content Production",
+    project:"Produksi Konten Bulanan",
     services:"Content Strategy | Production | Editing | Publishing",
-    desc:"Monthly content package yang berkelanjutan — reels, feed, dan TikTok — dilengkapi content calendar dan performance reporting.",
-    role:"Social media management, production, dan reporting.",
+    desc:"Paket konten bulanan yang berkelanjutan — reels, feed, dan TikTok — dilengkapi kalender konten dan laporan performa.",
+    role:"Manajemen sosial media, produksi, dan pelaporan.",
     cover:"/assets/work/nusantara-coffee.jpg" },
   { slug:"riau-tourism", t:"Riau Tourism", cat:"Branding", client:"Dinas Pariwisata",
-    project:"Destination Campaign",
+    project:"Kampanye Destinasi",
     services:"Creative Strategy | Visual Direction | Production",
-    desc:"Campaign identity dan visual direction untuk regional destination push — dari key visual hingga on-location capture.",
-    role:"Creative strategy dan visual direction.",
+    desc:"Identitas kampanye dan arahan visual untuk dorongan destinasi regional — dari key visual hingga pengambilan di lokasi.",
+    role:"Strategi kreatif dan arahan visual.",
     cover:"/assets/work/riau-tourism.jpg" },
   { slug:"annual-gala", t:"Annual Gala", cat:"Event", client:"Griya Corp",
-    project:"Event Documentation",
+    project:"Dokumentasi Acara",
     services:"Multi-cam | Photography | Post",
-    desc:"Full event documentation dengan multi-camera coverage, photography, serta same-day highlight cut.",
-    role:"Multi-cam unit, photography, dan same-day edit.",
+    desc:"Dokumentasi acara penuh dengan liputan multi-kamera, fotografi, serta potongan highlight di hari yang sama.",
+    role:"Unit multi-kamera, fotografi, dan edit di hari yang sama.",
     cover:"/assets/work/annual-gala.jpg" },
 ];
 
 export const CLIENTS = ["POLDA RIAU","HARBOUR HOTEL","SERAYA VILLA","NUSANTARA COFFEE","GRIYA CORP","LOCAL BRAND"];
 
 export const CAPS = [
-  ["🎥","Professional Camera"],["🚁","Aerial Drone"],["🚀","FPV Drone"],
-  ["🎙️","Audio Production"],["💡","Lighting"],["🎬","Cinematic Production"],["✂️","Post Production"],
+  ["camera","Kamera Profesional"],["drone","Drone Aerial"],["fpv","Drone FPV"],
+  ["audio","Produksi Audio"],["lighting","Lighting"],["cinematic","Produksi Sinematik"],["post","Pasca-Produksi"],
 ];
 
 export const CAPABILITY_STEPS = [
-  ["01","Strategy","Kami memahami needs dan goals dari brand kamu."],
-  ["02","Creative","Kami mengembangkan concept dan visual direction."],
-  ["03","Production","Kami menjalankan shooting dan production process."],
-  ["04","Post Production","Editing, color grading, sound, motion graphic."],
-  ["05","Social Media","Content adaptation dan distribution."],
-  ["06","Analytics","Performance evaluation dan content development."],
+  ["01","Strategy","Kami memahami kebutuhan dan tujuan brand kamu."],
+  ["02","Creative","Kami mengembangkan konsep dan arahan visual."],
+  ["03","Production","Kami menjalankan syuting dan proses produksi."],
+  ["04","Post Production","Editing, color grading, sound, dan motion grafis."],
+  ["05","Social Media","Adaptasi konten dan distribusi."],
+  ["06","Analytics","Evaluasi performa dan pengembangan konten."],
 ];
 
 export const PROCESS_STEPS = [
@@ -165,12 +165,12 @@ export const MARQUEE = [
 ];
 
 export const TEAM_ROLES = [
-  ["Director","Creative direction dan storytelling.","/assets/team/director.jpg"],
-  ["Camera Crew","Cinematography dan coverage.","/assets/team/camera-crew.jpg"],
-  ["Drone Pilot","Aerial dan FPV flight.","/assets/team/drone-pilot.jpg"],
-  ["Lighting","Set lighting dan mood.","/assets/team/lighting.jpg"],
-  ["Makeup","Talent grooming dan continuity.","/assets/team/makeup.jpg"],
-  ["Editor","Cut, grade, sound, dan motion.","/assets/team/editor.jpg"],
+  ["Director","Arahan kreatif dan penceritaan.","/assets/team/director.jpg"],
+  ["Camera Crew","Sinematografi dan liputan.","/assets/team/camera-crew.jpg"],
+  ["Drone Pilot","Penerbangan aerial dan FPV.","/assets/team/drone-pilot.jpg"],
+  ["Lighting","Pencahayaan set dan suasana.","/assets/team/lighting.jpg"],
+  ["Makeup","Tata rias talenta dan kontinuitas.","/assets/team/makeup.jpg"],
+  ["Editor","Potongan, grading, suara, dan motion.","/assets/team/editor.jpg"],
 ];
 
 /* ── Stock covers for About 4-photo grid & Process feed ── */

@@ -11,14 +11,14 @@ export default function About() {
         <div className="wrap g2">
           <Reveal>
             <div className="eyebrow"><span className="dot" />Who we are</div>
-            <h2 className="lux-h">Dari creative strategy hingga production, dari content hingga social media.</h2>
+            <h2 className="lux-h">Dari strategi kreatif hingga produksi, dari konten hingga sosial media.</h2>
             <p className="sub-t">
-              Vio.co adalah creative production house dan social media specialist yang
-              mentransformasi ide menjadi meaningful visual content.
+              Vio.co adalah production house kreatif dan spesialis sosial media yang
+              mengubah ide menjadi konten visual yang bermakna.
             </p>
             <p className="sub-t">
-              Dari strategy dan creative concepts hingga production dan digital distribution,
-              kami membantu brands dan organizations communicate melalui powerful visual storytelling.
+              Dari strategi dan konsep kreatif hingga produksi dan distribusi digital,
+              kami membantu brand dan organisasi berkomunikasi lewat visual storytelling yang kuat.
             </p>
             <div className="stack">
               {["Production House","Creative Agency","Social Media Specialist","End-to-end Production"]
@@ -81,16 +81,20 @@ export default function About() {
               We don&apos;t just shoot. We build brands.
             </h2>
             <p className="sub-t" style={{ textAlign: "center", marginBottom: 22 }}>
-              Strategy, production, dan distribution under one roof — agar tidak ada
-              yang terlewat di antara agencies.
+              Strategi, produksi, dan distribusi dalam satu atap — agar tidak ada
+              yang terlewat di antara banyak vendor.
             </p>
             <div className="why-grid">
-              {[["◆","One team","Tanpa handover gap antara vendor dan agency"],
-                ["◈","Retainer-ready","Monthly content yang terukur dan terlaporkan"],
-                ["◉","Full-stack kit","Cinema camera, drone, FPV, lighting in-house"],
-                ["◎","Platform-native","Disesuaikan untuk Reels, TikTok, YouTube, dan web"]].map(([ic,t,d]) => (
+              {[["One team","Tanpa handover gap antara vendor dan agency"],
+                ["Retainer-ready","Konten bulanan yang terukur dan terlaporkan"],
+                ["Full-stack kit","Kamera sinema, drone, FPV, lighting in-house"],
+                ["Platform-native","Disesuaikan untuk Reels, TikTok, YouTube, dan web"]].map(([t,d]) => (
                 <div className="why-item" key={t}>
-                  <span className="ic">{ic}</span>
+                  <span className="ic" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 3l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-1.5z" />
+                    </svg>
+                  </span>
                   <b>{t}</b>
                   <small>{d}</small>
                 </div>

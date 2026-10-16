@@ -32,8 +32,8 @@ export default function ProjectDetail() {
     return (
       <div className="page">
         <div className="wrap center">
-          <h2 className="lux-h">Project tidak ditemukan.</h2>
-          <p className="sub-t">Project tersebut belum tersedia.</p>
+          <h2 className="lux-h">Proyek tidak ditemukan.</h2>
+          <p className="sub-t">Proyek tersebut belum tersedia.</p>
           <div className="hero-act" style={{ justifyContent: "center" }}>
             <Link className="btn primary" to="/work">Back to Work</Link>
           </div>
@@ -120,7 +120,7 @@ export default function ProjectDetail() {
             )}
             {!w.films && !(w.gallery && w.gallery.length) && (
               <p className="note" style={{ textAlign: "left" }}>
-                Slot media — taruh real video / stills / behind-the-scenes di sini.
+                Slot media — letakkan video asli / foto / behind-the-scenes di sini.
               </p>
             )}
             {w.gallery && w.gallery.length > 0 && (

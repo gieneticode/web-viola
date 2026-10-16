@@ -33,19 +33,23 @@ export default function Cursor() {
     const press = () => ring.current?.classList.add("press");
     const release = () => ring.current?.classList.remove("press");
 
+    // Delegasi event — berlaku juga untuk link/button yang dirender belakangan
+    const over = (e) => { if (e.target.closest("a,button,[data-cursor]")) grow(); };
+    const out = (e) => { if (e.target.closest("a,button,[data-cursor]")) shrink(); };
+
     document.addEventListener("mousemove", move);
     document.addEventListener("mousedown", press);
     document.addEventListener("mouseup", release);
-    document.querySelectorAll("a,button,[data-cursor]").forEach(el => {
-      el.addEventListener("mouseenter", grow);
-      el.addEventListener("mouseleave", shrink);
-    });
+    document.addEventListener("mouseover", over);
+    document.addEventListener("mouseout", out);
 
     raf.current = requestAnimationFrame(loop);
     return () => {
       document.removeEventListener("mousemove", move);
       document.removeEventListener("mousedown", press);
       document.removeEventListener("mouseup", release);
+      document.removeEventListener("mouseover", over);
+      document.removeEventListener("mouseout", out);
       cancelAnimationFrame(raf.current);
     };
   }, []);

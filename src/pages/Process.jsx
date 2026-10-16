@@ -11,8 +11,8 @@ export default function Process() {
             <div className="eyebrow c"><span className="dot" />Production timeline</div>
             <h2 className="lux-h">Our process.</h2>
             <p className="sub-t">
-              Pendekatan yang clear dan structured untuk setiap production — dari first
-              brief sampai final delivery.
+              Pendekatan yang jelas dan terstruktur untuk setiap produksi — dari
+              brief pertama sampai penyerahan final.
             </p>
           </Reveal>
           <Reveal><RoadmapCircles months={ROADMAP} /></Reveal>
@@ -25,8 +25,8 @@ export default function Process() {
             <div className="eyebrow"><span className="dot" />Social media</div>
             <h2 className="lux-h">Social media is more than posting.</h2>
             <p className="sub-t">
-              Strategy, planning, production, publishing — lalu kami measure
-              apa yang benar-benar worked.
+              Strategi, perencanaan, produksi, publikasi — lalu kami ukur
+              apa yang benar-benar berhasil.
             </p>
             <div className="flow">
               {SOCIAL_FLOW.map((s, i) => (
@@ -60,11 +60,11 @@ export default function Process() {
               Want the same process for your brand?
             </h2>
             <p className="sub-t" style={{ textAlign: "center", marginBottom: 22 }}>
-              Bawa brief kamu — atau sekadar ide. Kami akan petakan route tercepat
-              dari concept sampai published content.
+              Bawa brief kamu — atau sekadar ide. Kami akan petakan rute tercepat
+              dari konsep sampai konten tayang.
             </p>
             <div className="mini-steps">
-              {[["1","Brief & goals"],["2","Creative concept"],["3","Production"],["4","Deliver & publish"]].map(([n,t]) => (
+              {[["1","Brief & tujuan"],["2","Konsep kreatif"],["3","Produksi"],["4","Serah terima & tayang"]].map(([n,t]) => (
                 <div className="mini-step" key={n}><span>{n}</span>{t}</div>
               ))}
             </div>
