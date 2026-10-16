@@ -11,9 +11,10 @@ export const BRAND = {
 };
 
 export const ROADMAP = [
-  { month: "Month 1", items: ["Market research", "User needs analysis"] },
-  { month: "Month 2", items: ["Product design", "System development"] },
-  { month: "Month 3", items: ["Beta launch", "User feedback", "Performance optimization"] },
+  { month: "Week 1 — Discovery & Concept", items: ["Brief & riset", "Creative concept", "Moodboard & treatment"] },
+  { month: "Week 2 — Pre-Production", items: ["Script & storyboard", "Casting & location scouting", "Scheduling & crew"] },
+  { month: "Week 3 — Production", items: ["Shoot day", "Directing", "Drone & multi-cam"] },
+  { month: "Week 4 — Post & Delivery", items: ["Editing", "Color grading", "Sound design", "Final delivery & revisi"] },
 ];
 
 /* capability progress rings — shown as futuristic feature cards */

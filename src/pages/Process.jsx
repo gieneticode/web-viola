@@ -8,10 +8,10 @@ export default function Process() {
       <section>
         <div className="wrap">
           <Reveal className="center">
-            <div className="eyebrow c"><span className="dot" />Development roadmap</div>
+            <div className="eyebrow c"><span className="dot" />Production timeline</div>
             <h2 className="lux-h">Our process.</h2>
             <p className="sub-t">
-              Approach yang clear dan structured untuk setiap production — dari first
+              Pendekatan yang clear dan structured untuk setiap production — dari first
               brief sampai final delivery.
             </p>
           </Reveal>
@@ -25,8 +25,8 @@ export default function Process() {
             <div className="eyebrow"><span className="dot" />Social media</div>
             <h2 className="lux-h">Social media is more than posting.</h2>
             <p className="sub-t">
-              Strategy, planning, production, publishing — terus kami measure
-              apa yang actually worked.
+              Strategy, planning, production, publishing — lalu kami measure
+              apa yang benar-benar worked.
             </p>
             <div className="flow">
               {SOCIAL_FLOW.map((s, i) => (
@@ -60,7 +60,7 @@ export default function Process() {
               Want the same process for your brand?
             </h2>
             <p className="sub-t" style={{ textAlign: "center", marginBottom: 22 }}>
-              Bawa brief ke kami — atau sekadar ide. Kami akan map route tercepat
+              Bawa brief kamu — atau sekadar ide. Kami akan petakan route tercepat
               dari concept sampai published content.
             </p>
             <div className="mini-steps">

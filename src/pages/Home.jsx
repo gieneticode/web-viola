@@ -13,13 +13,34 @@ export default function Home() {
 
       <Marquee items={MARQUEE} />
 
+      {/* ===== Showreel ===== */}
+      <section id="showreel">
+        <div className="wrap">
+          <Reveal className="center">
+            <div className="eyebrow c"><span className="dot" />Showreel</div>
+            <h2 className="lux-h">Showreel 2026.</h2>
+            <p className="sub-t">Kompilasi karya terbaik kami — film, commercial, drone, dan social content dalam satu frame.</p>
+          </Reveal>
+          <Reveal>
+            <Link to="/work" className="reel" aria-label="Lihat portfolio kami">
+              <img src="/assets/work/tim-raga.jpg" alt="Showreel Vio.co 2026" loading="lazy" />
+              <span className="reel-shade" />
+              <span className="reel-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+              </span>
+              <span className="reel-cap">Play showreel — 2026</span>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       <section id="trust">
         <div className="wrap center">
           <Reveal as="div" from="left">
             <div className="eyebrow c"><span className="dot" />Why Vio.co</div>
             <h2 className="layered lux-h"><span className="fg">Production that</span><span className="bg" aria-hidden="true">performs.</span></h2>
             <p className="sub-t">
-              Satu team dari first idea hingga final frame — dan seterusnya.
+              Satu tim dari first idea hingga final frame — dan seterusnya.
             </p>
           </Reveal>
           <StaggerGrid className="ringgrid" style={{ marginTop: 52 }}>

@@ -18,6 +18,12 @@ export default function Footer() {
               <VMark /><b>VIO.CO</b>
             </Link>
             <p>{BRAND.tagline}</p>
+            <p style={{ marginTop: 14, fontSize: 13, lineHeight: 1.8 }}>
+              📍 Pekanbaru · Jakarta<br />
+              🕘 Senin–Sabtu, 09.00–18.00 WIB<br />
+              ✉️ {BRAND.email}<br />
+              💬 <a href={BRAND.wa} target="_blank" rel="noopener noreferrer">+62 878-4040-3048</a>
+            </p>
           </div>
           {cols.map((c) => (
             <div key={c.h}>

@@ -44,7 +44,7 @@ function renderMarkdown(text) {
   });
 }
 
-const SYSTEM = `Kamu adalah "Tiara Asistan", asisten AI resmi Vio.co — production house milik Viola Dwi Jenita (6+ tahun pengalaman, berbasis di Pekanbaru & Jakarta).
+const SYSTEM = `Kamu adalah "Tiara Asistan", asisten AI resmi Vio.co — production house & creative agency (6+ tahun pengalaman, berbasis di Pekanbaru & Jakarta).
 Layanan Vio.co (6 kategori): Video Production, Photography, Branding & Design, Motion Graphics, Social Media Content, Event Coverage.
 Klien: Polda Riau, Harbour Hotel, Seraya Villa, Nusantara Coffee, Dinas Pariwisata, Griya Corp.
 Gaya bicara: santai, hangat, profesional, pakai bahasa Indonesia. Jawab singkat & jelas (2-4 kalimat kecuali ditanya detail). Kalau ditanya harga, bilang estimasinya mulai dari budget custom, ajak konsultasi gratis. Kontak resmi: WhatsApp https://wa.me/6287840403048 · email hello@violaofficial.web.id · Instagram @violadwijenita · TikTok @violadwijenita · website https://violaofficial.web.id. Kalau tertarik serius, arahkan ke WhatsApp dulu.
@@ -90,7 +90,7 @@ function ContactCard() {
 export default function Tiara() {
   const [open, setOpen] = useState(false);
   const [msgs, setMsgs] = useState([
-    { from: "tiara", text: "Hai! Aku Tiara, asisten Vio.co ✨ Ada yang bisa aku bantu soal production house-nya Viola?" },
+    { from: "tiara", text: "Hai! Aku Tiara, asisten Vio.co ✨ Ada yang bisa aku bantu?" },
   ]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);

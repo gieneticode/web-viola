@@ -8,17 +8,15 @@ export default function Loader({ onDone }) {
   useEffect(() => {
     let raf;
     const t0 = performance.now();
-    const dur = 1800;
+    const dur = 1000;
     const tick = (now) => {
       const p = Math.min((now - t0) / dur, 1);
       const eased = 1 - Math.pow(1 - p, 3);
       setPct(Math.round(eased * 100));
       if (p < 1) { raf = requestAnimationFrame(tick); }
       else {
-        setTimeout(() => {
-          setOut(true);
-          setTimeout(onDone, 600);
-        }, 200);
+        setOut(true);
+        setTimeout(onDone, 400);
       }
     };
     raf = requestAnimationFrame(tick);

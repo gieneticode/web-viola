@@ -1299,3 +1299,27 @@ button:active{transform:scale(.96);filter:brightness(.93)}
   animation:vioTwirl .7s cubic-bezier(.22,.61,.36,1) both}
 @keyframes vioTwirl{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
 @media (prefers-reduced-motion:reduce){.brand b.twirl .tl{animation:none}}
+
+/* Showreel — elegant video placeholder */
+.reel{position:relative;display:block;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.09);margin-top:44px}
+.reel img{width:100%;height:clamp(300px,52vw,520px);object-fit:cover;display:block;transform:scale(1.01);transition:transform .8s var(--ease)}
+.reel:hover img{transform:scale(1.05)}
+.reel-shade{position:absolute;inset:0;background:linear-gradient(200deg,rgba(5,8,15,.15) 40%,rgba(5,8,15,.82))}
+.reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(12px);
+  transition:transform .3s var(--ease),background .3s}
+.reel:hover .reel-play{transform:translate(-50%,-50%) scale(1.08);background:rgba(0,212,224,.25)}
+.reel-cap{position:absolute;left:24px;bottom:20px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+
+/* Pricing teaser */
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:44px}
+.price-card{padding:30px 26px;text-align:left;position:relative}
+.price-card.hot{border-color:rgba(0,212,224,.35)}
+.price-tag{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;display:block}
+.price-card h3{font-size:22px;margin:0 0 6px}
+.price-from{font-size:13px;color:var(--muted);margin-bottom:18px}
+.price-from b{font-size:26px;color:#fff;font-weight:700;letter-spacing:-.01em}
+.price-card ul{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.price-card ul li{font-size:13.5px;color:var(--soft);padding-left:22px;position:relative}
+.price-card ul li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-size:12px}
