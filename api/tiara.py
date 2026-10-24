@@ -1,6 +1,6 @@
 import json, os, urllib.request
 
-BASE = "https://gienetic-agent.web.id/v1"
+BASE = "https://pro.exsala.web.id/v1"
 MODEL = "glm-5.3"
 
 SYSTEM = open(os.path.join(os.path.dirname(__file__), "system_prompt.txt"), encoding="utf-8").read()
